@@ -4,10 +4,11 @@ import {CardFooter} from "../../layout/cards/CardFooter";
 import FormDeviceInfo from "./FormDeviceInfo";
 import BodyDeviceInfo from "./BodyDeviceInfo";
 import PropTypes from "prop-types";
+import {initialDevice} from "../utils/initialDevice";
 
 const DeviceInfo = ({device, cleanDeviceInfo}) => {
 
-    const handleCleanDevice = () => cleanDeviceInfo()
+    const handleCleanDevice = () => cleanDeviceInfo(initialDevice)
 
     return (
         <Card>

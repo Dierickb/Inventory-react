@@ -1,23 +1,27 @@
-import {createContext, useContext, useEffect, useReducer} from "react";
+import {createContext, useContext, useReducer} from "react";
 import {deviceInitialState, devicesReducer} from "../../reducers/devices";
 import {DEVICE_ACTIONS} from "../../actions/device";
-import {channels} from "../../channels/bootCenter/getDevicesBootCenter";
+import {doc, getDoc, getFirestore} from "firebase/firestore";
+import {initFirebase} from "../../utils";
 
 export const BootCenterDevicesContext = createContext();
 const {Provider} = BootCenterDevicesContext;
-
-const { ipcRenderer: ipc } = window.require('electron');
+const firestore = getFirestore(initFirebase)
 
 export const BootCenterDevicesProvider = ({children}) => {
     const [state, dispatch] = useReducer(devicesReducer, deviceInitialState)
 
     const getDevices = async () => {
-        await dispatch({
+        const docRef = doc(firestore, `bootCenterDevice/F4y1CG4kfa80VivueVkL`)
+        const docEncrypted = await getDoc(docRef)
+
+        dispatch({
             type: DEVICE_ACTIONS.GET_DEVICES,
-            payload: await ipc.invoke(channels.GET_DEVICES)
+            payload: docEncrypted.data()
         })
     }
 
+    /*
     const setDevice = async ({brand, product, model, businesses, serial}) => {
         dispatch({
             type: DEVICE_ACTIONS.SET_DEVICE,
@@ -27,6 +31,8 @@ export const BootCenterDevicesProvider = ({children}) => {
             )
         })
     }
+
+     */
     const updateDevice = async () => {
 
     }
@@ -40,12 +46,12 @@ export const BootCenterDevicesProvider = ({children}) => {
 
     const removeAllListeners = () => {
         return () => {
-            ipc.removeAllListeners()
+            //ipc.removeAllListeners()
         }
     }
 
     return (
-        <Provider value={{setDevice, removeAllListeners, getDevices, state}} >
+        <Provider value={{removeAllListeners, getDevices, state}} >
             {children}
         </Provider>
     );

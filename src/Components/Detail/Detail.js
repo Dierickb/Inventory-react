@@ -9,14 +9,11 @@ const Detail = () => {
   const showDevice = (deviceInfo) => {
       setDevice(deviceInfo)
   }
-  const cleanDeviceInfo = () => {
-      setDevice(initialDevice)
-  }
 
   return (
       <Details pd='20px 0 0 0'>
           <Devices showDevice={showDevice}/>
-          <DeviceInfo device={device} cleanDeviceInfo={cleanDeviceInfo} />
+          <DeviceInfo device={device} cleanDeviceInfo={showDevice} />
       </Details>
   )
 }
