@@ -1,0 +1,2 @@
+require('./getDevicesBootCenter')
+require('./setDeviceBootCenter')

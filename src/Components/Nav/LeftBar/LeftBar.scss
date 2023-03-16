@@ -1,0 +1,42 @@
+.navigation {
+  position: fixed;
+  height: 100%;
+  background: #470000;
+  transition: 0.9s;
+  overflow: hidden;
+  width: 60px;
+
+  ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+  }
+  li:nth-child(1) {
+    margin-bottom: 60px;
+  }
+
+  li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    .title {
+      position: relative;
+      display: block;
+      padding: 0 10px;
+      height: 60px;
+      line-height: 60px;
+      white-space: nowrap;
+    }
+  }
+}
+
+.navigation.active {
+  width: 240px;
+  position: fixed;
+  height: 100%;
+  background: #470000;
+  transition: 0.9s;
+  overflow: hidden;
+}

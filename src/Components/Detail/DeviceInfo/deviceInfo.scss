@@ -1,0 +1,30 @@
+.cardSection {
+  padding: 0.4em 1em;
+  display: flex;
+
+  p {
+    margin: 0
+  }
+}
+
+.productInfo {
+  h2 {
+    display: flex;
+
+    p {
+      margin: 0;
+      padding: 0 15px
+    }
+  }
+
+}
+.fas {
+  width: 16px;
+  font-size: 16px;
+  &:hover{
+    cursor: pointer;
+  }
+  &:active {
+    background: #61dafb;
+  }
+}

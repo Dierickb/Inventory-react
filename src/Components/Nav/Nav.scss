@@ -1,0 +1,12 @@
+.topBar {
+  position: absolute;
+  width: calc(100% - 60px);
+  left: 60px;
+  min-height: 70px;
+  background: #f5f5f5;
+  transition: 0.9s;
+}
+.topBar.active {
+  width: calc(100% - 240px);
+  left: 240px;
+}
