@@ -4,7 +4,7 @@ const Device = ({device, index, handleShowDevice}) => {
     const handleDevice = () => {
         handleShowDevice(device)
     }
-    // Logica
+
   return (
       <tr>
           <td>{index}</td>
