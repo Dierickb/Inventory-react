@@ -1,10 +1,9 @@
 import LeftBar from "./LeftBar";
 import TopBar from "./TopBar";
-import {memo} from 'react';
 import {useActiveLeftBar} from "../../contexts/ActiveLeftBar";
 
 const Nav = () => {
-    const {active, activeLeftBar} = useActiveLeftBar()
+    const {isActive, activeLeftBar} = useActiveLeftBar()
 
     const activeNav = () => {
         activeLeftBar()
@@ -12,10 +11,10 @@ const Nav = () => {
 
     return (
         <>
-            <LeftBar active={active} />
-            <TopBar setActive={activeNav} active={active}/>
+            <LeftBar isActive={isActive} />
+            <TopBar setActive={activeNav} isActive={isActive}/>
         </>
     );
 }
 
-export default memo(Nav)
+export default Nav

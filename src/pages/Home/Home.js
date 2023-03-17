@@ -3,9 +3,9 @@ import Detail from "../../Components/Detail";
 import {useActiveLeftBar} from "../../contexts/ActiveLeftBar";
 
 const Home = () => {
-    const {active} = useActiveLeftBar()
+    const {isActive} = useActiveLeftBar()
     return (
-        <div className={`formContainer ${active ? 'active' : ''}`} id='mainContainer'>
+        <div className={`formContainer ${isActive ? 'active' : ''}`} id='mainContainer'>
             <Register />
             <Detail />
         </div>

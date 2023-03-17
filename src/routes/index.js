@@ -2,12 +2,17 @@ import { BrowserRouter as Router,
     Switch,
     Redirect,
 } from "react-router-dom";
-import Home from '../pages/Home'
-import Auth from '../pages/Auth'
+import {lazy, Suspense} from "react";
 import {useAuth} from "../contexts/Auth";
 import PrivateRoute from "./PrivateRoute";
 import PrivateLoginRoute from "./PrivateLoginRoute";
 import {roles} from "../utils/utilities";
+
+const Home = lazy(() => import("../pages/Home"))
+const Auth = lazy(() => import("../pages/Auth"))
+const Admin = lazy(() => import("../pages/Admin"))
+
+
 
 const Routes = () => {
     const { isLoggedIn } = useAuth();
@@ -16,11 +21,15 @@ const Routes = () => {
 
     return (
         <Router>
-            <Switch>
-                <PrivateLoginRoute path="/login" component={Auth} />
-                <PrivateRoute path="/dashboard" component={Home} />
-                <Redirect to={redirect} />
-            </Switch>
+            <Suspense>
+                <Switch>
+                    <PrivateLoginRoute path="/login" component={Auth} />
+                    <PrivateRoute exact path="/dashboard" component={Home} />
+                    <PrivateRoute path="/dashboard/admin" component={Admin}/>
+                    <Redirect to={redirect} />
+                </Switch>
+            </Suspense>
+
         </Router>
     )
 }

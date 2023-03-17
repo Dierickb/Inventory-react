@@ -1,9 +1,10 @@
 import {useAuth} from "../contexts/Auth";
-import {Route} from "react-router-dom";
+import {Route, useHistory} from "react-router-dom";
 
 const PrivateLoginRoute = ({ component: Component, ...rest }) => {
+    const history = useHistory();
     const { isLoggedIn } = useAuth();
-    if (isLoggedIn().isLogged) window.location.href = "/dashboard";
+    if (isLoggedIn().isLogged) history.push("/dashboard");
 
     return (
         <>

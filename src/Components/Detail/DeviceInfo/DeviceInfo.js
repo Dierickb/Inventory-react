@@ -6,6 +6,8 @@ import BodyDeviceInfo from "./BodyDeviceInfo";
 import PropTypes from "prop-types";
 import {initialDevice} from "../utils/initialDevice";
 
+import trashIcon from "./icons/trash-can-regular.svg"
+
 const DeviceInfo = ({device, cleanDeviceInfo}) => {
 
     const handleCleanDevice = () => cleanDeviceInfo(initialDevice)
@@ -18,7 +20,9 @@ const DeviceInfo = ({device, cleanDeviceInfo}) => {
                         <h2>Serial: <p>{device.serial}</p></h2>
                     </div>
                 </h2>
-                <span onClick={handleCleanDevice}><img className="fas" src="img/icons/trash-can-regular.svg" alt=""/></span>
+                <span onClick={handleCleanDevice}>
+                    <img className="fas" src={trashIcon} alt=""/>
+                </span>
             </CardHeader>
 
             <BodyDeviceInfo {...device} />

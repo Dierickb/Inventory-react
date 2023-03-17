@@ -20,7 +20,7 @@ const LoginForm = () => {
             isLoggedIn && history.push("/dashboard")
         } catch (e) {
             (e.message === 'Firebase: Error (auth/wrong-password).') && setWrongPassword(true)
-            (e.message === 'Firebase: Error (auth/user-not-found).') && setWrongUser(true)
+            (e.message === 'Firebase: Error (auth/userIcon-not-found).') && setWrongUser(true)
             throw e.message
         }
     }

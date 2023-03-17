@@ -3,10 +3,10 @@ import FormRegister from "./FormRegister";
 import {memo, useState} from "react";
 
 const Register = memo( () => {
-    const [showFormRegister, setShowFormRegister] = useState(false)
+    const [hasFormRegister, setHasFormRegister] = useState(false)
 
     const handleToggleForm = () => {
-        setShowFormRegister(!showFormRegister)
+        setHasFormRegister(!hasFormRegister)
     }
   return (
 
@@ -17,7 +17,7 @@ const Register = memo( () => {
             </div>
             <div className="registerMenu"></div>
         </div>
-        {showFormRegister && <FormRegister />}
+        {hasFormRegister && <FormRegister />}
     </Card>
   )
 })

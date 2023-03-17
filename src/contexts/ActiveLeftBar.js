@@ -4,14 +4,14 @@ export const ActiveLeftBarContext = createContext();
 const {Provider} = ActiveLeftBarContext;
 
 export const ActiveLeftBarProvider = ({children}) => {
-    const [active, setActive] = useState(false)
+    const [isActive, setIsActive] = useState(false)
 
     const activeLeftBar = () => {
-        setActive(!active)
+        setIsActive(!isActive)
     }
 
     return <Provider value={{
-        activeLeftBar, active, setActive
+        activeLeftBar, isActive, setIsActive
     }}>{children}</Provider>
 }
 

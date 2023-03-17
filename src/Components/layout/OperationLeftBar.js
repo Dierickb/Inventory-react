@@ -6,4 +6,8 @@ export const OperationLeftBar = styled.div`
   display: flex;
   text-decoration: none;
   color: antiquewhite;
+  
+  Link {
+    text-decoration: none;
+  }
 `

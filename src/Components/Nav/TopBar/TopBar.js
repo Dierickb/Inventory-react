@@ -1,9 +1,11 @@
 import {DropDown, HeaderToBar, Search, Icon} from "../../layout";
 import InputContainer from "../InputContainer";
-import {useCallback} from "react";
+import {memo, useCallback} from "react";
 import {useLocation} from "react-router-dom";
 
-const TopBar = ({setActive, active}) => {
+import burgerIcon from "./icons/burger-solid.svg"
+
+const TopBar = ({setActive, isActive}) => {
     const location = useLocation();
     const showHide = useCallback (() => {
         setActive()
@@ -16,28 +18,24 @@ const TopBar = ({setActive, active}) => {
     }
 
     return (
-        <div className={`topBar ${active ? 'active' : ''}`}>
-            <HeaderToBar active={active}>
+        <div className={`topBar ${isActive ? 'active' : ''}`}>
+            <HeaderToBar active={isActive}>
                 <Icon imgWd='2em' brdRadImg='5px' bgImg='#03a9f4' onClick={() => showHide()}>
-                    <img alt="" src={`img/icons/burger-solid.svg`}/>
+                    <img alt="" src={burgerIcon}/>
                 </Icon>
                 { (location.pathname === "/dashboard" || location.pathname === "/dashboard/") &&
-                    <>
-                        <Search onKeyPress={handleSearch}>
-                            <InputContainer placeHolder='Serial' title='Serial' name='serial'/>
-                            <InputContainer placeHolder='ScotiaId' title='ScotiaId' name='scotiaId'/>
-                            <div className='inputContainer'>
-                                <h4>Scotia</h4>
-                                <DropDown>
-                                    <option value="">Empresa</option>
-                                    <option value="1">GSG</option>
-                                    <option value="2">GBS</option>
-                                </DropDown>
-                            </div>
-                        </Search>
-                        <div className="user">
+                    <Search onKeyPress={handleSearch}>
+                        <InputContainer placeHolder='Serial' title='Serial' name='serial'/>
+                        <InputContainer placeHolder='ScotiaId' title='ScotiaId' name='scotiaId'/>
+                        <div className='inputContainer'>
+                            <h4>Scotia</h4>
+                            <DropDown>
+                                <option value="">Empresa</option>
+                                <option value="1">GSG</option>
+                                <option value="2">GBS</option>
+                            </DropDown>
                         </div>
-                    </>
+                    </Search>
                 }
 
             </HeaderToBar>
@@ -45,4 +43,4 @@ const TopBar = ({setActive, active}) => {
     )
 }
 
-export default TopBar
+export default memo(TopBar)

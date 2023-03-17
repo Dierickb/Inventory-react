@@ -5,7 +5,7 @@ const OperationList = ({title, image, onClick}) => {
       <li>
           <OperationLeftBar title={title} onClick={onClick}>
               <Icon>
-                  <img alt="" className="fas" src={`img/${image}`}/>
+                  <img alt="" className="fas" src={image}/>
               </Icon>
               <span className="title">{title}</span>
 

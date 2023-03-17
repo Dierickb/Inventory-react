@@ -1,30 +1,42 @@
 import OperationList from "./OperationList";
 import {useAuth} from "../../../contexts/Auth";
 import {useHistory} from "react-router-dom";
+import {HandleRedirects} from "./HandleRedirects";
 
-const LeftBar = ({active}) => {
+import houseIcon from "./icons/house-solid.svg"
+import userIcon from "./icons/user-plus-solid.svg"
+import chartPieIcon from "./icons/chart-pie-solid.svg"
+import gearIcon from "./icons/gear-solid.svg"
+import exitIcon from "./icons/sign-out-alt-solid.svg"
+import {memo} from "react";
+
+const   LeftBar = ({isActive}) => {
     const {logout, isLoggedIn} = useAuth()
     const {rol} = isLoggedIn();
     const history = useHistory();
 
-    const handleClick = () => {
-        console.log("diericks")
-        history.push("/dashboard/setting");
-    }
+    const {
+        handleRedirectToAdmin,
+        handleRedirectToHome,
+        handleRedirectToOperation,
+        handleRedirectToGraph,
+    } = HandleRedirects(history)
 
     return (
-        <div className={`navigation ${active ? 'active' :'' }`}>
+        <div className={`navigation ${isActive ? 'active' :'' }`}>
             <ul>
-                <OperationList title='Home' image='/icons/house-solid.svg' />
-                <OperationList title='IT Delivery' image='/icons/user-plus-solid.svg' />
+                <OperationList title='Home' image={houseIcon} onClick={handleRedirectToHome} />
+                <OperationList title='Operation' image={userIcon} onClick={handleRedirectToOperation} />
                 { (rol === "admin") &&
-                    <OperationList title='Exit' image='/icons/gear-solid.svg' onClick={handleClick} />
+                    <>
+                        <OperationList title='Graphs' image={chartPieIcon} onClick={handleRedirectToGraph} />
+                        <OperationList title='Settings' image={gearIcon} onClick={handleRedirectToAdmin} />
+                    </>
                 }
-                <OperationList title='Exit' image='/icons/sign-out-alt-solid.svg' onClick={logout}/>
-
+                <OperationList title='Exit' image={exitIcon} onClick={logout}/>
             </ul>
         </div>
     )
 }
 
-export default LeftBar
+export default memo(LeftBar)
