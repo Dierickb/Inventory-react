@@ -1,5 +1,5 @@
 export const roles = {
-    admin: "/admin",
+    admin: "/dashboard",
     auth: "/dashboard",
     undefined: "/login",
     null: "/login",

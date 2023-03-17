@@ -2,12 +2,13 @@ import {Card, CardHeader} from "../../layout";
 import './devices.scss'
 import Device from "../Device";
 import {useEffect} from "react";
-import { useBootCenterDevices } from "../../contexts/BootCenterDevices";
+import { useBootCenterDevices } from "../../../contexts/BootCenterDevices";
+import PropTypes from "prop-types";
 
 const Devices = ({showDevice}) => {
 
-    const handleShowDevice = (device) => showDevice(device)
     const { getDevices, removeAllListeners, state } = useBootCenterDevices();
+    const handleShowDevice = (device) => showDevice(device)
 
     useEffect(() => {
         getDevices()
@@ -53,3 +54,19 @@ const Devices = ({showDevice}) => {
 }
 
 export default Devices
+
+Devices.prototype = {
+    state: PropTypes.shape({
+        loading: PropTypes.bool,
+        error: PropTypes.bool,
+        devices: PropTypes.arrayOf({
+            builder: PropTypes.string,
+            device: PropTypes.string,
+            model: PropTypes.string,
+            scotia: PropTypes.string,
+            serial: PropTypes.string,
+            entryDate: PropTypes.string,
+            pxeDate: PropTypes.string,
+        })
+    })
+}

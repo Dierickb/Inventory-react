@@ -1,10 +1,10 @@
 import Devices from "./Devices";
 import {Details} from "../layout";
-import {useState} from "react";
+import {memo, useState} from "react";
 import DeviceInfo from "./DeviceInfo";
 import {initialDevice} from "./utils/initialDevice";
 
-const Detail = () => {
+const Detail = memo( () => {
   const [device, setDevice] = useState(initialDevice)
   const showDevice = (deviceInfo) => {
       setDevice(deviceInfo)
@@ -16,6 +16,6 @@ const Detail = () => {
           <DeviceInfo device={device} cleanDeviceInfo={showDevice} />
       </Details>
   )
-}
+})
 
 export default Detail

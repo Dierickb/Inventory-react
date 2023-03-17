@@ -1,24 +1,24 @@
 import {createContext, useContext, useReducer} from "react";
-import {deviceInitialState, devicesReducer} from "../../reducers/devices";
-import {DEVICE_ACTIONS} from "../../actions/device";
-import {doc, getDoc, getFirestore} from "firebase/firestore";
-import {initFirebase} from "../../utils";
+import {deviceInitialState, devicesReducer} from "../reducers/devices";
+import {DEVICE_ACTIONS} from "../actions/device";
+import {device} from "../api"
 
 export const BootCenterDevicesContext = createContext();
 const {Provider} = BootCenterDevicesContext;
-const firestore = getFirestore(initFirebase)
+const {getDevices: apiGetDevices, getDeviceInfo: apiGetDeviceInfo} = device()
 
 export const BootCenterDevicesProvider = ({children}) => {
     const [state, dispatch] = useReducer(devicesReducer, deviceInitialState)
 
     const getDevices = async () => {
-        const docRef = doc(firestore, `bootCenterDevice/F4y1CG4kfa80VivueVkL`)
-        const docEncrypted = await getDoc(docRef)
-
         dispatch({
             type: DEVICE_ACTIONS.GET_DEVICES,
-            payload: docEncrypted.data()
+            payload: await apiGetDevices("F4y1CG4kfa80VivueVkL")
         })
+    }
+
+    const getDeviceInfo = async () => {
+        return apiGetDeviceInfo()
     }
 
     /*
@@ -51,7 +51,7 @@ export const BootCenterDevicesProvider = ({children}) => {
     }
 
     return (
-        <Provider value={{removeAllListeners, getDevices, state}} >
+        <Provider value={{removeAllListeners, getDevices, getDeviceInfo, state}} >
             {children}
         </Provider>
     );

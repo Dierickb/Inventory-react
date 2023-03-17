@@ -1,7 +1,8 @@
-import {useAuth} from "../Components/contexts/Auth";
+import {useAuth} from "../contexts/Auth";
 import {Route, useHistory} from "react-router-dom";
 import Nav from "../Components/Nav/Nav";
-import {BootCenterDevicesProvider} from "../Components/contexts/BootCenterDevices";
+import {BootCenterDevicesProvider} from "../contexts/BootCenterDevices";
+import {ActiveLeftBarProvider} from "../contexts/ActiveLeftBar";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     const history = useHistory();
@@ -11,8 +12,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
     return (
         <BootCenterDevicesProvider>
-            <Nav />
-            <Route {...rest} component={(props) => <Component {...props} />} />
+            <ActiveLeftBarProvider>
+                <Nav />
+                <Route {...rest} component={(props) => <Component {...props} />} />
+            </ActiveLeftBarProvider>
         </BootCenterDevicesProvider>
 
     );

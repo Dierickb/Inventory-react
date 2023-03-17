@@ -1,0 +1,4 @@
+export const LEFTBAR_ACTIONS = {
+    TO_SETTINGS: "TO_SETTINGS",
+    LOGOUT: "LOGOUT",
+}

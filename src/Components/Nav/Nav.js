@@ -1,23 +1,19 @@
 import LeftBar from "./LeftBar";
 import TopBar from "./TopBar";
-import {memo, useState} from 'react'
+import {memo} from 'react';
+import {useActiveLeftBar} from "../../contexts/ActiveLeftBar";
 
 const Nav = () => {
-    const [active, setActive] = useState(false)
+    const {active, activeLeftBar} = useActiveLeftBar()
 
     const activeNav = () => {
-      const mainContainer = document.querySelector('#mainContainer')
-      mainContainer.removeAttribute('class')
-      mainContainer.setAttribute('class', `formContainer ${!active ? 'active' : ''}`)
-      setActive(!active)
+        activeLeftBar()
     }
 
     return (
         <>
-          <LeftBar active={active} />
-          <div className={`topBar ${active ? 'active' : ''}`}>
-              <TopBar setActive={activeNav} active={active}/>
-          </div>
+            <LeftBar active={active} />
+            <TopBar setActive={activeNav} active={active}/>
         </>
     );
 }

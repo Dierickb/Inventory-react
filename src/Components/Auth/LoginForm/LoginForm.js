@@ -1,7 +1,7 @@
 import {useFormik} from "formik";
 import * as Yup from 'yup'
 import {useState} from "react";
-import {useAuth} from "../../contexts/Auth";
+import {useAuth} from "../../../contexts/Auth";
 import { useHistory } from "react-router-dom";
 
 import './LoginForm.scss'

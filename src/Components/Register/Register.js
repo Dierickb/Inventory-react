@@ -1,8 +1,8 @@
 import {Card} from "../layout";
 import FormRegister from "./FormRegister";
-import {useState} from "react";
+import {memo, useState} from "react";
 
-const Register = () => {
+const Register = memo( () => {
     const [showFormRegister, setShowFormRegister] = useState(false)
 
     const handleToggleForm = () => {
@@ -20,6 +20,6 @@ const Register = () => {
         {showFormRegister && <FormRegister />}
     </Card>
   )
-}
+})
 
 export default Register

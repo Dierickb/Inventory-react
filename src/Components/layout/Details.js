@@ -6,6 +6,6 @@ export const Details = styled.div`
   padding: ${ (props) =>  props.pd ? props.pd : 'padding: 0 20px 20px' };
   display: grid;
   grid-gap: 20px;
-  height: 75vh;
+  height: 74vh;
   grid-template-columns: ${ (props) =>  props.grTempCol ? props.grTempCol : '2fr 1fr' };
 `
