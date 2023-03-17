@@ -3,8 +3,7 @@ import {Route} from "react-router-dom";
 
 const PrivateLoginRoute = ({ component: Component, ...rest }) => {
     const { isLoggedIn } = useAuth();
-    const {isLogged} = isLoggedIn();
-    if (isLogged) window.location.href = "/dashboard";
+    if (isLoggedIn().isLogged) window.location.href = "/dashboard";
 
     return (
         <>

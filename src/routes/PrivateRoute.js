@@ -7,8 +7,7 @@ import {ActiveLeftBarProvider} from "../contexts/ActiveLeftBar";
 const PrivateRoute = ({ component: Component, ...rest }) => {
     const history = useHistory();
     const { isLoggedIn } = useAuth();
-
-    if (!isLoggedIn()) history.push("/login");
+    if (!isLoggedIn().isLogged) history.push("/login");
 
     return (
         <BootCenterDevicesProvider>
