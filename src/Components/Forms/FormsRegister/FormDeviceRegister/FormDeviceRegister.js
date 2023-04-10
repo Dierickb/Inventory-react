@@ -1,8 +1,8 @@
-import {DropDown, InputsContainer, FormRegisters, Button} from "../../layout";
-import InputContainer from "../../Nav/InputContainer";
+import {DropDown, InputsContainer, FormRegisters, Button} from "../../../layout";
+import InputContainer from "../../../Nav/InputContainer";
 import {handleFormDeviceRegister} from "./handles";
 import FormDeviceSelect from "./FormDeviceSelect";
-import {useBootCenterDevices} from "../../../contexts";
+import {useBootCenterDevices} from "../../../../contexts";
 
 const FormDeviceRegister = () => {
     const { setDevice } = useBootCenterDevices();

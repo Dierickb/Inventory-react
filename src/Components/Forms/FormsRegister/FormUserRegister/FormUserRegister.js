@@ -1,4 +1,4 @@
-import {InputsContainer, FormRegisters, Button, Input} from "../layout";
+import {InputsContainer, FormRegisters, Button, Input} from "../../../layout";
 
 const FormUserRegister = () => {
 

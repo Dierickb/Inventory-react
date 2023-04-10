@@ -1,5 +1,5 @@
-import {InputsContainer, FormRegisters, Button, Input} from "../layout";
-import {TextArea} from "../layout/inputs";
+import {InputsContainer, FormRegisters, Button, Input} from "../../../layout";
+import {TextArea} from "../../../layout/inputs";
 
 const FormRegisterBrand = () => {
 

@@ -2,7 +2,7 @@ import "./Home.scss"
 
 import Detail from "../../Components/Detail";
 import {useActiveLeftBar} from "../../contexts";
-import FormDeviceRegister from "../../Components/FormsRegister/FormDeviceRegister/FormDeviceRegister";
+import FormDeviceRegister from "../../Components/Forms/FormsRegister/FormDeviceRegister/FormDeviceRegister";
 import CardContainer from "../../Components/CardContainer";
 
 const Home = () => {
