@@ -1,24 +1,21 @@
 import {useEffect} from "react";
 import {useBrand} from "../../../../contexts"
 
-const useFetch = () => {
-    const {getBrands, getModelsByBrand, state} = useBrand()
+export const useFetch = () => {
+    const {getBrands, getModelsByBrand} = useBrand()
 
     useEffect( () => {
         (async () => {
             await getBrands()
         })()
         return () => {
-            console.log("Dierik")
+
         }
     }, [])
 
-    useEffect(() => {
-        (async () => {
-            await getModelsByBrand("Lenovo", "Laptop")
-        })()
-    },[state.data])
+    const fetchGetModelsByBrands = (typeDevice, brand) => {
+        getModelsByBrand(typeDevice, brand)
+    }
 
+    return {fetchGetModelsByBrands}
 }
-
-export default useFetch

@@ -17,7 +17,6 @@ const CardContainer = ({Children, title, child}) => {
     const handleToggleForm = () => setIsCardVisible(!isCardVisible)
 
   return (
-
     <Card pd={padding(url, isCardVisible, child)} mgTp={url && '20px'} >
         <div className="cardHeader" onClick={handleToggleForm}>
             <div>

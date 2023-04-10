@@ -25,7 +25,6 @@ export const brandReducer = (state = brandInitialState, action) => {
                     brand.id === action.payload.brandToFind
                 ) return brand
             })
-
             for(let key in devices[0]?.data) {
                 if(devices[0]?.data[key] === action.payload.typeDeviceToFind) models.push(key)
             }

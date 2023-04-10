@@ -21,7 +21,7 @@ export const BrandProvider = ({children}) => {
         }
     }
 
-    const getModelsByBrand = async (brandToFind, typeDeviceToFind) => {
+    const getModelsByBrand = (brandToFind, typeDeviceToFind) => {
         try {
             dispatch({
                 type: BRAND_ACTIONS.GET_MODELS_BY_BRAND,
