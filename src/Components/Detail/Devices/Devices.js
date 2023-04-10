@@ -1,8 +1,10 @@
 import {Card, CardHeader} from "../../layout";
 import './devices.scss'
+import rotateIcon from "./icons/rotate-solid.svg"
+
 import Device from "../Device";
-import {useEffect} from "react";
-import { useBootCenterDevices } from "../../../contexts/BootCenterDevices";
+import {memo, useEffect} from "react";
+import { useBootCenterDevices } from "../../../contexts";
 import PropTypes from "prop-types";
 
 const Devices = ({showDevice}) => {
@@ -20,7 +22,10 @@ const Devices = ({showDevice}) => {
     return (
         <Card>
             <CardHeader>
-                <h2>Equipos en stock {state.serial}</h2>
+                <h2>Equipos en stock</h2>
+                <span onClick={() => getDevices()}>
+                    <img className="fas" src={rotateIcon} alt=""/>
+                </span>
             </CardHeader>
             <table className='devices'>
                 <thead>
@@ -53,7 +58,7 @@ const Devices = ({showDevice}) => {
     )
 }
 
-export default Devices
+export default memo(Devices)
 
 Devices.prototype = {
     state: PropTypes.shape({

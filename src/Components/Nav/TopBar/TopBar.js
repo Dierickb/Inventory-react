@@ -1,8 +1,8 @@
+import "./TopBar.scss"
 import {DropDown, HeaderToBar, Search, Icon} from "../../layout";
 import InputContainer from "../InputContainer";
 import {memo, useCallback} from "react";
 import {useLocation} from "react-router-dom";
-
 import burgerIcon from "./icons/burger-solid.svg"
 
 const TopBar = ({setActive, isActive}) => {

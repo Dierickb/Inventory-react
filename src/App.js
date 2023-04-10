@@ -1,10 +1,14 @@
 import {AuthProvider} from "./contexts/Auth";
 import Routes from "./routes";
+import {BrandProvider} from "./contexts/Brand";
 
-function App() {
+const App = () => {
+
   return (
       <AuthProvider>
-          <Routes />
+          <BrandProvider>
+              <Routes />
+          </BrandProvider>
       </AuthProvider>
   )
 }

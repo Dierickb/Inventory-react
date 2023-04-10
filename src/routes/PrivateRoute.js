@@ -1,4 +1,4 @@
-import {useAuth} from "../contexts/Auth";
+import {useAuth} from "../contexts";
 import {Route, useHistory} from "react-router-dom";
 import Nav from "../Components/Nav/Nav";
 import {BootCenterDevicesProvider} from "../contexts/BootCenterDevices";

@@ -1,3 +1,5 @@
+import "./InputContainer.scss"
+
 import {Input} from "../../layout";
 import {InputsContainer} from "../../layout";
 

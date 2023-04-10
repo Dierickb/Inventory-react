@@ -1,11 +1,11 @@
 import {createContext, useContext, useReducer} from "react";
 import {deviceInitialState, devicesReducer} from "../reducers/devices";
 import {DEVICE_ACTIONS} from "../actions/device";
-import {device} from "../api"
+import {deviceAPI} from "../api"
 
 export const BootCenterDevicesContext = createContext();
 const {Provider} = BootCenterDevicesContext;
-const {getDevices: apiGetDevices, getDeviceInfo: apiGetDeviceInfo} = device()
+const {getDevices: apiGetDevices, getDeviceInfo: apiGetDeviceInfo} = deviceAPI()
 
 export const BootCenterDevicesProvider = ({children}) => {
     const [state, dispatch] = useReducer(devicesReducer, deviceInitialState)
@@ -56,7 +56,6 @@ export const BootCenterDevicesProvider = ({children}) => {
         </Provider>
     );
 }
-
 
 export const useBootCenterDevices = () => {
     const context = useContext(BootCenterDevicesContext);

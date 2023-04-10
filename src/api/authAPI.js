@@ -2,7 +2,7 @@ import {createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, sig
 import {doc, getDoc, setDoc} from 'firebase/firestore'
 import {firestore, initFirebase} from "../utils";
 
-export const auth = () => {
+export const authAPI = () => {
     const register = async (email, password, rol) => {
       try{
           const auth = getAuth(initFirebase)
@@ -19,7 +19,7 @@ export const auth = () => {
         try {
             const auth = getAuth()
             await signOut(auth)
-            localStorage.removeItem("auth")
+            localStorage.removeItem("authAPI")
         } catch (e) {
             throw e
         }

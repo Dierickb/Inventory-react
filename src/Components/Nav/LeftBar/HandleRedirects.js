@@ -1,7 +1,6 @@
 export const HandleRedirects = (history) => {
 
     const handleRedirectToAdmin = () => {
-        console.log("SADSD")
         history.push("/dashboard/admin");
     }
     const handleRedirectToHome = () => {

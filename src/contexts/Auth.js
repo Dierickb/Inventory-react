@@ -1,9 +1,9 @@
 import {createContext, useContext} from "react";
-import {auth} from '../api'
+import {authAPI} from '../api'
 
 export const AuthContext = createContext();
 const {Provider} = AuthContext;
-const {login: loginApiAuth, logout: logoutApiAuth} = auth();
+const {login: loginApiAuth, logout: logoutApiAuth} = authAPI();
 
 export const AuthProvider = ({children}) => {
     const logout = async () => {

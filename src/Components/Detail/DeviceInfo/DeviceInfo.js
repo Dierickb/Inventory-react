@@ -4,9 +4,9 @@ import {CardFooter} from "../../layout/cards/CardFooter";
 import FormDeviceInfo from "./FormDeviceInfo";
 import BodyDeviceInfo from "./BodyDeviceInfo";
 import PropTypes from "prop-types";
-import {initialDevice} from "../utils/initialDevice";
 
 import trashIcon from "./icons/trash-can-regular.svg"
+import {initialDevice} from "../utils/initialDevice";
 
 const DeviceInfo = ({device, cleanDeviceInfo}) => {
 
@@ -21,7 +21,7 @@ const DeviceInfo = ({device, cleanDeviceInfo}) => {
                     </div>
                 </h2>
                 <span onClick={handleCleanDevice}>
-                    <img className="fas" src={trashIcon} alt=""/>
+                   <img className="fas" src={trashIcon} alt=""/>
                 </span>
             </CardHeader>
 

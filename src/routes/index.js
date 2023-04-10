@@ -3,7 +3,7 @@ import { BrowserRouter as Router,
     Redirect,
 } from "react-router-dom";
 import {lazy, Suspense} from "react";
-import {useAuth} from "../contexts/Auth";
+import {useAuth} from "../contexts";
 import PrivateRoute from "./PrivateRoute";
 import PrivateLoginRoute from "./PrivateLoginRoute";
 import {roles} from "../utils/utilities";

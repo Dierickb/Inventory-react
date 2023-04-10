@@ -17,6 +17,6 @@ export const ActiveLeftBarProvider = ({children}) => {
 
 export const useActiveLeftBar = () => {
     const context = useContext(ActiveLeftBarContext)
-    if(!context) throw new Error("useAuth must be wrapped with ActiveProider")
+    if(!context) throw new Error("hooks must be wrapped with ActiveProider")
     return context
 }

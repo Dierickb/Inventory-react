@@ -1,6 +1,7 @@
 import LeftBar from "./LeftBar";
 import TopBar from "./TopBar";
-import {useActiveLeftBar} from "../../contexts/ActiveLeftBar";
+import "./Nav.scss"
+import {useActiveLeftBar} from "../../contexts"
 
 const Nav = () => {
     const {isActive, activeLeftBar} = useActiveLeftBar()

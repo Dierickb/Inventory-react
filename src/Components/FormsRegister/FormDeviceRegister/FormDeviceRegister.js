@@ -1,38 +1,21 @@
-import {DropDown, InputsContainer, FormRegisters, Button} from "../layout";
-import InputContainer from "../Nav/InputContainer";
-//import {useBootCenterDevices} from "../contexts/BootCenterDevices";
+import {DropDown, InputsContainer, FormRegisters, Button} from "../../layout";
+import InputContainer from "../../Nav/InputContainer";
+import {useBrand} from "../../../contexts";
+import {handleFormDeviceRegister} from "./handleFormDeviceRegister";
+import useFetch from "./hooks/useFetch";
 
-const FormRegister = () => {
-    //const {setDevice} = useBootCenterDevices();
-    const handleDevice = (e) => {
-        e.preventDefault()
-        const [brand, product, model, businesses, serial] = e.target.elements
-
-        if (brand?.value !== undefined && product?.value !== undefined &&
-            model?.value !== undefined && businesses?.value !== undefined &&
-            serial?.value !== "/[A-Za-z0-9]/"
-        ) {
-            /*
-                setDevice({
-                    brand: brand?.value,
-                    product: product?.value,
-                    model: model?.value,
-                    businesses: businesses?.value,
-                    serial: serial?.value
-                })
-                serial.value = ""
-             */
-            console.log("Dierick")
-        }
-    }
+const FormDeviceRegister = () => {
+    const {state} = useBrand()
+    useFetch()
 
     return (
-        <FormRegisters onSubmit={handleDevice}>
+        <FormRegisters onSubmit={handleFormDeviceRegister}>
             <InputsContainer pd='0px 5px'>
                 <DropDown defaultValue="" name="brand" required>
                     <option value="">Fabricante</option>
-                    <option value="1">Lenovo</option>
-                    <option value="2">Dell</option>
+                    {state.brands?.map(brand=>
+                        <option key={brand} value={brand}>{brand}</option>
+                    )}
                 </DropDown>
             </InputsContainer>
 
@@ -70,4 +53,4 @@ const FormRegister = () => {
     )
 }
 
-export default FormRegister
+export default FormDeviceRegister

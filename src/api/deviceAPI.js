@@ -1,7 +1,7 @@
 import {collection, doc, getDoc, getDocs} from "firebase/firestore";
 import {firestore} from "../utils";
 
-export const device = () => {
+export const deviceAPI = () => {
     const getDevices = async (uId) => {
         const docRef = doc(firestore, `bootCenterDevice/${uId}`)
         const docEncrypted = await getDoc(docRef)

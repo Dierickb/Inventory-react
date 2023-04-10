@@ -7,6 +7,20 @@
   height: 40vmin;
   pointer-events: none;
 }
+.formContainer {
+  transition: 0.9s;
+  padding: 90px 20px 20px 80px;
+  background: #f5f5f5;
+}
+
+.formContainer.active {
+  transition: 0.9s;
+  padding-left: 260px;
+}
+.cardRegister {
+  transition: 0.5s;
+  display: block;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

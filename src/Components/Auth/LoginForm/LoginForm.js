@@ -1,7 +1,7 @@
 import {useFormik} from "formik";
 import * as Yup from 'yup'
 import {useState} from "react";
-import {useAuth} from "../../../contexts/Auth";
+import {useAuth} from "../../../contexts";
 import { useHistory } from "react-router-dom";
 
 import './LoginForm.scss'
@@ -19,8 +19,8 @@ const LoginForm = () => {
             const isLoggedIn = await login(username, password);
             isLoggedIn && history.push("/dashboard")
         } catch (e) {
-            (e.message === 'Firebase: Error (auth/wrong-password).') && setWrongPassword(true)
-            (e.message === 'Firebase: Error (auth/userIcon-not-found).') && setWrongUser(true)
+            (e.message === 'Firebase: Error (authAPI/wrong-password).') && setWrongPassword(true)
+            (e.message === 'Firebase: Error (authAPI/userIcon-not-found).') && setWrongUser(true)
             throw e.message
         }
     }

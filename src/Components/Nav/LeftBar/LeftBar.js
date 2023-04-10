@@ -1,5 +1,7 @@
+import "./LeftBar.scss"
+
 import OperationList from "./OperationList";
-import {useAuth} from "../../../contexts/Auth";
+import {useAuth} from "../../../contexts";
 import {useHistory} from "react-router-dom";
 import {HandleRedirects} from "./HandleRedirects";
 

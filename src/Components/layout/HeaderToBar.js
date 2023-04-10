@@ -6,7 +6,6 @@ export const HeaderToBar = styled.header`
   width: ${ (props) =>  props?.active ? 'calc(100% - 240px)' : 'calc(100% - 60px)' };
   background: #fff;
   height: 70px;
-  padding: 0 10px;
   justify-content: space-between;
   align-items: center;
   position: fixed;

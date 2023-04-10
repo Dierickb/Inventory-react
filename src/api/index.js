@@ -1,2 +1,3 @@
-export {auth} from './auth'
-export {device} from './device'
+export {authAPI} from './authAPI'
+export {deviceAPI} from './deviceAPI'
+export {brandAPI} from './brandAPI'
