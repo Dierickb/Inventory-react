@@ -1,11 +1,15 @@
 export const handleFormDeviceRegister = (e) => {
     e.preventDefault()
-    let [brand, product, model, businesses, serial] = e.target.elements
 
-    if (brand?.value !== undefined && product?.value !== undefined &&
-        model?.value !== undefined && businesses?.value !== undefined &&
-        serial?.value !== "/[A-Za-z0-9]/"
+    let [brand, product, model, businesses, serial] = e.target.elements
+    brand = brand?.value; product = product?.value; serial = serial?.value
+    model = model?.value; businesses = businesses.value
+
+    if (brand !== undefined && product !== undefined &&
+        model !== undefined && businesses !== undefined &&
+        serial !== "/[A-Za-z0-9]/"
     ) {
-        console.log("Dierick")
+        return [brand, product, model, businesses, serial]
     }
+    return false
 }

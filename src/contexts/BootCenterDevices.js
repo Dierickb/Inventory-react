@@ -1,11 +1,11 @@
 import {createContext, useContext, useReducer} from "react";
 import {deviceInitialState, devicesReducer} from "../reducers/devices";
-import {DEVICE_ACTIONS} from "../actions/device";
+import {DEVICE_ACTIONS} from "../actions";
 import {deviceAPI} from "../api"
 
 export const BootCenterDevicesContext = createContext();
 const {Provider} = BootCenterDevicesContext;
-const {getDevices: apiGetDevices, getDeviceInfo: apiGetDeviceInfo} = deviceAPI()
+const {getDevices: apiGetDevices, getDeviceInfo: apiGetDeviceInfo, setDevice: apiSetDevice} = deviceAPI()
 
 export const BootCenterDevicesProvider = ({children}) => {
     const [state, dispatch] = useReducer(devicesReducer, deviceInitialState)
@@ -21,18 +21,10 @@ export const BootCenterDevicesProvider = ({children}) => {
         return apiGetDeviceInfo()
     }
 
-    /*
-    const setDevice = async ({brand, product, model, businesses, serial}) => {
-        dispatch({
-            type: DEVICE_ACTIONS.SET_DEVICE,
-            payload: await ipc.invoke(
-                channels.SET_DEVICE,
-                { brand, product, model, businesses, serial }
-            )
-        })
+    const setDevice = async (brand, product, model, businesses, serial) => {
+        await apiSetDevice(brand, product, model, businesses, serial)
     }
 
-     */
     const updateDevice = async () => {
 
     }
@@ -51,7 +43,9 @@ export const BootCenterDevicesProvider = ({children}) => {
     }
 
     return (
-        <Provider value={{removeAllListeners, getDevices, getDeviceInfo, state}} >
+        <Provider value={{
+            removeAllListeners, getDevices, getDeviceInfo, setDevice, state
+        }} >
             {children}
         </Provider>
     );

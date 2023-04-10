@@ -2,11 +2,17 @@ import {DropDown, InputsContainer, FormRegisters, Button} from "../../layout";
 import InputContainer from "../../Nav/InputContainer";
 import {handleFormDeviceRegister} from "./handles";
 import FormDeviceSelect from "./FormDeviceSelect";
+import {useBootCenterDevices} from "../../../contexts";
 
 const FormDeviceRegister = () => {
+    const { setDevice } = useBootCenterDevices();
+    const handleRegister = (e) => {
+        const [brand, product, model, businesses, serial] = handleFormDeviceRegister(e)
+        setDevice(brand, product, model, businesses, serial)
+    }
 
     return (
-        <FormRegisters onSubmit={handleFormDeviceRegister}>
+        <FormRegisters onSubmit={handleRegister}>
 
             <FormDeviceSelect />
 

@@ -20,8 +20,9 @@ export const deviceAPI = () => {
         })
     }
 
-    const setDevice = async (info) => {
-
+    const setDevice = async (brand, product, model, businesses, serial) => {
+        console.log(brand)
+        // enviar data a la api
     }
 
     const findDevice = async (serial) => {
