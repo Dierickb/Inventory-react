@@ -2,6 +2,7 @@ import "./InputContainer.scss"
 
 import {Input} from "../../layout";
 import {InputsContainer} from "../../layout";
+import {memo} from "react";
 
 const InputContainer = ({placeHolder, title, name, require}) => {
   return (
@@ -12,4 +13,4 @@ const InputContainer = ({placeHolder, title, name, require}) => {
   )
 }
 
-export default InputContainer
+export default memo(InputContainer)

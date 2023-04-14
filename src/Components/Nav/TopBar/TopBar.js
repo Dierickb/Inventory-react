@@ -1,9 +1,10 @@
 import "./TopBar.scss"
-import {DropDown, HeaderToBar, Search, Icon} from "../../layout";
+import {DropDown, HeaderToBar, Search, Icon, InputsContainer} from "../../layout";
 import InputContainer from "../InputContainer";
 import {memo, useCallback} from "react";
 import {useLocation} from "react-router-dom";
 import burgerIcon from "./icons/burger-solid.svg"
+import DropDownContainer from "../DropDownContainer";
 
 const TopBar = ({setActive, isActive}) => {
     const location = useLocation();
@@ -27,14 +28,13 @@ const TopBar = ({setActive, isActive}) => {
                     <Search onKeyPress={handleSearch}>
                         <InputContainer placeHolder='Serial' title='Serial' name='serial'/>
                         <InputContainer placeHolder='ScotiaId' title='ScotiaId' name='scotiaId'/>
-                        <div className='inputContainer'>
-                            <h4>Scotia</h4>
-                            <DropDown>
-                                <option value="">Empresa</option>
-                                <option value="1">GSG</option>
-                                <option value="2">GBS</option>
-                            </DropDown>
-                        </div>
+                        <DropDownContainer title="Scotia"
+                                           values={[
+                                               {value: "", optionValue: "Empresa"},
+                                               {value: "1", optionValue: "GSG"},
+                                               {value: "2", optionValue: "GBS"},
+                                           ]}
+                        />
                     </Search>
                 }
 
