@@ -1,7 +1,7 @@
 import CardContainer from "../../../../Components/CardContainer";
 import FormDeviceRegister from "../../../../Components/Forms/FormsRegister/FormDeviceRegister";
 import FormUserRegister from "../../../../Components/Forms/FormsRegister/FormUserRegister";
-import FormRegisterBrand from "../../../../Components/Forms/FormsRegister/FormRegisterBrand";
+import FormRegisterBrand from "../../../../Components/Forms/FormsRegister/FormBrandRegister";
 import {memo} from "react";
 
 const Register = () => {

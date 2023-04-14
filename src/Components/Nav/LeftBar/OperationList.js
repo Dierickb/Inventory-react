@@ -1,4 +1,5 @@
 import {Icon, OperationLeftBar} from "../../layout";
+import {memo} from "react";
 
 const OperationList = ({title, image, onClick}) => {
   return (
@@ -15,4 +16,4 @@ const OperationList = ({title, image, onClick}) => {
   )
 }
 
-export default OperationList
+export default memo(OperationList)

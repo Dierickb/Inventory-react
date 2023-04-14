@@ -1,19 +1,21 @@
+import {useCallback} from "react";
+
 export const HandleRedirects = (history) => {
 
-    const handleRedirectToAdmin = () => {
+    const handleRedirectToAdmin = useCallback(() => {
         history.push("/dashboard/admin");
-    }
-    const handleRedirectToHome = () => {
+    },[history])
+    const handleRedirectToHome = useCallback(() => {
         history.push("/dashboard")
-    }
+    }, [history])
 
-    const handleRedirectToOperation = () => {
+    const handleRedirectToOperation = useCallback(() => {
         history.push("/dashboard/operation")
-    }
+    },[history])
 
-    const handleRedirectToGraph = () => {
+    const handleRedirectToGraph = useCallback(() => {
         history.push("/dashboard/graph")
-    }
+    },[history])
 
     return {handleRedirectToAdmin, handleRedirectToHome, handleRedirectToOperation, handleRedirectToGraph}
 }
