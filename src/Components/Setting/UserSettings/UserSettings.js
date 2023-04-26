@@ -11,14 +11,17 @@ const UserSettings = () => {
               <CardContainer key="userRegister" title="Registrar usuario"
                              Children={FormUser} child={true}/>,
 
-              <CardContainer key="userRegister" title="Editar usuario"
+              <CardContainer key="userEdit" title="Editar usuario"
                              info={
                                  <Input title="ScotiaId" type="text" placeholder="ScotiaId" name="ScotiaId" wd="auto"/>
                              }
                              Children={FormUser} child={true} textInput={true}/>,
 
-              <CardContainer key="userRegister" title="Eliminar usuario"
-                             Children={FormUser} child={true}/>,
+              <CardContainer key="userDelete" title="Eliminar usuario"
+                             info={
+                                 <Input title="ScotiaId" type="text" placeholder="ScotiaId" name="ScotiaId" wd="auto"/>
+                             }
+                             Children={FormUser} child={true} textInput={true}/>,
           ]
       } />
   )

@@ -17,7 +17,7 @@ const FormSetDevice = () => {
 
             <FormDeviceSelect />
 
-            <InputsContainer pd='0px 5px'>
+            <InputsContainer pd='5px'>
                 <DropDown defaultValue="" name="businesses" required>
                     <option value="">Empresa</option>
                     <option value="GSG">GSG</option>
@@ -25,11 +25,19 @@ const FormSetDevice = () => {
                 </DropDown>
             </InputsContainer>
 
-            <InputsContainer pd='0px 5px'>
+            <InputsContainer pd='5px'>
+                <DropDown defaultValue="" name="letOut" required>
+                    <option value="">Salida</option>
+                    <option value="out">Tiene salida</option>
+                    <option value="withOut">No Tiene salida</option>
+                </DropDown>
+            </InputsContainer>
+
+            <InputsContainer pd='5px'>
                 <TextArea title="Serial" placeholder="Serial" name="brandModel"/>
             </InputsContainer>
 
-            <InputsContainer>
+            <InputsContainer className="begin">
                 <Button>Submit</Button>
             </InputsContainer>
 

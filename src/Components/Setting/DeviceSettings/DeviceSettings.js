@@ -12,14 +12,17 @@ const DeviceSettings = () => {
               <CardContainer key="deviceRegister" title="Registrar equipo"
                              Children={FormDevice} child={true}/>,
 
-              <CardContainer key="deviceRegister" title="Editar equipo"
+              <CardContainer key="deviceEdit" title="Editar equipo"
                              info={
                                  <Input title="Serial" type="text" placeholder="Serial" name="Serial" wd="auto"/>
                              }
                              Children={FormGetDevice} child={true} textInput={true}/>,
 
-              <CardContainer key="deviceRegister" title="Eliminar equipo"
-                             Children={FormDevice} child={true}/>,
+              <CardContainer key="deviceDelete" title="Eliminar equipo"
+                             info={
+                                 <Input title="Serial" type="text" placeholder="Serial" name="Serial" wd="auto"/>
+                             }
+                             Children={FormDevice} child={true} textInput={true}/>,
           ]
       } />
   )

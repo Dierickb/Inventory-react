@@ -9,4 +9,13 @@ export const InputsContainer = styled.div`
     margin-bottom: 0;
     font-weight: bold;
   }
+
+  &.begin {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+  &.second {
+    grid-column-start: 2;
+    grid-column-end: 4;
+  }
 `

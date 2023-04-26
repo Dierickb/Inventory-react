@@ -1,6 +1,4 @@
 import CardsContainer from "../../Card/CardsContainer";
-import FormGetDevice from "../../Forms/FormDevice/FormGetDevice";
-import FormUser from "../../Forms/FormUser";
 import FormBrand from "../../Forms/FormBrand";
 import {memo} from "react";
 import CardContainer from "../../Card/CardContainer";
@@ -13,14 +11,17 @@ const BrandSettings = () => {
                 <CardContainer key="brandRegister" title="Registrar fabricante"
                                Children={FormBrand} child={true}/>,
 
-                <CardContainer key="brandRegister" title="Editar fabricante"
+                <CardContainer key="brandEdit" title="Editar fabricante"
                                info={
                                    <FormBrandDropDown />
                                }
                                Children={FormBrand} child={true} textInput={false}/>,
 
-                <CardContainer key="brandRegister" title="Eliminar fabricante"
-                               Children={FormBrand} child={true}/>,
+                <CardContainer key="brandDelete" title="Eliminar fabricante"
+                               info={
+                                   <FormBrandDropDown />
+                               }
+                               Children={FormBrand} child={true} textInput={false}/>,
             ]
         } />
     )

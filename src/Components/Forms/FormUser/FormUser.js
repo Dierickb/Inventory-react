@@ -30,7 +30,7 @@ const FormUser = ({itemToSearch}) => {
                 <Input title="Password" type="password" placeholder="Password" name="Password"/>
             </InputsContainer>
 
-            <InputsContainer>
+            <InputsContainer className="second">
                 <Button>Submit</Button>
             </InputsContainer>
 

@@ -11,7 +11,7 @@ const FormDeviceSelect = ({defaultValue}) => {
 
   return (
       <>
-          <InputsContainer pd='0px 5px'>
+          <InputsContainer pd='5px'>
               <DropDown defaultValue={!!defaultValue?.brand ? defaultValue.brand : ""} name="brand"
                         onChange={(e) => {
                             setBrand(e.target.value)
@@ -25,7 +25,7 @@ const FormDeviceSelect = ({defaultValue}) => {
               </DropDown>
           </InputsContainer>
 
-          <InputsContainer pd='0px 5px'>
+          <InputsContainer pd='5px'>
               <DropDown defaultValue={!!defaultValue?.product ? defaultValue.product : ""} name="product"
                         onChange={(e) => {
                             setTypeDevice(e.target.value)
@@ -38,7 +38,7 @@ const FormDeviceSelect = ({defaultValue}) => {
               </DropDown>
           </InputsContainer>
 
-          <InputsContainer pd='0px 5px'>
+          <InputsContainer pd='5px'>
               <DropDown defaultValue={!!defaultValue?.model ? defaultValue.model : state?.modelsByBrand[0]}
                         name="model" required>
                   {

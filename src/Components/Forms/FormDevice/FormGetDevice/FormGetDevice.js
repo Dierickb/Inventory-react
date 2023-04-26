@@ -29,7 +29,15 @@ const FormGetDevice = ({itemToSearch}) => {
               <Input title="Serial" placeholder={!!serial ? serial : "Serial"} name="brandModel" />
           </InputsContainer>
 
-          <InputsContainer>
+          <InputsContainer pd='5px'>
+              <DropDown defaultValue="" name="letOut" required>
+                  <option value="">Salida</option>
+                  <option value="out">Tiene salida</option>
+                  <option value="withOut">No Tiene salida</option>
+              </DropDown>
+          </InputsContainer>
+
+          <InputsContainer className="begin">
               <Button>Submit</Button>
           </InputsContainer>
 
