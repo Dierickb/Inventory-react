@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const TextArea = styled.textarea`
-  width: ${ (props) =>  props?.wd ? props.wd : 'calc(100% - 20px)' };    
+  width: ${ (props) =>  props?.wd ? props.wd : 'calc(100% - 25px)' };    
   border-radius: 10px;
   padding: 7px 10px;
   background: #fff6f6;

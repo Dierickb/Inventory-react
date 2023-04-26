@@ -58,7 +58,7 @@ const Devices = ({showDevice}) => {
     )
 }
 
-export default memo(Devices)
+export default Devices
 
 Devices.prototype = {
     state: PropTypes.shape({

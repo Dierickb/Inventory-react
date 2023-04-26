@@ -1,7 +1,7 @@
 import {useActiveLeftBar} from "../../contexts";
-import Register from "./Setting/Register";
-import Delete from "./Setting/Delete"
-import Edit from "./Setting/Edit";
+import DeviceSettings from "../../Components/Setting/DeviceSettings";
+import UserSettings from "../../Components/Setting/UserSettings"
+import BrandSettings from "../../Components/Setting/BrandSettings";
 import {memo} from "react";
 
 const Admin = () => {
@@ -9,9 +9,9 @@ const Admin = () => {
   return (
 
         <div className={`formContainer ${isActive ? 'active' : ''}`} id='mainContainer'>
-            <Register />
-            <Edit />
-            <Delete />
+            <DeviceSettings />
+            <BrandSettings />
+            <UserSettings />
         </div>
   )
 }

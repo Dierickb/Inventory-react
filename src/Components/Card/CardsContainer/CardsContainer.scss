@@ -1,0 +1,30 @@
+.cardHeader {
+  position: relative;
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+  cursor: pointer;
+  
+  .numbers {
+    width: 100%;
+    h4{
+      margin-bottom: 0;
+      margin-top: 0;
+      font-weight: bold;
+      font-size: x-large;
+    }
+    &.pointer {
+      cursor: pointer;
+    }
+  }
+  &.admin {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  &.no-pointer {
+    cursor: default;
+  }
+}
+
+
+

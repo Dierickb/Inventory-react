@@ -32,8 +32,8 @@ export const BootCenterDevicesProvider = ({children}) => {
 
     }
 
-    const getDevice = async () => {
-
+    const getDevice = (serial) => {
+        return ["a", "b", "c", "d", serial]
     }
 
     const removeAllListeners = () => {
@@ -44,7 +44,7 @@ export const BootCenterDevicesProvider = ({children}) => {
 
     return (
         <Provider value={{
-            removeAllListeners, getDevices, getDeviceInfo, setDevice, state
+            removeAllListeners, getDevices, getDeviceInfo, setDevice, getDevice, state
         }} >
             {children}
         </Provider>

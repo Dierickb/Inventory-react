@@ -1,4 +1,5 @@
 import './deviceRow.scss'
+import {memo} from "react";
 
 const Device = ({device, index, handleShowDevice}) => {
     const handleDevice = () => {
@@ -24,4 +25,4 @@ const Device = ({device, index, handleShowDevice}) => {
   )
 }
 
-export default Device
+export default memo(Device)
