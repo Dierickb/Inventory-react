@@ -3,19 +3,14 @@ import './devices.scss'
 import rotateIcon from "./icons/rotate-solid.svg"
 
 import Device from "../Device";
-import {memo, useEffect} from "react";
-import { useBootCenterDevices } from "../../../contexts";
+import {memo} from "react";
 import PropTypes from "prop-types";
+import useShowDevicesBootCenter from "./hooks";
 
 const Devices = ({showDevice}) => {
 
-    const { getDevices, removeAllListeners, state } = useBootCenterDevices();
+    const [state, getDevices] = useShowDevicesBootCenter()
     const handleShowDevice = (device) => showDevice(device)
-
-    useEffect(() => {
-        getDevices()
-        return () => removeAllListeners()
-    }, [])
 
     if (state.loading) return <h3>Loading...</h3>
 
@@ -58,7 +53,7 @@ const Devices = ({showDevice}) => {
     )
 }
 
-export default Devices
+export default memo(Devices)
 
 Devices.prototype = {
     state: PropTypes.shape({

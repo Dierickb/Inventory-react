@@ -11,3 +11,26 @@ export const eventButtonDeviceInfo = {
     null: false,
     undefined: false,
 }
+
+export const inputType = Object.freeze({
+    SELECT: "select",
+    INPUT: "input",
+})
+
+export const keyInput = Object.freeze({
+    ENTER: "Enter",
+})
+
+export const inputsFilter = Object.freeze({
+    SERIAL: Symbol(),
+    SCOTIAID: Symbol(),
+    BUSINESSES: Symbol(),
+    IMAGE: Symbol()
+})
+
+export const inputsFilterText = Object.freeze({
+    SERIAL: "serial",
+    SCOTIAID: "scotiaId",
+    BUSINESS: "businessSelect",
+    IMAGE: "imageSelect"
+})

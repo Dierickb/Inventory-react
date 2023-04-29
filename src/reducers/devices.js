@@ -1,4 +1,4 @@
-import {DEVICE_ACTIONS} from "../actions/device";
+import {DEVICE_ACTIONS} from "../actions";
 
 export const deviceInitialState = {
     devices: {},
