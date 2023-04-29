@@ -5,6 +5,9 @@
   p {
     margin: 0
   }
+  &.bold{
+    font-weight: bold;
+  }
 }
 
 .productInfo {
@@ -26,5 +29,13 @@
   }
   &:active {
     background: #61dafb;
+  }
+}
+.deviceDetail {
+  display: flex;
+  padding: 0.4em 1em;
+
+  select {
+    height: 2.3em;
   }
 }

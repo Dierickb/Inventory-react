@@ -20,7 +20,7 @@ const Device = ({device, index, handleShowDevice}) => {
           <td>{device.entryDate}</td>
           <td>{device.scotia}</td>
           <td>{device.pxeDate}</td>
-          <td>{device.operationAssigned}</td>
+          <td>{device.image}</td>
       </tr>
   )
 }

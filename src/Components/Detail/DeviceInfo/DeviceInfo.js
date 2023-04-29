@@ -45,12 +45,14 @@ export default DeviceInfo
 
 DeviceInfo.prototype = {
     device: PropTypes.shape({
-        builder: PropTypes.string,
-        device: PropTypes.string,
-        model: PropTypes.string,
-        scotia: PropTypes.string,
-        serial: PropTypes.string,
+        builder: PropTypes.string.isRequired,
+        device: PropTypes.string.isRequired,
+        model: PropTypes.string.isRequired,
+        scotia: PropTypes.string.isRequired,
+        serial: PropTypes.string.isRequired,
         entryDate: PropTypes.string,
         pxeDate: PropTypes.string,
+        image: PropTypes.string,
+        operationAssigned: PropTypes.string,
     })
 }

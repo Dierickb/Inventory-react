@@ -1,28 +1,20 @@
 import {handleSubmit} from "./handleSubmit";
-import {DropDown, Input} from "../../layout";
+import {Input} from "../../layout";
 import PropTypes from "prop-types";
+import DropDownImage from "../../Inputs/DropDownImage";
+import "./deviceInfo.scss"
 
 const FormDeviceInfo = ({device}) => {
+
   return (
       <form id="deviceInfoForm" onSubmit={(e) => handleSubmit(e, device)}>
+
+          <DropDownImage key={"image"+device.image} display="flex" mgLeft="5px" padding="0.4em 1em"
+                         mgLSelect="10px" hgSelect="2.3em" pdSelector="0"
+                            defaultValue={device?.image}/>
+
           <div className="cardSection">
-              Operation:
-              <DropDown pd="0" hg="2.3em" mgL="10px" defaultValue="" name="business">
-                  <option value="">Empresa</option>
-                  <option value="1">GSG</option>
-                  <option value="2">GBS</option>
-              </DropDown>
-          </div>
-          <div className="cardSection">
-              Imagen:
-              <DropDown pd="0" hg="2.3em" mgL="10px" defaultValue="" name="image">
-                  <option value="">Empresa</option>
-                  <option value="1">GSG</option>
-                  <option value="2">GBS</option>
-              </DropDown>
-          </div>
-          <div className="cardSection">
-              <Input placeholder="ScotiaId" name="scotiaId"/>
+              <Input placeholder="ScotiaId" name="scotiaId" maxLength={8} />
           </div>
           <div className="cardSection">
               <Input placeholder="Nombre" name="name"/>
@@ -35,12 +27,14 @@ export default FormDeviceInfo
 
 FormDeviceInfo.prototype = {
     device: PropTypes.shape({
-        builder: PropTypes.string,
-        device: PropTypes.string,
-        model: PropTypes.string,
-        scotia: PropTypes.string,
-        serial: PropTypes.string,
+        builder: PropTypes.string.isRequired,
+        device: PropTypes.string.isRequired,
+        model: PropTypes.string.isRequired,
+        scotia: PropTypes.string.isRequired,
+        serial: PropTypes.string.isRequired,
         entryDate: PropTypes.string,
         pxeDate: PropTypes.string,
+        image: PropTypes.string,
+        operationAssigned: PropTypes.string,
     })
 }

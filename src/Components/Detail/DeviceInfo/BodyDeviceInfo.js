@@ -15,9 +15,8 @@ const BodyDeviceInfo = ({builder, device, model, scotia}) => {
               Modelo: &nbsp;
               <p> {model}</p>
           </div>
-          <div className="cardSection deviceInfo">
-              Scotia: &nbsp;
-              <p> {scotia}</p>
+          <div className="cardSection deviceInfo bold">
+              Scotia{scotia}
           </div>
       </>
   )
