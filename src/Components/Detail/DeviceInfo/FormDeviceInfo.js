@@ -3,6 +3,7 @@ import {Input} from "../../layout";
 import PropTypes from "prop-types";
 import DropDownImage from "../../Inputs/DropDownImage";
 import "./deviceInfo.scss"
+import DropDownInternOperation from "../../Inputs/DropDownInternOperation";
 
 const FormDeviceInfo = ({device}) => {
 
@@ -12,6 +13,10 @@ const FormDeviceInfo = ({device}) => {
           <DropDownImage key={"image"+device.image} display="flex" mgLeft="5px" padding="0.4em 1em"
                          mgLSelect="10px" hgSelect="2.3em" pdSelector="0"
                             defaultValue={device?.image}/>
+
+          <DropDownInternOperation key={"internOperation"+device.operationAssigned} display="flex" mgLeft="5px" padding="0.4em 1em"
+                                   mgLSelect="10px" hgSelect="2.3em" pdSelector="0"
+                                   defaultValue={device?.operationAssigned}/>
 
           <div className="cardSection">
               <Input placeholder="ScotiaId" name="scotiaId" maxLength={8} />
