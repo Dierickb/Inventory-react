@@ -10,7 +10,7 @@ export const HandleRedirects = (history) => {
     }, [history])
 
     const handleRedirectToOperation = useCallback(() => {
-        history.push("/dashboard/operation")
+        history.push("/dashboard/internOperation")
     },[history])
 
     const handleRedirectToGraph = useCallback(() => {

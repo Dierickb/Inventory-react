@@ -14,9 +14,9 @@ const FormDeviceInfo = ({device}) => {
                          mgLSelect="10px" hgSelect="2.3em" pdSelector="0"
                             defaultValue={device?.image}/>
 
-          <DropDownInternOperation key={"internOperation"+device.operationAssigned} display="flex" mgLeft="5px" padding="0.4em 1em"
+          <DropDownInternOperation key={"internOperation"+device.internOperation} display="flex" mgLeft="5px" padding="0.4em 1em"
                                    mgLSelect="10px" hgSelect="2.3em" pdSelector="0"
-                                   defaultValue={device?.operationAssigned}/>
+                                   defaultValue={device?.internOperation}/>
 
           <div className="cardSection">
               <Input placeholder="ScotiaId" name="scotiaId" maxLength={8} />
@@ -40,6 +40,6 @@ FormDeviceInfo.prototype = {
         entryDate: PropTypes.string,
         pxeDate: PropTypes.string,
         image: PropTypes.string,
-        operationAssigned: PropTypes.string,
+        internOperation: PropTypes.string,
     })
 }

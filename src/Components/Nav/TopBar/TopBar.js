@@ -3,8 +3,10 @@ import { HeaderToBar, Icon} from "../../layout";
 import {memo, useCallback} from "react";
 import burgerIcon from "./icons/burger-solid.svg"
 import SearchByPath from "./SearchByPath";
+import trashIcon from "./icons/trash-can-regular.svg";
 
 const TopBar = ({setActive, isActive}) => {
+
     const showHide = useCallback (() => {
         setActive()
     }, [setActive])
@@ -15,7 +17,9 @@ const TopBar = ({setActive, isActive}) => {
                 <Icon imgWd='2em' brdRadImg='5px' bgImg='#03a9f4' onClick={() => showHide()}>
                     <img alt="" src={burgerIcon}/>
                 </Icon>
+
                 <SearchByPath />
+
             </HeaderToBar>
         </div>
     )

@@ -3,18 +3,22 @@ import styled from 'styled-components'
 export const Icon = styled.span`
   position: relative;
   display: block;
-  min-width: 60px;
   height: 60px;
   line-height: 60px;
   text-align: ${ (props) => props.txtAlign ? props?.txtAlign : 'center'};
   white-space: nowrap;
   align-self: center;
+  margin: ${ (props) => props.mg ? props?.mg : ''};
+  min-width: ${ (props) => props.minWd ? props?.minWd : '60px'};
   
   img{
     color: antiquewhite;
-    font-size: 24px;
+    font-size: 20px;
     width: ${ (props) => props.imgWd ? props.imgWd : '35px'};
     vertical-align: middle;
+    &.trash {
+      font-size: 16px;
+    }
   }
   
   &:hover {

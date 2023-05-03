@@ -1,5 +1,6 @@
 import './deviceRow.scss'
 import {memo} from "react";
+import PropTypes from "prop-types";
 
 const Device = ({device, index, handleShowDevice}) => {
     const handleDevice = () => {
@@ -26,3 +27,17 @@ const Device = ({device, index, handleShowDevice}) => {
 }
 
 export default memo(Device)
+
+Device.prototype = {
+    device: PropTypes.shape({
+        builder: PropTypes.string.isRequired,
+        device: PropTypes.string.isRequired,
+        model: PropTypes.string.isRequired,
+        scotia: PropTypes.string.isRequired,
+        serial: PropTypes.string.isRequired,
+        entryDate: PropTypes.string,
+        pxeDate: PropTypes.string,
+        image: PropTypes.string,
+        internOperation: PropTypes.string,
+    })
+}

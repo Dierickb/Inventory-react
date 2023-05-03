@@ -3,6 +3,7 @@ import {Details} from "../layout";
 import {memo, useState} from "react";
 import DeviceInfo from "./DeviceInfo";
 import {initialDevice} from "./utils/initialDevice";
+import PropTypes from "prop-types";
 
 const Detail =  () => {
   const [device, setDevice] = useState(initialDevice)
@@ -18,3 +19,17 @@ const Detail =  () => {
 }
 
 export default memo(Detail)
+
+Detail.prototype = {
+    device: PropTypes.shape({
+        builder: PropTypes.string.isRequired,
+        device: PropTypes.string.isRequired,
+        model: PropTypes.string.isRequired,
+        scotia: PropTypes.string.isRequired,
+        serial: PropTypes.string.isRequired,
+        entryDate: PropTypes.string,
+        pxeDate: PropTypes.string,
+        image: PropTypes.string,
+        internOperation: PropTypes.string,
+    })
+}

@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {memo, useState} from "react";
 import {SetPadding} from "../CardsContainer/setPadding";
 import {Card} from "../../layout";
 import CardHeader from "./CardHeader";
@@ -27,4 +27,4 @@ const CardContainer = ({Children, title, child, info, textInput}) => {
     )
 }
 
-export default CardContainer
+export default memo(CardContainer)

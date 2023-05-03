@@ -21,16 +21,17 @@ export const keyInput = Object.freeze({
     ENTER: "Enter",
 })
 
-export const inputsFilter = Object.freeze({
-    SERIAL: Symbol(),
-    SCOTIAID: Symbol(),
-    BUSINESSES: Symbol(),
-    IMAGE: Symbol()
+export const inputsFilterDefaultValues = Object.freeze({
+    serial: "",
+    scotiaId: "",
+    business: "businessSelect",
+    image: "imageSelect",
 })
 
-export const inputsFilterText = Object.freeze({
+export const inputsFilterTextName = Object.freeze({
     SERIAL: "serial",
     SCOTIAID: "scotiaId",
     BUSINESS: "businessSelect",
     IMAGE: "imageSelect"
 })
+

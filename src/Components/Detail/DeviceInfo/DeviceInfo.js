@@ -53,6 +53,6 @@ DeviceInfo.prototype = {
         entryDate: PropTypes.string,
         pxeDate: PropTypes.string,
         image: PropTypes.string,
-        operationAssigned: PropTypes.string,
+        internOperation: PropTypes.string,
     })
 }

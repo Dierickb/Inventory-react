@@ -2,13 +2,13 @@ import {collection, doc, getDoc, getDocs} from "firebase/firestore";
 import {firestore} from "../utils";
 
 export const deviceAPI = () => {
-    const getDevices = async (uId) => {
-        const docRef = doc(firestore, `bootCenterDevice/${uId}`)
+    const getDevicesAPI = async () => {
+        const docRef = doc(firestore, `bootCenterDevice/F4y1CG4kfa80VivueVkL`)
         const docEncrypted = await getDoc(docRef)
         return docEncrypted.data()
     }
 
-    const getDeviceInfo = async () => {
+    const getDeviceInfoAPI = async () => {
         const docRef2 = await getDocs(collection(firestore, "bootCenterDevice"))
         const docEncrypted = docRef2.docs
 
@@ -20,15 +20,23 @@ export const deviceAPI = () => {
         })
     }
 
-    const setDevice = async (brand, product, model, businesses, serial) => {
+    const setDeviceAPI = async (brand, product, model, businesses, serial) => {
         console.log(brand)
         // enviar data a la api
     }
 
-    const findDevice = async (serial) => {
+    const findDeviceAPI = async (serial) => {
 
     }
 
-    return {getDevices, getDeviceInfo, setDevice, findDevice}
+    const updateDeviceAPI = async (serial) => {
+
+    }
+
+    const deleteDeviceAPI = async () => {
+
+    }
+
+    return {getDevicesAPI, getDeviceInfoAPI, setDeviceAPI, findDeviceAPI, updateDeviceAPI, deleteDeviceAPI}
 
 }

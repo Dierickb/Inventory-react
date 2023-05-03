@@ -5,41 +5,46 @@ import rotateIcon from "./icons/rotate-solid.svg"
 import Device from "../Device";
 import {memo} from "react";
 import PropTypes from "prop-types";
-import useShowDevicesBootCenter from "./hooks";
+import {useShowDevicesBootCenter} from "./hooks";
+import {useBootCenterDevices, useFilters} from "../../../contexts";
 
 const Devices = ({showDevice}) => {
 
-    const [state, getDevices] = useShowDevicesBootCenter()
+    const { getDevices, state: bootCenterState, setFindDevice, removeAllListeners } = useBootCenterDevices()
+    const {state: filterState} = useFilters()
+
     const handleShowDevice = (device) => showDevice(device)
 
-    if (state.loading) return <h3>Loading...</h3>
+    useShowDevicesBootCenter(getDevices, removeAllListeners)
+
+    if (bootCenterState.loading) return <h3>Loading...</h3>
 
     return (
         <Card>
             <CardHeader>
-                <h2>Equipos en stock</h2>
-                <span onClick={() => getDevices()}>
-                    <img className="fas" src={rotateIcon} alt=""/>
-                </span>
+                <h2>{bootCenterState.devices.length} Equipos en stock</h2>
+                <span onClick={() => setFindDevice(filterState)}>
+                <img className="fas" src={rotateIcon} alt=""/>
+            </span>
             </CardHeader>
             <table className='devices'>
                 <thead>
-                    <tr className='titlesHead'>
-                        <th>Id</th>
-                        <th>Serial</th>
-                        <th>Fabricante</th>
-                        <th>Producto</th>
-                        <th>Modelo</th>
-                        <th>Ingresó</th>
-                        <th>Scotia</th>
-                        <th>PXE</th>
-                        <th>Imagen</th>
-                    </tr>
+                <tr className='titlesHead'>
+                    <th>Id</th>
+                    <th>Serial</th>
+                    <th>Fabricante</th>
+                    <th>Producto</th>
+                    <th>Modelo</th>
+                    <th>Ingresó</th>
+                    <th>Scotia</th>
+                    <th>PXE</th>
+                    <th>Imagen</th>
+                </tr>
                 </thead>
 
                 <tbody>
-                {state.devices?.length > 0 &&
-                    state.devices.map((device, index) => (
+                {bootCenterState.devices?.length > 0 &&
+                    bootCenterState.devices.map((device, index) => (
                         <Device key={device.serial} device={device}
                                 index={index+1}
                                 handleShowDevice={handleShowDevice}
@@ -68,7 +73,7 @@ Devices.prototype = {
             entryDate: PropTypes.string,
             pxeDate: PropTypes.string,
             image: PropTypes.string,
-            operationAssigned: PropTypes.string,
+            internOperation: PropTypes.string,
         })
     })
 }

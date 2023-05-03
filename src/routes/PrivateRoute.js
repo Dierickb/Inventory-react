@@ -4,6 +4,7 @@ import Nav from "../Components/Nav/Nav";
 import {BootCenterDevicesProvider} from "../contexts/BootCenterDevices";
 import {ActiveLeftBarProvider} from "../contexts/ActiveLeftBar";
 import {BrandProvider} from "../contexts/Brand";
+import {Filters} from "../contexts/Filters"
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     const history = useHistory();
@@ -14,8 +15,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         <BrandProvider>
             <BootCenterDevicesProvider>
                 <ActiveLeftBarProvider>
-                    <Nav />
-                    <Route {...rest} component={(props) => <Component {...props} />} />
+                    <Filters>
+                        <Nav />
+                        <Route {...rest} component={(props) => <Component {...props} />} />
+                    </Filters>
                 </ActiveLeftBarProvider>
             </BootCenterDevicesProvider>
         </BrandProvider>

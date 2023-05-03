@@ -1,7 +1,7 @@
 import {DEVICE_ACTIONS} from "../actions";
 
 export const deviceInitialState = {
-    devices: {},
+    devices: [],
     loading: true,
     error: false,
 }
@@ -10,12 +10,13 @@ export const devicesReducer = (state, action) => {
     switch (action.type) {
         case DEVICE_ACTIONS.GET_DEVICES: {
             let devicesArray = []
-            if(!Array.isArray(action.payload)) {
-                devicesArray.push(action.payload)
+            if(!Array.isArray(action.payload.devices)) {
+                devicesArray.push(action.payload.devices)
             }
-            if(action.payload.length > 1) {
-                devicesArray = action.payload
+            if(action.payload.devices.length > 0) {
+                devicesArray = action.payload.devices
             }
+
             return {
                 ...deviceInitialState,
                 devices: devicesArray,
@@ -25,13 +26,13 @@ export const devicesReducer = (state, action) => {
         case DEVICE_ACTIONS.SET_DEVICE:
             return {
                 ...deviceInitialState,
-                devices: action.payload,
+                devices: action.payload.devices,
                 loading: false,
             }
         case DEVICE_ACTIONS.UPDATE_DEVICE:
             return {
                 ...deviceInitialState,
-            };
+            }
         default:
             return state;
     }

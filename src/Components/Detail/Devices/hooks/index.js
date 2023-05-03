@@ -1,1 +1,5 @@
-export {default} from "./useShowDevicesBootCenter"
+import {useShowDevicesBootCenter} from "./useShowDevicesBootCenter"
+
+export {
+    useShowDevicesBootCenter
+}

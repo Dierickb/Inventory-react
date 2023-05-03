@@ -1,16 +1,18 @@
 import DropDownContainer from "../../Nav/DropDownContainer";
 import {memo} from "react";
+import {inputsFilterDefaultValues} from "../../../utils/utilities";
 
 const DropDownImage = ({image, display, mgLeft, padding, mgLSelect, hgSelect, ...rest}) => {
 
     const images = [
-        {value: "", optionValue: "Imagen"},
+        {value: inputsFilterDefaultValues.image, optionValue: "Imagen"},
         {value: "ScotiaTech", optionValue: "ScotiaTech"},
         {value: "AML", optionValue: "AML"},
+        {value: "Finance", optionValue: "Finance"},
     ]
 
   return (
-      <DropDownContainer title="Imagen" key={image ? "image" : image }
+      <DropDownContainer title="Imagen" key={!image ? "image" : image }
                          values={images}
                          name="imageSelect"
                          defaultValue={image}
