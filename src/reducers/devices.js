@@ -8,21 +8,12 @@ export const deviceInitialState = {
 
 export const devicesReducer = (state, action) => {
     switch (action.type) {
-        case DEVICE_ACTIONS.GET_DEVICES: {
-            let devicesArray = []
-            if(!Array.isArray(action.payload.devices)) {
-                devicesArray.push(action.payload.devices)
-            }
-            if(action.payload.devices.length > 0) {
-                devicesArray = action.payload.devices
-            }
-
+        case DEVICE_ACTIONS.GET_DEVICES:
             return {
                 ...deviceInitialState,
-                devices: devicesArray,
+                devices: action.payload.devices,
                 loading: false,
             }
-        }
         case DEVICE_ACTIONS.SET_DEVICE:
             return {
                 ...deviceInitialState,

@@ -7,10 +7,6 @@ export const ipcDeviceAPI = () => {
         return testData
     }
 
-    const getDeviceInfoAPI = async () => {
-
-    }
-
     const setDeviceAPI = async (brand, product, model, businesses, serial) => {
 
     }
@@ -18,6 +14,11 @@ export const ipcDeviceAPI = () => {
     const findDeviceAPI = (serial) => {
         if(serial === inputsFilterTextName.SERIAL) return getDevicesAPI()
         return testData.filter(device => device.serial === serial)
+    }
+
+    const findDeviceByScotiaIdAPI = (scotiaId) => {
+        if(scotiaId === inputsFilterTextName.SCOTIAID) return getDevicesAPI()
+        return testData.filter(device => device.scotiaId === scotiaId)
     }
 
     const findDeviceByBusinessOrImageAPI = (business, image) => {
@@ -44,7 +45,7 @@ export const ipcDeviceAPI = () => {
     }
 
     return {
-        getDevicesAPI, getDeviceInfoAPI, setDeviceAPI,
+        getDevicesAPI, setDeviceAPI, findDeviceByScotiaIdAPI,
         findDeviceAPI, updateDeviceAPI, deleteDeviceAPI,
         findDeviceByBusinessOrImageAPI
     }

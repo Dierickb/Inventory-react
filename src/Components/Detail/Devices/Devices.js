@@ -22,7 +22,7 @@ const Devices = ({showDevice}) => {
     return (
         <Card>
             <CardHeader>
-                <h2>{bootCenterState.devices.length} Equipos en stock</h2>
+                <h2>{bootCenterState?.devices?.length} Equipos en stock</h2>
                 <span onClick={() => setFindDevice(filterState)}>
                 <img className="fas" src={rotateIcon} alt=""/>
             </span>

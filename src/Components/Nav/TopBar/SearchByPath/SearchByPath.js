@@ -11,10 +11,10 @@ import trashIcon from "../icons/trash-can-regular.svg";
 const SearchByPath = () => {
 
     const {handleSearchOnChange, handleSearchOnKeyPress, handleClearFilters, state} = useHandleSearch()
-    const { findDevice, findDeviceByBusinessOrImage } = useBootCenterDevices()
+    const { findDeviceBySerial, findDeviceByBusinessOrImage, findDeviceByScotiaId } = useBootCenterDevices()
     const {setFilter} = useFilters()
 
-    useDeviceFilter(state, findDevice, findDeviceByBusinessOrImage, setFilter)
+    useDeviceFilter(state, findDeviceBySerial, findDeviceByBusinessOrImage, findDeviceByScotiaId, setFilter)
 
     return (
         <>

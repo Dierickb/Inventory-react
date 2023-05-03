@@ -23,9 +23,8 @@ export const useHandleSearch = () => {
     },[])
 
     const handleSearchOnKeyPress = useCallback((e) => {
-        e.preventDefault()
         if(e.nativeEvent.target.localName !== inputType.INPUT || e.key !== keyInput.ENTER) return
-        if(e.target.name === inputsFilterTextName.SERIAL) {
+        if(e.target.name === inputsFilterTextName.SERIAL || e.target.name === inputsFilterTextName.SCOTIAID) {
             dispatch({
                 type: FILTER_ACTIONS.SERIAL_BOOT_CENTER,
                 payload: {serial: e.target.value}

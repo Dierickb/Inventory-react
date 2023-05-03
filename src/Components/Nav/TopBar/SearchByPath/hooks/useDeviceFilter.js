@@ -1,16 +1,16 @@
 import {useEffect} from "react";
-import {useBootCenterDevices} from "../../../../../contexts";
 import {FILTERS} from "../../../../../actions/filter";
 
-export const useDeviceFilter = (filterState, findDevice, findDeviceByBusinessOrImage, setFilter) => {
+export const useDeviceFilter = (filterState, findDeviceBySerial, findDeviceByBusinessOrImage, findDeviceByScotiaId, setFilter) => {
 
     useEffect(() => {
-        if(!filterState.serial || !filterState?.scotiaId) return
+        if(!filterState.serial && !filterState?.scotiaId) return
 
         if(!!filterState.serial) setFilter(FILTERS.SET_SERIAL, filterState?.serial)
         if(!!filterState.scotiaId) setFilter(FILTERS.SET_SCOTIA_ID, filterState?.scotiaId)
 
-        filterState.serial && findDevice(filterState?.serial)
+        !!filterState.serial && findDeviceBySerial(filterState?.serial)
+        !!filterState.scotiaId && findDeviceByScotiaId(filterState?.scotiaId)
         return () => console.log("Closed")
     }, [filterState.serial])
 
