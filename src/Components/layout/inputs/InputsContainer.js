@@ -5,7 +5,7 @@ export const InputsContainer = styled.div`
   display: ${ (props) => props.display ? props.display : ''};
   h4 {
     margin-top: 0;
-    text-align: center;
+    text-align: ${ (props) => props.textAlign ? props.textAlign : 'center'};
     font-size: 1rem;
     margin-bottom: 0;
     font-weight: bold;

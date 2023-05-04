@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CardFooter = styled.div`
+export const CardFooter = styled.footer`
   position: relative;
   justify-content: space-between;
   align-items: center;

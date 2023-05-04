@@ -10,12 +10,14 @@ const FormDeviceInfo = ({device}) => {
   return (
       <form id="deviceInfoForm" onSubmit={(e) => handleSubmit(e, device)}>
 
-          <DropDownImage key={"image"+device.image} display="flex" mgLeft="5px" padding="0.4em 1em"
+          <DropDownImage key={"image"+device.image}
+                         display="flex" mgLeft="5px" padding="0.4em 1em"
                          mgLSelect="10px" hgSelect="2.3em" pdSelector="0"
-                            defaultValue={device?.image}/>
+                         defaultValue={device?.image}/>
 
-          <DropDownInternOperation key={"internOperation"+device.internOperation} display="flex" mgLeft="5px" padding="0.4em 1em"
-                                   mgLSelect="10px" hgSelect="2.3em" pdSelector="0"
+          <DropDownInternOperation key={"internOperation"+device.internOperation}
+                                   display="flex" mgLeft="5px" padding="0.4em 1em"
+                                   mgLSelect="10px" hgSelect="2.3em" pdSelector="0" textAlign=" "
                                    defaultValue={device?.internOperation}/>
 
           <div className="cardSection">

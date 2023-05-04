@@ -3,16 +3,13 @@ import {memo} from "react";
 
 const OperationList = ({title, image, onClick}) => {
   return (
-      <li>
-          <OperationLeftBar title={title} onClick={onClick}>
-              <Icon>
-                  <img alt="" className="fas" src={image}/>
-              </Icon>
-              <span className="title">{title}</span>
+      <OperationLeftBar title={title} onClick={onClick}>
+          <Icon>
+              <img alt="" className="fas" src={image}/>
+          </Icon>
+          <span className="title">{title}</span>
 
-          </OperationLeftBar>
-      </li>
-
+      </OperationLeftBar>
   )
 }
 

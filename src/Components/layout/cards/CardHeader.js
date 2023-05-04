@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CardHeader = styled.div`
+export const CardHeader = styled.header`
   position: relative;
   padding: ${(props) => props?.pd ? props.pd : '0'};
   width: ${(props) => props?.wd ? props.wd : 'auto'};
