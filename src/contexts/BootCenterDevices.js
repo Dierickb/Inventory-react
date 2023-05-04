@@ -39,14 +39,20 @@ export const BootCenterDevicesProvider = ({children}) => {
     const findDeviceBySerial = (serial) => {
         dispatch({
             type: DEVICE_ACTIONS.GET_DEVICES,
-            payload: {devices: findDeviceAPI(serial)}
+            payload: {devices:
+                (!serial) ? getDevicesAPI()
+                    : findDeviceAPI(serial)
+            }
         })
     }
 
     const findDeviceByScotiaId = (scotiaId) => {
         dispatch({
             type: DEVICE_ACTIONS.GET_DEVICES,
-            payload: {devices: findDeviceByScotiaIdAPI(scotiaId)}
+            payload: {devices:
+                (!scotiaId) ? getDevicesAPI()
+                    : findDeviceByScotiaIdAPI(scotiaId)
+            }
         })
     }
 

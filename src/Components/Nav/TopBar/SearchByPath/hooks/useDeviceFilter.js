@@ -1,18 +1,20 @@
 import {useEffect} from "react";
 import {FILTERS} from "../../../../../actions/filter";
 
-export const useDeviceFilter = (filterState, findDeviceBySerial, findDeviceByBusinessOrImage, findDeviceByScotiaId, setFilter) => {
+export const useDeviceFilter = (filterState, findDeviceBySerial,
+                                findDeviceByBusinessOrImage, findDeviceByScotiaId, setFilter) => {
 
     useEffect(() => {
-        if(!filterState.serial && !filterState?.scotiaId) return
-
-        if(!!filterState.serial) setFilter(FILTERS.SET_SERIAL, filterState?.serial)
-        if(!!filterState.scotiaId) setFilter(FILTERS.SET_SCOTIA_ID, filterState?.scotiaId)
-
-        !!filterState.serial && findDeviceBySerial(filterState?.serial)
-        !!filterState.scotiaId && findDeviceByScotiaId(filterState?.scotiaId)
+        setFilter(FILTERS.SET_SERIAL, filterState?.serial)
+        findDeviceBySerial(filterState?.serial)
         return () => console.log("Closed")
-    }, [filterState.serial])
+    }, [filterState?.serial])
+
+    useEffect(() => {
+        setFilter(FILTERS.SET_SCOTIA_ID, filterState?.scotiaId)
+        findDeviceByScotiaId(filterState?.scotiaId)
+        return () => console.log("Closed")
+    }, [filterState?.scotiaId])
 
     useEffect(() => {
         if(!filterState.image && !filterState.business) return
@@ -22,5 +24,5 @@ export const useDeviceFilter = (filterState, findDeviceBySerial, findDeviceByBus
 
         findDeviceByBusinessOrImage(filterState?.business, filterState?.image)
         return () => console.log("Closed")
-    }, [filterState.image, filterState.business])
+    }, [filterState?.image, filterState?.business])
 }
