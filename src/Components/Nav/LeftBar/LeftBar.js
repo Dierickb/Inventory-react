@@ -25,7 +25,7 @@ const   LeftBar = ({isActive}) => {
     } = HandleRedirects(history)
 
     return (
-        <div className={`navigation ${isActive ? 'active' :'' }`}>
+        <nav className={`navigation ${isActive ? 'active' :'' }`}>
             <ul>
                 <OperationList title='Home' image={houseIcon} onClick={handleRedirectToHome} />
                 <OperationList title='Operation' image={userIcon} onClick={handleRedirectToOperation} />
@@ -37,7 +37,7 @@ const   LeftBar = ({isActive}) => {
                 }
                 <OperationList title='Exit' image={exitIcon} onClick={logout}/>
             </ul>
-        </div>
+        </nav>
     )
 }
 
