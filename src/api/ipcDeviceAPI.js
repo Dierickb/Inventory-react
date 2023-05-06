@@ -7,12 +7,14 @@ export const ipcDeviceAPI = () => {
         return testData
     }
 
-    const setDeviceAPI = async (brand, product, model, businesses, serial) => {
-
+    const setDeviceAPI = async ({brand, product, model, business, serial, outAllowed}) => {
+        const deviceFiltered = findDeviceAPI(serial)
+        if(deviceFiltered?.length > 0) console.log("Device Already exist")
+        if(deviceFiltered?.length === 0) testData.unshift({serial: serial, model: model, builder: brand, device: product, scotia: business})
+        return true
     }
 
     const findDeviceAPI = (serial) => {
-        if(serial === inputsFilterTextName.SERIAL) return getDevicesAPI()
         return testData.filter(device => device.serial === serial)
     }
 
