@@ -8,8 +8,8 @@ import {memo} from "react";
 const FormSetDevice = () => {
     const { setDevice } = useBootCenterDevices();
     const handleRegister = (e) => {
-        const [brand, product, model, businesses, serial] = handleSetFormDevice(e)
-        setDevice(brand, product, model, businesses, serial)
+        const {brand, product, model, business, outAllowed, serial} = handleSetFormDevice(e)
+        setDevice({brand, product, model, business, serial, outAllowed})
     }
 
     return (

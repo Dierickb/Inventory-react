@@ -3,7 +3,6 @@ import { HeaderToBar, Icon} from "../../layout";
 import {memo, useCallback} from "react";
 import burgerIcon from "./icons/burger-solid.svg"
 import SearchByPath from "./SearchByPath";
-import trashIcon from "./icons/trash-can-regular.svg";
 
 const TopBar = ({setActive, isActive}) => {
 

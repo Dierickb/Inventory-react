@@ -25,8 +25,8 @@ export const BootCenterDevicesProvider = ({children}) => {
         })
     }
 
-    const setDevice = async (brand, product, model, businesses, serial) => {
-        await setDeviceAPI(brand, product, model, businesses, serial)
+    const setDevice = async ({brand, product, model, business, serial, outAllowed}) => {
+        return await setDeviceAPI({brand, product, model, business, serial, outAllowed})
     }
 
     const updateDevice = async () => {
