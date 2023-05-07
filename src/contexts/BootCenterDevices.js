@@ -13,6 +13,7 @@ const {getDevicesAPI,
     findDeviceAPI,
     findDeviceByBusinessOrImageAPI,
     findDeviceByScotiaIdAPI,
+    removeAllListenersIPC,
 } = ipcDeviceAPI()
 
 export const BootCenterDevicesProvider = ({children}) => {
@@ -78,16 +79,15 @@ export const BootCenterDevicesProvider = ({children}) => {
             findDeviceByBusinessOrImage(filterState.business, filterState.image)
     }
 
-    const removeAllListeners = () => {
-        return () => {
-            //ipc.removeAllListeners()
-        }
+    const removeAllListeners = async () => {
+        await removeAllListenersIPC()
     }
 
     return (
         <Provider value={{
             removeAllListeners, getDevices, setDevice, findDeviceBySerial,
-            findDeviceByBusinessOrImage, setFindDevice, findDeviceByScotiaId, state
+            updateDevice, deleteDevice, findDeviceByBusinessOrImage,
+            setFindDevice, findDeviceByScotiaId, state
         }} >
             {children}
         </Provider>

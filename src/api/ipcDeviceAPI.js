@@ -47,9 +47,13 @@ export const ipcDeviceAPI = () => {
 
     }
 
+    const removeAllListenersIPC = async () => {
+        console.log("Remove all listeners")
+    }
+
     return {
         getDevicesAPI, setDeviceAPI, findDeviceByScotiaIdAPI,
         findDeviceAPI, updateDeviceAPI, deleteDeviceAPI,
-        findDeviceByBusinessOrImageAPI
+        findDeviceByBusinessOrImageAPI, removeAllListenersIPC,
     }
 }
