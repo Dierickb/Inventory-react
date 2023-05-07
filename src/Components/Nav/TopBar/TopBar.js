@@ -3,6 +3,7 @@ import { HeaderToBar, Icon} from "../../layout";
 import {memo, useCallback} from "react";
 import burgerIcon from "./icons/burger-solid.svg"
 import SearchByPath from "./SearchByPath";
+import PropTypes from "prop-types";
 
 const TopBar = ({setActive, isActive}) => {
 
@@ -25,3 +26,8 @@ const TopBar = ({setActive, isActive}) => {
 }
 
 export default memo(TopBar)
+
+TopBar.prototype = {
+    setActive: PropTypes.func,
+    isActive: PropTypes.bool,
+}

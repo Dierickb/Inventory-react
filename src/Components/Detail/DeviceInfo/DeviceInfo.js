@@ -44,6 +44,7 @@ const DeviceInfo = ({device, cleanDeviceInfo}) => {
 export default DeviceInfo
 
 DeviceInfo.prototype = {
+    cleanDeviceInfo: PropTypes.func,
     device: PropTypes.shape({
         builder: PropTypes.string.isRequired,
         device: PropTypes.string.isRequired,

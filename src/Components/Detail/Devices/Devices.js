@@ -2,18 +2,18 @@ import {Card, CardHeader} from "../../layout";
 import './devices.scss'
 import rotateIcon from "./icons/rotate-solid.svg"
 
-import Device from "../Device";
-import {memo} from "react";
+import {memo, useCallback} from "react";
 import PropTypes from "prop-types";
 import {useShowDevicesBootCenter} from "./hooks";
 import {useBootCenterDevices, useFilters} from "../../../contexts";
+import TBodyDevices from "./TBodyDevices";
 
 const Devices = ({showDevice}) => {
 
     const { getDevices, state: bootCenterState, setFindDevice, removeAllListeners } = useBootCenterDevices()
     const {state: filterState} = useFilters()
 
-    const handleShowDevice = (device) => showDevice(device)
+    const handleShowDevice = useCallback((device) => showDevice(device), [])
 
     useShowDevicesBootCenter(getDevices, removeAllListeners)
 
@@ -42,16 +42,7 @@ const Devices = ({showDevice}) => {
                 </tr>
                 </thead>
 
-                <tbody>
-                {bootCenterState.devices?.length > 0 &&
-                    bootCenterState.devices.map((device, index) => (
-                        <Device key={device.serial} device={device}
-                                index={index+1}
-                                handleShowDevice={handleShowDevice}
-                        />
-                    ))
-                }
-                </tbody>
+                <TBodyDevices devices={bootCenterState.devices} handleShowDevice={handleShowDevice} />
 
             </table>
         </Card>
@@ -61,6 +52,11 @@ const Devices = ({showDevice}) => {
 export default memo(Devices)
 
 Devices.prototype = {
+    showDevice: PropTypes.func,
+    getDevices: PropTypes.func,
+    bootCenterState: PropTypes.func,
+    setFindDevice: PropTypes.func,
+    removeAllListeners: PropTypes.func,
     state: PropTypes.shape({
         loading: PropTypes.bool,
         error: PropTypes.bool,
