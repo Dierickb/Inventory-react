@@ -22,7 +22,7 @@ export const BootCenterDevicesProvider = ({children}) => {
     const getDevices = async () => {
         dispatch({
             type: DEVICE_ACTIONS.GET_DEVICES,
-            payload: {devices: getDevicesAPI()}
+            payload: {devices: await getDevicesAPI()}
         })
     }
 
@@ -34,49 +34,49 @@ export const BootCenterDevicesProvider = ({children}) => {
     }
 
     const updateDevice = async () => {
-        return await updateDeviceAPI()
+        await updateDeviceAPI()
     }
     const deleteDevice = async () => {
-        return await deleteDeviceAPI()
+        await deleteDeviceAPI()
     }
 
-    const findDeviceBySerial = (serial) => {
+    const findDeviceBySerial = async (serial) => {
         dispatch({
             type: DEVICE_ACTIONS.GET_DEVICES,
             payload: {devices:
-                (!serial) ? getDevicesAPI()
-                    : findDeviceAPI(serial)
+                (!serial) ? await getDevicesAPI()
+                    : await findDeviceAPI(serial)
             }
         })
     }
 
-    const findDeviceByScotiaId = (scotiaId) => {
+    const findDeviceByScotiaId = async (scotiaId) => {
         dispatch({
             type: DEVICE_ACTIONS.GET_DEVICES,
             payload: {devices:
-                (!scotiaId) ? getDevicesAPI()
-                    : findDeviceByScotiaIdAPI(scotiaId)
+                (!scotiaId) ? await getDevicesAPI()
+                    : await findDeviceByScotiaIdAPI(scotiaId)
             }
         })
     }
 
-    const findDeviceByBusinessOrImage = (business, image) => {
+    const findDeviceByBusinessOrImage = async (business, image) => {
         dispatch({
             type: DEVICE_ACTIONS.GET_DEVICES,
-            payload: {devices: findDeviceByBusinessOrImageAPI(business, image)}
+            payload: {devices: await findDeviceByBusinessOrImageAPI(business, image)}
         })
     }
 
-    const setFindDevice = (filterState) => {
-        if(FILTERS.CLEAR === filterState.filterKey) getDevices()
+    const setFindDevice = async (filterState) => {
+        if(FILTERS.CLEAR === filterState.filterKey) await getDevices()
         if(FILTERS.SET_SERIAL === filterState.filterKey)
-            findDeviceBySerial(filterState.serial)
+            await findDeviceBySerial(filterState.serial)
 
         if(FILTERS.SET_SCOTIA_ID === filterState.filterKey)
-            findDeviceByScotiaId(filterState.scotiaId)
+            await findDeviceByScotiaId(filterState.scotiaId)
 
         if(FILTERS.SET_IMAGE || FILTERS.SET_BUSINESS)
-            findDeviceByBusinessOrImage(filterState.business, filterState.image)
+            await findDeviceByBusinessOrImage(filterState.business, filterState.image)
     }
 
     const removeAllListeners = async () => {
