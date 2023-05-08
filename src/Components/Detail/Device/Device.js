@@ -15,11 +15,11 @@ const Device = ({device, index, handleShowDevice}) => {
                   {device.serial}
               </button>
           </td>
-          <td>{device.builder}</td>
-          <td>{device.device}</td>
+          <td>{device.brand}</td>
+          <td>{device.product}</td>
           <td>{device.model}</td>
           <td>{device.entryDate}</td>
-          <td>{device.scotia}</td>
+          <td>{device.business}</td>
           <td>{device.pxeDate}</td>
           <td>{device.image}</td>
       </tr>
@@ -30,10 +30,10 @@ export default memo(Device)
 
 Device.prototype = {
     device: PropTypes.shape({
-        builder: PropTypes.string.isRequired,
-        device: PropTypes.string.isRequired,
+        brand: PropTypes.string.isRequired,
+        product: PropTypes.string.isRequired,
         model: PropTypes.string.isRequired,
-        scotia: PropTypes.string.isRequired,
+        business: PropTypes.string.isRequired,
         serial: PropTypes.string.isRequired,
         entryDate: PropTypes.string,
         pxeDate: PropTypes.string,

@@ -22,10 +22,10 @@ export default memo(TBodyDevices)
 TBodyDevices.prototype = {
     handleShowDevice: PropTypes.func,
     devices: PropTypes.arrayOf({
-        builder: PropTypes.string.isRequired,
-        device: PropTypes.string.isRequired,
+        brand: PropTypes.string.isRequired,
+        product: PropTypes.string.isRequired,
         model: PropTypes.string.isRequired,
-        scotia: PropTypes.string.isRequired,
+        business: PropTypes.string.isRequired,
         serial: PropTypes.string.isRequired,
         entryDate: PropTypes.string,
         pxeDate: PropTypes.string,

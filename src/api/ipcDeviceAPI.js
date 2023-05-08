@@ -11,12 +11,12 @@ export const ipcDeviceAPI = () => {
         const deviceFiltered = findDeviceAPI(serial)
         if(deviceFiltered?.length > 0) console.log("Device Already exist")
         if(deviceFiltered?.length === 0) testData.unshift(
-            {serial: serial, model: model, builder: brand, device: product, scotia: business}
+            {serial: serial, model: model, brand: brand, product: product, business: business}
         )
     }
 
-    const findDeviceAPI = (serial) => {
-        return testData.filter(device => device.serial === serial)
+    const findDeviceAPI = async (serial) => {
+        return await testData.filter(device => device.serial === serial)
     }
 
     const findDeviceByScotiaIdAPI = (scotiaId) => {
@@ -33,10 +33,10 @@ export const ipcDeviceAPI = () => {
             return testData.filter(device => device.image === image && device)
 
         if( (image === inputsFilterTextName.IMAGE || !image) && business !== inputsFilterTextName.BUSINESS)
-            return testData.filter(device => device.scotia === business && device)
+            return testData.filter(device => device.business === business && device)
 
         if(image !== inputsFilterTextName.IMAGE && business !== inputsFilterTextName.BUSINESS)
-            return testData.filter(device => (device.scotia === business && device.image === image ) && device)
+            return testData.filter(device => (device.business === business && device.image === image ) && device)
     }
 
     const updateDeviceAPI = async (serial) => {
