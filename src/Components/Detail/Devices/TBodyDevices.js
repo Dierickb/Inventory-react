@@ -3,6 +3,7 @@ import {memo} from "react";
 import PropTypes from "prop-types";
 
 const TBodyDevices = ({devices, handleShowDevice}) => {
+    console.log(devices)
   return (
       <tbody>
       {devices?.length > 0 &&
@@ -17,7 +18,7 @@ const TBodyDevices = ({devices, handleShowDevice}) => {
   )
 }
 
-export default memo(TBodyDevices)
+export default TBodyDevices
 
 TBodyDevices.prototype = {
     handleShowDevice: PropTypes.func,

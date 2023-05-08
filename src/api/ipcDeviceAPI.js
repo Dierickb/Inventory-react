@@ -8,7 +8,8 @@ export const ipcDeviceAPI = () => {
     }
 
     const setDeviceAPI = async ({brand, product, model, business, serial, outAllowed}) => {
-        const deviceFiltered = findDeviceAPI(serial)
+        const deviceFiltered = await findDeviceAPI(serial)
+
         if(deviceFiltered?.length > 0) console.log("Device Already exist")
         if(deviceFiltered?.length === 0) testData.unshift(
             {serial: serial, model: model, brand: brand, product: product, business: business}
