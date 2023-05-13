@@ -1,22 +1,22 @@
 import PropTypes from "prop-types";
 
-const BodyDeviceInfo = ({builder, device, model, scotia}) => {
+const BodyDeviceInfo = ({brand, product, model, business}) => {
   return (
       <>
           <div className="cardSection deviceInfo">
               Fabricante: &nbsp;
-              <p>{builder}</p>
+              <p>{brand}</p>
           </div>
           <div className="cardSection deviceInfo">
               Producto: &nbsp;
-              <p> {device}</p>
+              <p> {product}</p>
           </div>
           <div className="cardSection deviceInfo">
               Modelo: &nbsp;
               <p> {model}</p>
           </div>
           <div className="cardSection deviceInfo bold">
-              Scotia{scotia}
+              Scotia{business}
           </div>
       </>
   )
