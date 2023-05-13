@@ -3,7 +3,7 @@ import {memo} from "react";
 import PropTypes from "prop-types";
 
 const TBodyDevices = ({devices, handleShowDevice}) => {
-    console.log(devices)
+
   return (
       <tbody>
       {devices?.length > 0 &&
