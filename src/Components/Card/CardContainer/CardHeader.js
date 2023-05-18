@@ -15,8 +15,16 @@ const CardHeader = ({isCardVisible, handleItemToSearch, title, handleToggleForm,
                onClick={isCardVisible ? handleToggleForm : ()=>{}}>
               <h4>{title}</h4>
           </div>
-          {textInput && <div onKeyDown={(e) => setItemToSearch(e)} className="menu">{info}</div>}
-          {!textInput && <div onChange={(e) => setItemToSearch(e)} className="menu">{info}</div>}
+          {textInput &&
+              <div onKeyDown={(e) => setItemToSearch(e)} className="menu">
+                  {info}
+              </div>
+          }
+          {!textInput &&
+              <div onChange={(e) => setItemToSearch(e)} className="menu">
+                  {info}
+              </div>
+          }
       </div>
   )
 }

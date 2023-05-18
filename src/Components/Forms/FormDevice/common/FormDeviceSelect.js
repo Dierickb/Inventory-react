@@ -1,36 +1,39 @@
 import {DropDown, InputsContainer} from "../../../layout";
-import {useState} from "react";
-import {useBrand} from "../../../../contexts";
+import {useReducer} from "react";
 import {useFetch} from "../hooks/useFetch";
+import {formDeviceSelect, formDeviceSelectInitialState} from "../../../../reducers/formDeviceSelect";
+import {FORM_DEVICE_SELECT_ACTIONS} from "../../../../actions";
+import {useFormDeviceSelect} from "../hooks/useFormDeviceSelect";
 
-const FormDeviceSelect = ({defaultValue}) => {
-    const [brand, setBrand] = useState("")
-    const [typeDevice, setTypeDevice] = useState("")
-    const {state} = useBrand()
-    const {fetchGetModelsByBrands} = useFetch()
+const FormDeviceSelect = ({defaultValue, keyValue}) => {
+
+    const [state, dispatch] = useReducer(formDeviceSelect, formDeviceSelectInitialState)
+    const {state: brandState, fetchGetModelsByBrands} = useFetch()
+
+    useFormDeviceSelect({dispatch, fetchGetModelsByBrands, state, defaultValue, keyValue})
 
   return (
       <>
           <InputsContainer pd='5px'>
-              <DropDown defaultValue={!!defaultValue?.brand ? defaultValue.brand : ""} name="brand"
-                        onChange={(e) => {
-                            setBrand(e.target.value)
-                            fetchGetModelsByBrands(e.target.value,typeDevice)
-                        }}
-                        required>
+              <DropDown key={defaultValue?.brand} defaultValue={defaultValue?.brand} name="brand"
+                        onChange={(e) => dispatch({
+                            type: FORM_DEVICE_SELECT_ACTIONS.SET_BRAND,
+                            payload: {brand: e.target.value}
+                        })}   required>
+
                   <option value="">Fabricante</option>
-                  {state.brands?.map(brand=>
+                  {brandState.brands?.map(brand=>
                       <option key={brand} value={brand}>{brand}</option>
                   )}
               </DropDown>
           </InputsContainer>
 
           <InputsContainer pd='5px'>
-              <DropDown defaultValue={!!defaultValue?.product ? defaultValue.product : ""} name="product"
-                        onChange={(e) => {
-                            setTypeDevice(e.target.value)
-                            fetchGetModelsByBrands(brand, e.target.value)
-                        }}
+              <DropDown key={defaultValue?.product} defaultValue={defaultValue?.product} name="product"
+                        onChange={(e) => dispatch({
+                            type: FORM_DEVICE_SELECT_ACTIONS.SET_PRODUCT,
+                            payload: {product: e.target.value}
+                        })}
                         required>
                   <option value="">Product</option>
                   <option value="Laptop">Laptop</option>
@@ -39,13 +42,20 @@ const FormDeviceSelect = ({defaultValue}) => {
           </InputsContainer>
 
           <InputsContainer pd='5px'>
-              <DropDown defaultValue={!!defaultValue?.model ? defaultValue.model : state?.modelsByBrand[0]}
+              <DropDown key={defaultValue?.serial}  defaultValue={defaultValue?.model}
                         name="model" required>
                   {
-                      (state.modelsByBrand.length < 1) ? <option value="">Model</option> :
-                          state.modelsByBrand?.map(model=>
-                              <option key={model} value={model}>{model}</option>
-                          )}
+                      !!defaultValue?.model &&
+                      <option key={defaultValue?.model} value={defaultValue?.model}>{defaultValue?.model}</option>
+                  }
+
+                  {
+                      brandState.modelsByBrand?.map(model => {
+                          if(model !== defaultValue?.model)
+                              return <option key={model} value={model}>{model}</option>
+                          }
+                      )
+                  }
               </DropDown>
           </InputsContainer>
       </>

@@ -3,11 +3,12 @@ import {SetPadding} from "../CardsContainer/setPadding";
 import {Card} from "../../layout";
 import CardHeader from "./CardHeader";
 
-const CardContainer = ({Children, title, child, info, textInput}) => {
+const CardContainer = ({Children, title, child, info, textInput, keyValue}) => {
+
     const [isCardVisible, setIsCardVisible] = useState(false)
     const [itemToSearch, setItemToSearch] = useState("")
 
-    const handleItemToSearch = (item) => {setItemToSearch(item)}
+    const handleItemToSearch = (item) => setItemToSearch(item)
     const handleToggleForm = () => setIsCardVisible(!isCardVisible)
 
     const {url} = SetPadding(isCardVisible, child)
@@ -21,7 +22,7 @@ const CardContainer = ({Children, title, child, info, textInput}) => {
                         textInput={textInput}
             />
             {isCardVisible &&
-                <Children itemToSearch={itemToSearch}/>
+                <Children itemToSearch={itemToSearch} keyValue={keyValue} />
             }
         </Card>
     )

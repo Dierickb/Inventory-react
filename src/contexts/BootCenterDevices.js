@@ -26,6 +26,12 @@ export const BootCenterDevicesProvider = ({children}) => {
         })
     }
 
+
+    const getDevice = async (serial) => {
+        const value = await findDeviceAPI(serial)
+        return value[0]
+    }
+
     const setDevice = async ({brand, product, model, business, serial, outAllowed}) => {
         await setDeviceAPI(
             {brand, product, model, business, serial, outAllowed}
@@ -87,6 +93,7 @@ export const BootCenterDevicesProvider = ({children}) => {
         <Provider value={{
             removeAllListeners, getDevices, setDevice, findDeviceBySerial,
             updateDevice, deleteDevice, findDeviceByBusinessOrImage,
+            getDevice,
             setFindDevice, findDeviceByScotiaId, state
         }} >
             {children}

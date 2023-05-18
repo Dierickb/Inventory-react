@@ -1,24 +1,27 @@
 import {Button, DropDown, FormRegisters, Input, InputsContainer} from "../../../layout";
 import FormDeviceSelect from "../common/FormDeviceSelect";
-import {memo, useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useBootCenterDevices} from "../../../../contexts";
+import {formDeviceSelectInitialState} from "../../../../reducers/formDeviceSelect";
 
-const FormGetDevice = ({itemToSearch}) => {
+const FormGetDevice = ({itemToSearch, keyValue}) => {
 
+    const [defaultValue, setDefaultValue] = useState(formDeviceSelectInitialState)
     const { getDevice } = useBootCenterDevices();
-    const [brand, product, model, businesses, serial] = getDevice(itemToSearch)
 
     useEffect(() => {
-        console.log(itemToSearch)
+        (async () => {
+            setDefaultValue(await getDevice(itemToSearch))
+        })()
     }, [itemToSearch])
 
   return (
       <FormRegisters >
 
-          <FormDeviceSelect defaultValue={{brand: brand, product:product, model:model}} />
+          <FormDeviceSelect keyValue={keyValue} defaultValue={defaultValue} itemToSearch={itemToSearch} />
 
           <InputsContainer pd='0px 5px'>
-              <DropDown defaultValue={businesses} name="businesses" required>
+              <DropDown key={defaultValue?.business} defaultValue={defaultValue?.business} name="business" required>
                   <option value="">Empresa</option>
                   <option value="GSG">GSG</option>
                   <option value="GBS">GBS</option>
@@ -26,7 +29,7 @@ const FormGetDevice = ({itemToSearch}) => {
           </InputsContainer>
 
           <InputsContainer pd='0px 5px'>
-              <Input title="Serial" placeholder={!!serial ? serial : "Serial"} name="brandModel" />
+              <Input title="Serial" placeholder={defaultValue?.serial} name="brandModel" />
           </InputsContainer>
 
           <InputsContainer pd='5px'>
@@ -45,4 +48,4 @@ const FormGetDevice = ({itemToSearch}) => {
   )
 }
 
-export default memo(FormGetDevice)
+export default FormGetDevice

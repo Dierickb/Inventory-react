@@ -1,7 +1,7 @@
 import {useActiveLeftBar} from "../../contexts";
-import DeviceSettings from "../../Components/Setting/DeviceSettings";
-import UserSettings from "../../Components/Setting/UserSettings"
-import BrandSettings from "../../Components/Setting/BrandSettings";
+import DeviceSettings from "../../Components/Settings/DeviceSettings";
+import UserSettings from "../../Components/Settings/UserSettings"
+import BrandSettings from "../../Components/Settings/BrandSettings";
 import {memo} from "react";
 
 const Admin = () => {

@@ -31,7 +31,7 @@ const SearchByPath = () => {
 
             </Search>
 
-            <Icon minWd="0" mg="7px 7px 7px 7px" imgWd='2em' brdRadImg='5px' bgImg='#03a9f4'
+            <Icon minWd="0" mg="7px 14px 7px 7px" imgWd='2em' brdRadImg='5px' bgImg='#03a9f4'
                   onClick={handleClearFilters} >
                 <img className="trash" alt="" src={trashIcon} title="Clear"/>
             </Icon>

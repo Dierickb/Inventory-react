@@ -2,7 +2,7 @@ import {useEffect} from "react";
 import {useBrand} from "../../../../contexts"
 
 export const useFetch = () => {
-    const {getBrands, getModelsByBrand} = useBrand()
+    const {state, getBrands, getModelsByBrand} = useBrand()
 
     useEffect( () => {
         (async () => {
@@ -17,5 +17,5 @@ export const useFetch = () => {
         getModelsByBrand(typeDevice, brand)
     }
 
-    return {fetchGetModelsByBrands}
+    return {state, fetchGetModelsByBrands}
 }

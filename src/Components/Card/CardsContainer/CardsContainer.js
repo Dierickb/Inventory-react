@@ -1,11 +1,11 @@
 import "./CardsContainer.scss"
 
 import {Card} from "../../layout";
-import {memo, useState} from "react";
-import CardHeader from "./CardsHeader";
+import {useState} from "react";
+import CardsHeader from "./CardsHeader";
 import {SetPadding} from "./setPadding";
 
-const CardsContainer = ({Children, title, child, info}) => {
+const CardsContainer = ({children, title, child, info}) => {
     const [isCardVisible, setIsCardVisible] = useState(false)
     const handleToggleForm = () => setIsCardVisible(!isCardVisible)
 
@@ -13,17 +13,15 @@ const CardsContainer = ({Children, title, child, info}) => {
 
   return (
     <Card pd={padding} mgTp={url && '20px'} >
-        <CardHeader title={title} info={info}
+        <CardsHeader title={title} info={info}
                     handleToggleForm={handleToggleForm}
                     isCardVisible={isCardVisible}
         />
-        {(isCardVisible && !!Children.length) && (
-            <>
-                {Children?.map(Child => Child)}
-            </>
-        )}
+        {isCardVisible &&
+            children
+        }
     </Card>
   )
 }
 
-export default memo(CardsContainer)
+export default CardsContainer
