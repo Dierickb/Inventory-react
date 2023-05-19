@@ -18,7 +18,7 @@ const FormGetDevice = ({itemToSearch, keyValue}) => {
   return (
       <FormRegisters >
 
-          <FormDeviceSelect keyValue={keyValue} defaultValue={defaultValue} itemToSearch={itemToSearch} />
+          <FormDeviceSelect defaultValue={defaultValue} itemToSearch={itemToSearch} />
 
           <InputsContainer pd='0px 5px'>
               <DropDown key={defaultValue?.business} defaultValue={defaultValue?.business} name="business" required>

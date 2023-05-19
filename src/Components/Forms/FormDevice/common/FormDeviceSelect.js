@@ -5,12 +5,12 @@ import {formDeviceSelect, formDeviceSelectInitialState} from "../../../../reduce
 import {FORM_DEVICE_SELECT_ACTIONS} from "../../../../actions";
 import {useFormDeviceSelect} from "../hooks/useFormDeviceSelect";
 
-const FormDeviceSelect = ({defaultValue, keyValue}) => {
+const FormDeviceSelect = ({defaultValue}) => {
 
     const [state, dispatch] = useReducer(formDeviceSelect, formDeviceSelectInitialState)
     const {state: brandState, fetchGetModelsByBrands} = useFetch()
 
-    useFormDeviceSelect({dispatch, fetchGetModelsByBrands, state, defaultValue, keyValue})
+    useFormDeviceSelect({dispatch, fetchGetModelsByBrands, state, defaultValue})
 
   return (
       <>

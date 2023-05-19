@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import {FORM_DEVICE_SELECT_ACTIONS} from "../../../../actions";
 
-export const useFormDeviceSelect = ({dispatch, state, fetchGetModelsByBrands, defaultValue, keyValue}) => {
+export const useFormDeviceSelect = ({dispatch, state, fetchGetModelsByBrands, defaultValue}) => {
 
     useEffect(() => {
         dispatch({
