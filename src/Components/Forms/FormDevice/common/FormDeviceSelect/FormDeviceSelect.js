@@ -54,10 +54,10 @@ const FormDeviceSelect = ({defaultValue, dropDownDisabled}) => {
 
                   {
                       brandState.modelsByBrand?.map(model => {
-                          if(model !== defaultValue?.model  && !!defaultValue?.serial)
+                          if(!!defaultValue && model !== defaultValue?.model  && !!defaultValue?.serial)
                               return <option key={model} value={model}>{model}</option>
-                          }
-                      )
+                          if(!defaultValue) return <option key={model} value={model}>{model}</option>
+                      })
                   }
               </DropDown>
           </InputsContainer>
