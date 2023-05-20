@@ -10,14 +10,14 @@ export const useFormGetDevice = (itemToSearch, keyValue) => {
     const { updateDevice, deleteDevice } = useBootCenterDevices();
     const { getDevice } = useBootCenterDevices();
 
-    const handleRegister = useCallback((e) => {
+    const handleRegister = useCallback(async (e, itemToSearch) => {
         const {brand, product, model, business, serial, outAllowed} = handleSetFormDevice(e)
 
         if(keyValue === deviceSettingsKeysValues.EDIT_DEVICE)
-            !!serial && updateDevice({brand, product, model, business, serial, outAllowed})
+            !!serial && await updateDevice({brand, product, model, business, serial, outAllowed, itemToSearch})
 
         if(keyValue === deviceSettingsKeysValues.DELETE_DEVICE)
-            !!serial && deleteDevice({serial})
+            !!serial && await deleteDevice({serial})
 
     },[])
 

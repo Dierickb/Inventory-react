@@ -40,7 +40,22 @@ export const ipcDeviceAPI = () => {
             return testData.filter(device => (device.business === business && device.image === image ) && device)
     }
 
-    const updateDeviceAPI = async ({serial}) => {
+    const updateDeviceAPI = async ({brand, product, model, business, serial, outAllowed, itemToSearch}) => {
+        const device = testData.find(device => device.serial === itemToSearch)
+        const index = testData.findIndex(device => device.serial === itemToSearch)
+
+        if(!!brand && device.brand !== brand) {device.brand = brand}
+        if(!!product && device.product !== product) {device.product = product}
+        if(!!model && device.model !== model) {device.model = model}
+        if(!!business && device.business !== business) {device.business = business}
+        if(!!serial && device.serial !== serial) {
+            const deviceBySerial = await findDeviceAPI(serial)
+            if(!deviceBySerial) {device.serial = serial}
+        }
+
+        testData.splice(index, 1, device)
+
+        return device
 
     }
 

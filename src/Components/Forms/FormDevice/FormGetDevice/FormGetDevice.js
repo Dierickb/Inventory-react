@@ -2,13 +2,14 @@ import {Button, DropDown, FormRegisters, Input, InputsContainer} from "../../../
 import FormDeviceSelect from "../common/FormDeviceSelect";
 import {useFormGetDevice} from "./hooks/useFormGetDevice";
 import {deviceSettingsKeysValues} from "../../../../utils/utilities";
+import {useEffect, useState} from "react";
 
 const FormGetDevice = ({itemToSearch, keyValue}) => {
 
-    const {defaultValue, handleRegister} = useFormGetDevice(itemToSearch, keyValue)
+    const {defaultValue, handleRegister} = useFormGetDevice(itemToSearch, keyValue, setItemUpdated)
 
   return (
-      <FormRegisters onSubmit={handleRegister}>
+      <FormRegisters onSubmit={(e) => handleRegister(e, itemToSearch)}>
 
           <FormDeviceSelect defaultValue={defaultValue} itemToSearch={itemToSearch} keyValue={keyValue}
                             dropDownDisabled={keyValue === deviceSettingsKeysValues.DELETE_DEVICE} />
