@@ -4,9 +4,11 @@ import {memo, useCallback} from "react";
 import burgerIcon from "./icons/burger-solid.svg"
 import SearchByPath from "./SearchByPath";
 import PropTypes from "prop-types";
+import {useLocation} from "react-router-dom";
+import {pathsDefault} from "../../../utils/utilities";
 
 const TopBar = ({setActive, isActive}) => {
-
+    const location = useLocation()
     const showHide = useCallback (() => {
         setActive()
     }, [setActive])
@@ -18,7 +20,9 @@ const TopBar = ({setActive, isActive}) => {
                     <img alt="" src={burgerIcon}/>
                 </Icon>
 
-                <SearchByPath />
+                {
+                    (location.pathname === pathsDefault.HOME) && <SearchByPath />
+                }
 
             </HeaderToBar>
         </div>

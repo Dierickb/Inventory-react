@@ -40,3 +40,9 @@ export const deviceSettingsKeysValues = Object.freeze({
     EDIT_DEVICE: Symbol("EDIT DEVICE"),
     DELETE_DEVICE: Symbol("DELETE DEVICE")
 })
+
+export const pathsDefault = Object.freeze({
+    SETTING: "/dashboard/admin",
+    HOME: "/dashboard"
+
+})
