@@ -176,3 +176,25 @@ export const testData = [
             business: "GSG",
         },
 ]
+
+export const testBrand = [
+    "Lenovo",
+    "Dell",
+    "HP"
+]
+
+export const testProduct = [
+    "Laptop",
+    "Desktop",
+]
+
+export const customersOperations = [
+    "ScotiaTech",
+    "Finance",
+    "AP Mexico",
+    "Canada CC",
+    "Canada CLL",
+    "Mexico",
+    "Peru",
+    "Caribe",
+]
