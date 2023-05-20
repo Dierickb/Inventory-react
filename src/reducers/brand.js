@@ -2,8 +2,8 @@ import {BRAND_ACTIONS} from "../actions";
 
 export const brandInitialState = {
     brands: [],
-    data: [],
     modelsByBrand: [],
+    products: [],
     loading: true,
     error: false,
 }
@@ -13,26 +13,34 @@ export const brandReducer = (state = brandInitialState, action) => {
         case BRAND_ACTIONS.GET_BRANDS:
             return {
                 ...brandInitialState,
-                data: action.payload,
-                brands: action.payload.map(brand => brand.id),
+                brands: action.payload.map(brand => brand.brand),
                 loading: false,
             }
 
-        case BRAND_ACTIONS.GET_MODELS_BY_BRAND: {
-            const models = []
-            const devices = state.data.filter(brand => {
-                if(
-                    brand.id === action.payload.brandToFind
-                ) return brand
-            })
-            for(let key in devices[0]?.data) {
-                if(devices[0]?.data[key] === action.payload.typeDeviceToFind) models.push(key)
-            }
+        case  BRAND_ACTIONS.GET_PRODUCT_BY_BRAND:
             return {
+                ...brandInitialState,
                 ...state,
-                modelsByBrand: models
+                products: action.payload.map(product => product.product),
+                loading: false,
             }
-        }
+
+        case BRAND_ACTIONS.GET_MODELS_BY_BRAND:
+            return {
+                ...brandInitialState,
+                ...state,
+                modelsByBrand: action.payload.map(model => model.model),
+                loading: false,
+            }
+
+        case BRAND_ACTIONS.GET_BRANDS_AND_PRODUCTS:
+            return {
+                ...brandInitialState,
+                products: action.payload.products.map(product => product.product),
+                brands: action.payload.brands.map(brand => brand.brand),
+                loading: false,
+            }
+
 
         default:
             return state;

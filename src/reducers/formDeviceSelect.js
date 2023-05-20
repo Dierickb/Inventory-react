@@ -12,7 +12,7 @@ export const formDeviceSelect = (state, action) => {
             return {
                 ...formDeviceSelectInitialState,
                 brand: action.payload.brand,
-                product: state?.brand,
+                product: state?.product,
                 model: action.payload.model,
             }
         case FORM_DEVICE_SELECT_ACTIONS.SET_PRODUCT:

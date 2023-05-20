@@ -1,11 +1,11 @@
 import {createContext, useContext, useReducer} from "react";
-import {brandAPI} from '../api'
 import {brandInitialState, brandReducer} from "../reducers/brand";
 import {BRAND_ACTIONS} from "../actions";
+import {ipcBrandAPI} from "../api/ipcBrandAPI";
 
 export const BrandContext = createContext();
 const {Provider} = BrandContext;
-const {getBrand} = brandAPI();
+const {getBrandAPI, getProductAPI, getModelsByBrandAPI} = ipcBrandAPI();
 
 export const BrandProvider = ({children}) => {
     const [state, dispatch] = useReducer(brandReducer, brandInitialState)
@@ -14,29 +14,47 @@ export const BrandProvider = ({children}) => {
         try {
             dispatch({
                 type: BRAND_ACTIONS.GET_BRANDS,
-                payload: await getBrand()
+                payload: await getBrandAPI()
             })
         } catch (e) {
             throw e
         }
     }
 
-    const getModelsByBrand = (brandToFind, typeDeviceToFind) => {
+    const getProducts = async () => {
+        try {
+            dispatch({
+                type: BRAND_ACTIONS.GET_PRODUCT_BY_BRAND,
+                payload: await getProductAPI()
+            })
+        } catch (e) {
+            throw e
+        }
+    }
+
+    const getModelsByBrand = async (brand, product) => {
         try {
             dispatch({
                 type: BRAND_ACTIONS.GET_MODELS_BY_BRAND,
-                payload: {
-                    brandToFind: brandToFind,
-                    typeDeviceToFind: typeDeviceToFind
-                },
+                payload: await getModelsByBrandAPI({brand, product})
             })
         } catch (e) {
             throw e
         }
     }
 
+    const getBrandsAndProducts = async () => {
+        dispatch({
+            type: BRAND_ACTIONS.GET_BRANDS_AND_PRODUCTS,
+            payload: {
+                brands: await getBrandAPI(),
+                products: await getProductAPI()
+            }
+        })
+    }
+
     return <Provider value={{
-        getBrands, getModelsByBrand,
+        getBrands, getModelsByBrand, getProducts, getBrandsAndProducts,
         state
     }}>{children}</Provider>
 }

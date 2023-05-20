@@ -1,8 +1,8 @@
-import {collection, doc, getDoc, getDocs, setDoc} from 'firebase/firestore'
+import {collection, getDocs} from 'firebase/firestore'
 import {firestore} from "../utils";
 
 export const brandAPI = () => {
-    const getBrand = async () => {
+    const getBrandAPI = async () => {
         try{
             const docRef = await getDocs(collection(firestore, "brand"))
             const docEncrypted = docRef.docs
@@ -19,7 +19,8 @@ export const brandAPI = () => {
 
     const getModelsByBrandAPI = async(brandToFind) => {
         try {
-            const brands = await getBrand()
+            const brands = await getBrandAPI()
+            console.log(brands)
             return brands.filter(brand => {
                 if(brand.id === brandToFind) return brand
             })
@@ -28,5 +29,5 @@ export const brandAPI = () => {
         }
     }
 
-    return {getBrand, getModelsByBrandAPI}
+    return {getBrandAPI, getModelsByBrandAPI}
 }

@@ -38,8 +38,9 @@ const FormDeviceSelect = ({defaultValue, dropDownDisabled}) => {
                         })}
                         required>
                   <option value="">Product</option>
-                  <option value="Laptop">Laptop</option>
-                  <option value="Desktop">Desktop</option>
+                  {brandState?.products?.map(product=>
+                      <option key={product} value={product}>{product}</option>
+                  )}
               </DropDown>
           </InputsContainer>
 

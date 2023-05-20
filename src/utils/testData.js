@@ -178,23 +178,117 @@ export const testData = [
 ]
 
 export const testBrand = [
-    "Lenovo",
-    "Dell",
-    "HP"
+    {
+        id: 1,
+        brand: "Lenovo",
+    },
+    {
+        id: 2,
+        brand: "Dell",
+    }
 ]
 
 export const testProduct = [
-    "Laptop",
-    "Desktop",
+    {
+        id: 1,
+        product: "Laptop",
+    },
+    {
+        id: 2,
+        product: "Desktop",
+    }
 ]
 
 export const customersOperations = [
-    "ScotiaTech",
-    "Finance",
-    "AP Mexico",
-    "Canada CC",
-    "Canada CLL",
-    "Mexico",
-    "Peru",
-    "Caribe",
+    {
+      id: 1,
+      customerOperation: "ScotiaTech",
+        mnemonic: "CITST",
+    },
+    {
+        id: 2,
+        customerOperation: "Finance",
+        mnemonic: "COF",
+    },
+    {
+        id: 3,
+        customerOperation: "AP Mexico",
+        mnemonic: "COF",
+    },
+    {
+        id: 4,
+        customerOperation: "Administrativo",
+        mnemonic: "CAD",
+    },{
+        id: 5,
+        customerOperation: "Caribe",
+        mnemonic: "CBN",
+    },{
+        id: 6,
+        customerOperation: "Mexico",
+        mnemonic: "MEXCC",
+    },
+]
+
+export const getModelsByBrand = [
+    {
+        id: 1,
+        brand: "Lenovo",
+        product: "Laptop",
+        model: "T14 g3"
+    },
+    {
+        id: 2,
+        brand: "Lenovo",
+        product: "Laptop",
+        model: "T14 g2"
+    },
+    {
+        id: 3,
+        brand: "Lenovo",
+        product: "Laptop",
+        model: "T14 g1"
+    },
+    {
+        id: 4,
+        brand: "Lenovo",
+        product: "Laptop",
+        model: "T14"
+    },
+    {
+        id: 5,
+        brand: "Lenovo",
+        product: "Laptop",
+        model: "T495"
+    },
+    {
+        id: 6,
+        brand: "Lenovo",
+        product: "Laptop",
+        model: "T490s"
+    },
+    {
+        id: 7,
+        brand: "Lenovo",
+        product: "Desktop",
+        model: "M920"
+    },
+    {
+        id: 8,
+        brand: "Lenovo",
+        product: "Desktop",
+        model: "M710q"
+    },
+    {
+        id: 9,
+        brand: "Lenovo",
+        product: "Desktop",
+        model: "M720q"
+    },
+    {
+        id: 10,
+        brand: "Lenovo",
+        product: "Desktop",
+        model: "M73"
+    },
 ]
