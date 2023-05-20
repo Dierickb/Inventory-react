@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Input = styled.input`
+  disabled: ${ (props) => props.disabled ? props.disabled : false};
   width: ${ (props) =>  props?.wd ? props.wd : 'calc(100% - 20px)' };
   pointer-events: ${ (props) =>  props?.pointerEvents ? props.pointerEvents : '' };
   border-radius: 10px;

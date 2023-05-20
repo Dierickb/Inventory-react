@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {FORM_DEVICE_SELECT_ACTIONS} from "../../../../actions";
+import {FORM_DEVICE_SELECT_ACTIONS} from "../../../../../../actions";
 
 export const useFormDeviceSelect = ({dispatch, state, fetchGetModelsByBrands, defaultValue}) => {
 

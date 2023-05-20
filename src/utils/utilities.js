@@ -35,3 +35,8 @@ export const inputsFilterTextName = Object.freeze({
     IMAGE: "imageSelect"
 })
 
+export const deviceSettingsKeysValues = Object.freeze({
+    REGISTER_DEVICE: Symbol("REGISTER DEVICE"),
+    EDIT_DEVICE: Symbol("EDIT DEVICE"),
+    DELETE_DEVICE: Symbol("DELETE DEVICE")
+})

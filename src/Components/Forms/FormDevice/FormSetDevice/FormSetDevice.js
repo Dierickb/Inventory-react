@@ -1,5 +1,5 @@
 import {FormRegisters} from "../../../layout";
-import {handleSetFormDevice} from "./handles";
+import {handleSetFormDevice} from "../handles";
 import {useBootCenterDevices} from "../../../../contexts";
 import InputsFormSetDevice from "./InputsFormSetDevice";
 import {useCallback} from "react";

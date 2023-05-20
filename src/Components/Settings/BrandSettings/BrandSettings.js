@@ -2,7 +2,7 @@ import CardsContainer from "../../Card/CardsContainer";
 import FormBrand from "../../Forms/FormBrand";
 import {memo} from "react";
 import CardContainer from "../../Card/CardContainer";
-import FormBrandDropDown from "../../Forms/FormDevice/common/FormBrandDropDown";
+import FormBrandDropDown from "../../Forms/FormBrand/common/FormBrandDropDown";
 
 const BrandSettings = () => {
     return (

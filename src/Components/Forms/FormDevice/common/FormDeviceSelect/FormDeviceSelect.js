@@ -1,11 +1,11 @@
-import {DropDown, InputsContainer} from "../../../layout";
+import {DropDown, InputsContainer} from "../../../../layout";
 import {useReducer} from "react";
-import {useFetch} from "../hooks/useFetch";
-import {formDeviceSelect, formDeviceSelectInitialState} from "../../../../reducers/formDeviceSelect";
-import {FORM_DEVICE_SELECT_ACTIONS} from "../../../../actions";
-import {useFormDeviceSelect} from "../hooks/useFormDeviceSelect";
+import {useFetch} from "./hooks/useFetch";
+import {formDeviceSelect, formDeviceSelectInitialState} from "../../../../../reducers/formDeviceSelect";
+import {FORM_DEVICE_SELECT_ACTIONS} from "../../../../../actions";
+import {useFormDeviceSelect} from "./hooks/useFormDeviceSelect";
 
-const FormDeviceSelect = ({defaultValue}) => {
+const FormDeviceSelect = ({defaultValue, dropDownDisabled}) => {
 
     const [state, dispatch] = useReducer(formDeviceSelect, formDeviceSelectInitialState)
     const {state: brandState, fetchGetModelsByBrands} = useFetch()
@@ -16,6 +16,7 @@ const FormDeviceSelect = ({defaultValue}) => {
       <>
           <InputsContainer pd='5px'>
               <DropDown key={defaultValue?.brand} defaultValue={defaultValue?.brand} name="brand"
+                        disabled={dropDownDisabled}
                         onChange={(e) => dispatch({
                             type: FORM_DEVICE_SELECT_ACTIONS.SET_BRAND,
                             payload: {brand: e.target.value}
@@ -30,6 +31,7 @@ const FormDeviceSelect = ({defaultValue}) => {
 
           <InputsContainer pd='5px'>
               <DropDown key={defaultValue?.product} defaultValue={defaultValue?.product} name="product"
+                        disabled={dropDownDisabled}
                         onChange={(e) => dispatch({
                             type: FORM_DEVICE_SELECT_ACTIONS.SET_PRODUCT,
                             payload: {product: e.target.value}
@@ -43,15 +45,16 @@ const FormDeviceSelect = ({defaultValue}) => {
 
           <InputsContainer pd='5px'>
               <DropDown key={defaultValue?.serial}  defaultValue={defaultValue?.model}
+                        disabled={dropDownDisabled}
                         name="model" required>
                   {
-                      !!defaultValue?.model &&
+                      (!!defaultValue?.model && !!defaultValue?.serial) &&
                       <option key={defaultValue?.model} value={defaultValue?.model}>{defaultValue?.model}</option>
                   }
 
                   {
                       brandState.modelsByBrand?.map(model => {
-                          if(model !== defaultValue?.model)
+                          if(model !== defaultValue?.model  && !!defaultValue?.serial)
                               return <option key={model} value={model}>{model}</option>
                           }
                       )

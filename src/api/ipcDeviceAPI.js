@@ -40,12 +40,14 @@ export const ipcDeviceAPI = () => {
             return testData.filter(device => (device.business === business && device.image === image ) && device)
     }
 
-    const updateDeviceAPI = async (serial) => {
+    const updateDeviceAPI = async ({serial}) => {
 
     }
 
-    const deleteDeviceAPI = async () => {
-
+    const deleteDeviceAPI = async ({serial}) => {
+        const index = testData.findIndex(device => device.serial === serial)
+        console.log(index)
+        testData.splice(index, 1)
     }
 
     const removeAllListenersIPC = async () => {

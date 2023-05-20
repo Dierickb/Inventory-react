@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const DropDown = styled.select`
+  disabled: ${ (props) => props.disabled ? props.disabled : false};
   height: ${ (props) =>  props?.hg ? props.hg : 'auto' };
   border-radius: 10px;
   padding: ${ (props) =>  props?.pd ? props.pd : '7px 10px' };

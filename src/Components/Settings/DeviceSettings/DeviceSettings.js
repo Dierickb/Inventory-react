@@ -4,6 +4,7 @@ import CardContainer from "../../Card/CardContainer";
 import {Input} from "../../layout";
 import FormGetDevice from "../../Forms/FormDevice/FormGetDevice/FormGetDevice";
 import {memo} from "react";
+import {deviceSettingsKeysValues} from "../../../utils/utilities";
 
 const DeviceSettings = ({children}) => {
 
@@ -11,18 +12,18 @@ const DeviceSettings = ({children}) => {
       <CardsContainer title="Device Settings">
           <CardContainer title="Registrar equipo"
                          Children={FormSetDevice} child={true}
-                         keyValue="registerDevice"
+                         keyValue={deviceSettingsKeysValues.REGISTER_DEVICE}
           />
 
           <CardContainer title="Editar equipo"
-                         keyValue="editDevice"
+                         keyValue={deviceSettingsKeysValues.EDIT_DEVICE}
                          info={
                              <Input title="Serial" type="text" placeholder="Serial" name="Serial" wd="auto"/>
                          }
                          Children={FormGetDevice} child={true} textInput={true}/>
 
           <CardContainer title="Eliminar equipo"
-                         keyValue="deleteDevice"
+                         keyValue={deviceSettingsKeysValues.DELETE_DEVICE}
                          info={
                              <Input title="Serial" type="text" placeholder="Serial" name="Serial" wd="auto"/>
                          }
