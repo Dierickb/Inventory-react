@@ -12,11 +12,9 @@ export const useFormDeviceSelect = ({dispatch, state, fetchGetModelsByBrands, de
                 model: defaultValue?.model,
             }
         })
-    }, [defaultValue])
+    }, [defaultValue?.brand, defaultValue?.product, defaultValue?.model])
 
     useEffect(() => {
-        console.log("state brand: ", state.brand)
-        console.log("state product: ", state.product)
         fetchGetModelsByBrands(state?.brand, state?.product)
     }, [state.brand, state.product])
 }

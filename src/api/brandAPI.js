@@ -20,7 +20,6 @@ export const brandAPI = () => {
     const getModelsByBrandAPI = async(brandToFind) => {
         try {
             const brands = await getBrandAPI()
-            console.log(brands)
             return brands.filter(brand => {
                 if(brand.id === brandToFind) return brand
             })
