@@ -3,6 +3,7 @@ import {BRAND_ACTIONS} from "./brand";
 import {DEVICE_ACTIONS} from "./device";
 import {FILTER_ACTIONS, FILTERS} from "./filter"
 import {FORM_DEVICE_SELECT_ACTIONS} from "./formDeviceSelect"
+import {OPERATIONS_ACTIONS} from "./operations"
 
 export {
     AUTH_ACTIONS,
@@ -11,4 +12,5 @@ export {
     FILTER_ACTIONS,
     FILTERS,
     FORM_DEVICE_SELECT_ACTIONS,
+    OPERATIONS_ACTIONS,
 }

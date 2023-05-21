@@ -1,21 +1,22 @@
 import DropDownContainer from "../../Nav/DropDownContainer";
-import {memo} from "react";
-import {inputsFilterDefaultValues} from "../../../utils/utilities";
+import {memo, useEffect} from "react";
+import {useOperations} from "../../../contexts/Operations";
 
-const DropDownImage = ({image, display, mgLeft, padding, mgLSelect, hgSelect, ...rest}) => {
+const DropDownImage = ({image: defaultImage, display, mgLeft, padding, mgLSelect, hgSelect, ...rest}) => {
 
-    const images = [
-        {value: inputsFilterDefaultValues.image, optionValue: "Imagen"},
-        {value: "ScotiaTech", optionValue: "ScotiaTech"},
-        {value: "AML", optionValue: "AML"},
-        {value: "Finance", optionValue: "Finance"},
-    ]
+    const {state, getCustomerOperation} = useOperations()
+
+    useEffect(() => {
+        (async () => {
+            await getCustomerOperation()
+        })()
+    }, [])
 
   return (
-      <DropDownContainer title="Imagen" key={!image ? "image" : image }
-                         values={images}
+      <DropDownContainer title="Imagen" key={!defaultImage ? "image" : defaultImage }
+                         values={state?.customerOperation}
                          name="imageSelect"
-                         defaultValue={image}
+                         defaultValue={defaultImage}
                          display={display}
                          mgLeft={mgLeft}
                          mgLSelect={mgLSelect}

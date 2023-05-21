@@ -1,8 +1,7 @@
 import {createContext, useContext, useReducer} from "react";
 import {deviceInitialState, devicesReducer} from "../reducers/devices";
-import {DEVICE_ACTIONS} from "../actions";
-import {ipcDeviceAPI} from "../api/ipcDeviceAPI";
-import {FILTERS} from "../actions/filter";
+import {DEVICE_ACTIONS, FILTERS} from "../actions";
+import {ipcDeviceAPI} from "../api";
 
 export const BootCenterDevicesContext = createContext();
 const {Provider} = BootCenterDevicesContext;

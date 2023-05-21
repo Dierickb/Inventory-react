@@ -5,9 +5,8 @@ import {inputsFilterDefaultValues} from "../../../utils/utilities";
 const DropDownBusinesses = ({business, display, mgLeft, padding, mgLSelect, hgSelect, ...rest}) => {
 
     const businesses = [
-        {value: inputsFilterDefaultValues.business, optionValue: "Empresa"},
-        {value: "GSG", optionValue: "GSG"},
-        {value: "GBS", optionValue: "GBS"},
+        "GSG",
+        "GBS",
     ]
 
   return (

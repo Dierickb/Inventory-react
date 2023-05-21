@@ -3,9 +3,9 @@ import DropDownContainer from "../../Nav/DropDownContainer";
 const DropDownInternOperation = ({internOperation, display, mgLeft, padding, mgLSelect, hgSelect, ...rest}) => {
 
     const internOperations = [
-        {value: "", optionValue: "Operacion Interna"},
-        {value: "IT Delivery", optionValue: "IT Delivery"},
-        {value: "IT Support", optionValue: "IT Support"},
+        "Operacion Interna",
+        "IT Delivery",
+        "IT Support",
     ]
 
   return (

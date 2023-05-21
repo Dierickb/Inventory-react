@@ -292,3 +292,14 @@ export const getModelsByBrand = [
         model: "M73"
     },
 ]
+
+export const internOperation = [
+    {
+        id: 1,
+        operation: "IT Delivery",
+    },
+    {
+        id: 2,
+        operation: "IT SUPPORT"
+    }
+]

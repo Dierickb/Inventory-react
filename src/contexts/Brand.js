@@ -1,7 +1,7 @@
 import {createContext, useContext, useReducer} from "react";
 import {brandInitialState, brandReducer} from "../reducers/brand";
 import {BRAND_ACTIONS} from "../actions";
-import {ipcBrandAPI} from "../api/ipcBrandAPI";
+import {ipcBrandAPI} from "../api";
 
 export const BrandContext = createContext();
 const {Provider} = BrandContext;
