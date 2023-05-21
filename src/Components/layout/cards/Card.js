@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Card = styled.div`
   position: relative;
-  padding: ${ (props) =>  props?.pd ? props.pd : '2.7vh 1.5vw 2.7vh 1.5vw' };
+  padding: ${ (props) =>  props?.pd ? props.pd : '1.8vh 1.5vw 1.8vh 1.5vw' };
   margin: ${ (props) =>  props?.mg ? props.mg : 'none' };
   margin-top: ${ (props) =>  props?.mgTp ? props.mgTp : 'none' };
   margin-bottom: ${ (props) =>  props?.mgBtt ? props.mgBtt : 'none' };
