@@ -1,5 +1,5 @@
 import './deviceInfo.scss'
-import {Card, CardHeader} from '../../layout';
+import {Card, CardHeader, Icon} from '../../layout';
 import {CardFooter} from "../../layout/cards/CardFooter";
 import FormDeviceInfo from "./FormDeviceInfo";
 import BodyDeviceInfo from "./BodyDeviceInfo";
@@ -20,9 +20,9 @@ const DeviceInfo = ({device, cleanDeviceInfo}) => {
                         <h2>Serial: <p>{device.serial}</p></h2>
                     </div>
                 </h2>
-                <span onClick={handleCleanDevice}>
+                <Icon onClick={handleCleanDevice} bgImg='#03a9f4'>
                    <img className="fas" src={trashIcon} alt=""/>
-                </span>
+                </Icon>
             </CardHeader>
 
             <BodyDeviceInfo {...device} />
