@@ -40,23 +40,43 @@ export const ipcDeviceAPI = () => {
             return testData.filter(device => (device.business === business && device.image === image ) && device)
     }
 
-    const updateDeviceAPI = async ({brand, product, model, business, serial, outAllowed, itemToSearch}) => {
+    const updateDeviceAPI = async ({brand, product, model, business, image, serial, outAllowed, itemToSearch, ...rest}) => {
         const device = testData.find(device => device.serial === itemToSearch)
-        const index = testData.findIndex(device => device.serial === itemToSearch)
+        if(!device) return
 
-        if(!!brand && device.brand !== brand) {device.brand = brand}
-        if(!!product && device.product !== product) {device.product = product}
-        if(!!model && device.model !== model) {device.model = model}
-        if(!!business && device.business !== business) {device.business = business}
-        if(!!serial && device.serial !== serial) {
-            const deviceBySerial = await findDeviceAPI(serial)
-            if(!deviceBySerial) {device.serial = serial}
+        const index = testData.findIndex(device => device.serial === itemToSearch)
+        const validateSerial = await updateValidateSerial({serial, device})
+
+        const newDevice = {
+            ...device,
+            image: (!!image && device.image !== image) ? image : device.image,
+            model: (!!model && device.model !== model) ? model : device.model,
+            brand: (!!image && device.brand !== brand) ? brand : device.brand,
+            product: (!!image && device.product !== product) ? product : device.product,
+            business: (!!image && device.business !== business) ? business : device.business,
+            serial: validateSerial
         }
 
-        testData.splice(index, 1, device)
+        if(!!rest) {
+            const newRestDevice = {
+                ...newDevice,
+                ...rest,
+            }
+            testData.splice(index, 1, newRestDevice)
+            return newRestDevice
+        }
+
+        testData.splice(index, 1, newDevice)
 
         return device
 
+    }
+
+    const updateValidateSerial = async ({serial, device}) => {
+        if (!!serial && device.serial !== serial) {
+            const deviceBySerial = await findDeviceAPI(serial)
+            if (!deviceBySerial) return serial
+        } else return device.serial
     }
 
     const deleteDeviceAPI = async ({serial}) => {

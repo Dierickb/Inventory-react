@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 
 import trashIcon from "./icons/trash-can-regular.svg"
 import {initialDevice} from "../utils/initialDevice";
+import {eventsNames} from "./utils";
 
 const DeviceInfo = ({device, cleanDeviceInfo}) => {
 
@@ -33,8 +34,8 @@ const DeviceInfo = ({device, cleanDeviceInfo}) => {
                 <h5>Entered: <p>{device.entryDate}</p></h5>
                 <h5>PXEd: <p>{device.pxeDate}</p></h5>
                 <div className="form-group">
-                    <p><input form="deviceInfoForm" name="event_update" type="submit" value="Actualizar" id="event_update" /></p>
-                    <p><input form="deviceInfoForm" name="event_send" type="submit" value="Enviar" id="event_send" /></p>
+                    <p><input form="deviceInfoForm" name={eventsNames.EVENT_UPDATE} type="submit" value="Actualizar" id="event_update" /></p>
+                    <p><input form="deviceInfoForm" name={eventsNames.EVENT_SEND} type="submit" value="Enviar" id="event_send" /></p>
                 </div>
             </CardFooter>
         </Card>
@@ -49,7 +50,7 @@ DeviceInfo.prototype = {
         builder: PropTypes.string.isRequired,
         device: PropTypes.string.isRequired,
         model: PropTypes.string.isRequired,
-        scotia: PropTypes.string.isRequired,
+        business: PropTypes.string.isRequired,
         serial: PropTypes.string.isRequired,
         entryDate: PropTypes.string,
         pxeDate: PropTypes.string,

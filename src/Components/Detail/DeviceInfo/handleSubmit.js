@@ -1,29 +1,47 @@
-import {eventButtonDeviceInfo} from "../../../utils/utilities";
-
-export const handleSubmit = (e, device) => {
+export const handleSubmit = (e, device, handleOnSubmitData, eventsNames) => {
     e.preventDefault()
-    if(Object.entries(device).length === 0) return;
+    if(Object.entries(device).length === 0) return
 
-    let [business, image, scotiaId, name] = e.target.elements;
-    business = business?.value;
-    image = image?.value;
+    let [image, internOperation, scotiaId, name] = e.target.elements
+    image = image?.value
+    internOperation = internOperation?.value
+    scotiaId = scotiaId?.value
+    name = name?.value
 
-    const data = {
-        ...device,
-        business: business,
-        image: image,
+    let data = {
+        ...device
     }
 
-    if (eventButtonDeviceInfo[e.nativeEvent.submitter.name]
-        && e.nativeEvent.submitter.name === "event_send") {
-        data.scotiaId = scotiaId?.value;
-        data.name = name?.value;
-        // ipc to send data to delivered
-        console.log(`The button pressed was ${e.nativeEvent.submitter.name}`)
-        console.log(data)
-        return
+    if(!image && !internOperation && !scotiaId && !name) return
+
+    if(e.nativeEvent.submitter.name === eventsNames.EVENT_SEND &&
+        !image && !internOperation && !scotiaId && !name
+    ) return
+
+    if( e.nativeEvent.submitter.name === eventsNames.EVENT_UPDATE &&
+        (!device?.image || image === device?.image)
+    ) return
+
+    if( (!device?.image || image === device?.image) &&
+        (!device?.internOperation || internOperation === device?.internOperation) &&
+        (!device?.scotiaId || scotiaId === device?.scotiaId) &&
+        (!device?.clientName || name === device?.clientName)
+    ) return
+
+    if( e.nativeEvent.submitter.name === eventsNames.EVENT_UPDATE ) {
+        data.image = image
     }
 
-    console.log(`The button pressed was ${e.nativeEvent.submitter.name}`)
-    console.log(data)
+    if(e.nativeEvent.submitter.name === eventsNames.EVENT_SEND) {
+        data.internOperation = internOperation
+        data.image = image
+        data.customerOperation = image
+        data.scotiaId = scotiaId
+        data.clientName = name
+    }
+
+    handleOnSubmitData({
+        submitterName: e.nativeEvent.submitter.name,
+        data: data,
+    })
 }

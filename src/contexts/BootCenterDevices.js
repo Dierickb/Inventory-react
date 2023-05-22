@@ -38,8 +38,10 @@ export const BootCenterDevicesProvider = ({children}) => {
         await getDevices()
     }
 
-    const updateDevice = async ({brand, product, model, business, serial, outAllowed, itemToSearch}) => {
-        return await updateDeviceAPI({brand, product, model, business, serial, outAllowed, itemToSearch})
+    const updateDevice = async ({brand, product, model, business, serial,
+                                    outAllowed, itemToSearch, image, ...rest}) => {
+        return await updateDeviceAPI({brand, product, model,
+            business, serial, outAllowed, itemToSearch, image, ...rest})
     }
     const deleteDevice = async ({serial}) => {
         await deleteDeviceAPI({serial})

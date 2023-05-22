@@ -44,5 +44,9 @@ export const deviceSettingsKeysValues = Object.freeze({
 export const pathsDefault = Object.freeze({
     SETTING: "/dashboard/admin",
     HOME: "/dashboard"
+})
 
+export const initialStateDeviceInfoSubmit = Object.freeze({
+    submitterName: "",
+    data: {}
 })

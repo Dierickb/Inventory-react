@@ -3,7 +3,7 @@ export const testData = [
             brand: "Lenovo",
             product: "Laptop",
             model: "T14",
-            internOperation: "IT Delivery",
+            internOperation: "",
             serial: "Serial",
             entryDate: "11/1/2022",
             pxeDate: "",
@@ -25,7 +25,7 @@ export const testData = [
             brand: "Lenovo",
             product: "Laptop",
             model: "T495",
-            internOperation: "IT Delivery",
+            internOperation: "",
             serial: "Serial2",
             entryDate: "12/1/2022",
             pxeDate: "",
@@ -47,7 +47,7 @@ export const testData = [
             brand: "Lenovo",
             product: "Laptop",
             model: "T14",
-            internOperation: "IT Support",
+            internOperation: "",
             serial: "Serial4",
             entryDate: "12/1/2022",
             pxeDate: "",
@@ -185,6 +185,10 @@ export const testBrand = [
     {
         id: 2,
         brand: "Dell",
+    },
+    {
+        id: 2,
+        brand: "HP",
     }
 ]
 

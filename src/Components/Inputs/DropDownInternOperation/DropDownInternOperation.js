@@ -1,9 +1,9 @@
-import DropDownContainer from "../../Nav/DropDownContainer";
+import DropDownContainer from "../DropDownContainer";
+import {memo} from "react";
 
 const DropDownInternOperation = ({internOperation, display, mgLeft, padding, mgLSelect, hgSelect, ...rest}) => {
 
     const internOperations = [
-        "Operacion Interna",
         "IT Delivery",
         "IT Support",
     ]
@@ -23,4 +23,4 @@ const DropDownInternOperation = ({internOperation, display, mgLeft, padding, mgL
   )
 }
 
-export default DropDownInternOperation
+export default memo(DropDownInternOperation)
