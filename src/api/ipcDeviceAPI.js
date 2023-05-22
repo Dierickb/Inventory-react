@@ -12,7 +12,7 @@ export const ipcDeviceAPI = () => {
 
         if(deviceFiltered?.length > 0) console.log("Device Already exist")
         if(deviceFiltered?.length === 0) testData.unshift(
-            {serial: serial, model: model, brand: brand, product: product, business: business}
+            {serial: serial, model: model, brand: brand, product: product, business: business, image: "Sin Imagen"}
         )
     }
 
@@ -46,29 +46,23 @@ export const ipcDeviceAPI = () => {
 
         const index = testData.findIndex(device => device.serial === itemToSearch)
         const validateSerial = await updateValidateSerial({serial, device})
+        const date = setPxeDateByImage(image)
 
         const newDevice = {
             ...device,
-            image: (!!image && device.image !== image) ? image : device.image,
+            ...rest,
+            image: (!!image) ? image : device.image,
             model: (!!model && device.model !== model) ? model : device.model,
             brand: (!!image && device.brand !== brand) ? brand : device.brand,
             product: (!!image && device.product !== product) ? product : device.product,
             business: (!!image && device.business !== business) ? business : device.business,
+            pxeDate: date,
             serial: validateSerial
-        }
-
-        if(!!rest) {
-            const newRestDevice = {
-                ...newDevice,
-                ...rest,
-            }
-            testData.splice(index, 1, newRestDevice)
-            return newRestDevice
         }
 
         testData.splice(index, 1, newDevice)
 
-        return device
+        return newDevice
 
     }
 
@@ -77,6 +71,12 @@ export const ipcDeviceAPI = () => {
             const deviceBySerial = await findDeviceAPI(serial)
             if (!deviceBySerial) return serial
         } else return device.serial
+    }
+
+    const setPxeDateByImage = (image) => {
+        if(!!image) {
+            return new Date().toLocaleDateString('en-GB');
+        } else return ""
     }
 
     const deleteDeviceAPI = async ({serial}) => {

@@ -19,10 +19,10 @@ export const handleSubmit = (e, device, handleOnSubmitData, eventsNames) => {
     ) return
 
     if( e.nativeEvent.submitter.name === eventsNames.EVENT_UPDATE &&
-        (!device?.image || image === device?.image)
+        (!device?.image)
     ) return
 
-    if( (!device?.image || image === device?.image) &&
+    if( (!device?.image) &&
         (!device?.internOperation || internOperation === device?.internOperation) &&
         (!device?.scotiaId || scotiaId === device?.scotiaId) &&
         (!device?.clientName || name === device?.clientName)
