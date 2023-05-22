@@ -1,4 +1,4 @@
-import DropDownContainer from "../../Nav/DropDownContainer";
+import DropDownContainer from "../DropDownContainer";
 import {memo} from "react";
 import {inputsFilterDefaultValues} from "../../../utils/utilities";
 
@@ -12,7 +12,7 @@ const DropDownBusinesses = ({business, display, mgLeft, padding, mgLSelect, hgSe
   return (
       <DropDownContainer title="Empresa" key={!business ? "business" : business }
                          values={businesses}
-                         name="businessSelect"
+                         name={inputsFilterDefaultValues.business}
                          defaultValue={business}
                          display={display}
                          mgLeft={mgLeft}

@@ -1,6 +1,9 @@
-import DropDownContainer from "../../Nav/DropDownContainer";
+import DropDownContainer from "../DropDownContainer";
 import {memo, useEffect} from "react";
 import {useOperations} from "../../../contexts/Operations";
+import PropTypes from "prop-types";
+import {string} from "yup";
+import {inputsFilterDefaultValues} from "../../../utils/utilities";
 
 const DropDownImage = ({image: defaultImage, display, mgLeft, padding, mgLSelect, hgSelect, ...rest}) => {
 
@@ -15,7 +18,7 @@ const DropDownImage = ({image: defaultImage, display, mgLeft, padding, mgLSelect
   return (
       <DropDownContainer title="Imagen" key={!defaultImage ? "image" : defaultImage }
                          values={state?.customerOperation}
-                         name="imageSelect"
+                         name={inputsFilterDefaultValues.image}
                          defaultValue={defaultImage}
                          display={display}
                          mgLeft={mgLeft}
@@ -28,3 +31,14 @@ const DropDownImage = ({image: defaultImage, display, mgLeft, padding, mgLSelect
 }
 
 export default memo(DropDownImage)
+
+
+DropDownImage.prototype = {
+    image: PropTypes.string,
+    display: string,
+    mgLeft: string,
+    padding: string,
+    mgLSelect: string,
+    hgSelect: string,
+    rest: PropTypes.object,
+}
