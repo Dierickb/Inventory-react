@@ -14,6 +14,5 @@ export const setBackGroundByDate = ({pxeDate}) => {
         }
 
         return backGround
-    } else return "#088993FF"
-
+    } else return "#a1a1a1"
 }

@@ -7,9 +7,13 @@ export const Button = styled.button`
   padding: 2px 4px;
   color: ${ (props) => props.color ? props.color : 'black'};
   background: ${ (props) => props.background ? props.background : '#088993'};
-  border-radius: 2rem;
+  border-radius: 5px;
   cursor: pointer;
-  color: ${ (props) => !!props?.background && "antiquewhite" };
+  color: ${ (props) => {
+      if(!!props?.background) return "antiquewhite"
+      if(props?.background === "#a1a1a1" ) return "antiquewhite"
+        return "black"
+  } };
   text-decoration: none;
   font-weight: bold;
   font-size: initial;
