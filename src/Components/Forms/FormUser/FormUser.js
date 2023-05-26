@@ -1,5 +1,6 @@
 import {InputsContainer, FormRegisters, Button, Input} from "../../layout";
 import {useEffect} from "react";
+import PropTypes from "prop-types";
 
 const FormUser = ({itemToSearch}) => {
 
@@ -39,3 +40,7 @@ const FormUser = ({itemToSearch}) => {
 }
 
 export default FormUser
+
+FormUser.prototype = {
+    itemToSearch: PropTypes.string,
+}

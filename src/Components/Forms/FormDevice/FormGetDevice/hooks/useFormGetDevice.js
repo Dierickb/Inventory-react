@@ -3,6 +3,7 @@ import {formDeviceSelectInitialState} from "../../../../../reducers/formDeviceSe
 import {useBootCenterDevices} from "../../../../../contexts";
 import {handleSetFormDevice} from "../../handles";
 import {deviceSettingsKeysValues} from "../../../../../utils/utilities";
+import PropTypes from "prop-types";
 
 export const useFormGetDevice = (itemToSearch, keyValue) => {
     const [defaultValue, setDefaultValue] = useState(formDeviceSelectInitialState)
@@ -28,4 +29,9 @@ export const useFormGetDevice = (itemToSearch, keyValue) => {
     }, [itemToSearch])
 
     return {defaultValue, handleRegister}
+}
+
+useFormGetDevice.prototype = {
+    itemToSearch: PropTypes.string,
+    keyValue: PropTypes.string,
 }

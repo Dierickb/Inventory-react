@@ -1,6 +1,7 @@
 import {InputsContainer, FormRegisters, Button, Input} from "../../layout";
 import {TextArea} from "../../layout/inputs";
 import {useEffect} from "react";
+import PropTypes from "prop-types";
 
 const FormBrand = ({itemToSearch}) => {
 
@@ -32,3 +33,7 @@ const FormBrand = ({itemToSearch}) => {
 }
 
 export default FormBrand
+
+FormBrand.prototype = {
+    itemToSearch: PropTypes.string
+}

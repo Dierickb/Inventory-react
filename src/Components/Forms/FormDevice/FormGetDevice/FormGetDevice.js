@@ -2,6 +2,7 @@ import {Button, DropDown, FormRegisters, Input, InputsContainer} from "../../../
 import FormDeviceSelect from "../common/FormDeviceSelect";
 import {useFormGetDevice} from "./hooks/useFormGetDevice";
 import {deviceSettingsKeysValues} from "../../../../utils/utilities";
+import PropTypes from "prop-types";
 
 const FormGetDevice = ({itemToSearch, keyValue}) => {
 
@@ -58,3 +59,8 @@ const FormGetDevice = ({itemToSearch, keyValue}) => {
 }
 
 export default FormGetDevice
+
+FormGetDevice.prototype = {
+    itemToSearch: PropTypes.string,
+    keyValue: PropTypes.string,
+}
