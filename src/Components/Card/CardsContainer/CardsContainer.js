@@ -3,13 +3,16 @@ import "./CardsContainer.scss"
 import {Card} from "../../layout";
 import {useState} from "react";
 import CardsHeader from "./CardsHeader";
-import {SetPadding} from "./setPadding";
+import {setPadding} from "../common";
+import {useLocation} from "react-router-dom";
+import PropTypes from "prop-types";
+import {CARDS_CONTAINER} from "../../common/propTypes";
 
-const CardsContainer = ({children, title, child, info}) => {
+const CardsContainer = ({children, title, hasChild, info}) => {
     const [isCardVisible, setIsCardVisible] = useState(false)
     const handleToggleForm = () => setIsCardVisible(!isCardVisible)
 
-    const {padding, url} = SetPadding(isCardVisible, child)
+    const {padding, url} = setPadding(isCardVisible, hasChild, useLocation().pathname.split("/").slice(1))
 
   return (
     <Card pd={padding} mgTp={url && '20px'} >
@@ -25,3 +28,5 @@ const CardsContainer = ({children, title, child, info}) => {
 }
 
 export default CardsContainer
+
+CardsContainer.prototype = PropTypes.shape(CARDS_CONTAINER)

@@ -1,6 +1,9 @@
-const CardHeader = ({isCardVisible, handleItemToSearch, title, handleToggleForm, info, textInput}) => {
+import PropTypes from "prop-types";
+import {CARD_HEADER} from "../../common/propTypes";
+
+const CardHeader = ({isCardVisible, handleItemToSearch, title, handleToggleForm, info, hasTextInput}) => {
     const setItemToSearch = (e) => {
-        if(textInput) {
+        if(hasTextInput) {
             if(e.key !== 'Enter') return
             handleItemToSearch(e.target.value)
             return;
@@ -15,12 +18,12 @@ const CardHeader = ({isCardVisible, handleItemToSearch, title, handleToggleForm,
                onClick={isCardVisible ? handleToggleForm : ()=>{}}>
               <h4>{title}</h4>
           </div>
-          {textInput &&
+          {hasTextInput &&
               <div onKeyDown={(e) => setItemToSearch(e)} className="menu">
                   {info}
               </div>
           }
-          {!textInput &&
+          {!hasTextInput &&
               <div onChange={(e) => setItemToSearch(e)} className="menu">
                   {info}
               </div>
@@ -30,3 +33,5 @@ const CardHeader = ({isCardVisible, handleItemToSearch, title, handleToggleForm,
 }
 
 export default CardHeader
+
+CardHeader.prototype = PropTypes.shape(CARD_HEADER)

@@ -11,7 +11,7 @@ const DeviceSettings = ({children}) => {
   return (
       <CardsContainer title="Device Settings">
           <CardContainer title="Registrar equipo"
-                         Children={FormSetDevice} child={true}
+                         Children={FormSetDevice} hasChild={true}
                          keyValue={deviceSettingsKeysValues.REGISTER_DEVICE}
           />
 
@@ -20,14 +20,14 @@ const DeviceSettings = ({children}) => {
                          info={
                              <Input title="Serial" type="text" placeholder="Serial" name="Serial" wd="auto"/>
                          }
-                         Children={FormGetDevice} child={true} textInput={true}/>
+                         Children={FormGetDevice} hasChild={true} hasTextInput={true}/>
 
           <CardContainer title="Eliminar equipo"
                          keyValue={deviceSettingsKeysValues.DELETE_DEVICE}
                          info={
                              <Input title="Serial" type="text" placeholder="Serial" name="Serial" wd="auto"/>
                          }
-                         Children={FormGetDevice} child={true} textInput={true}/>
+                         Children={FormGetDevice} hasChild={true} hasTextInput={true}/>
           {!!children && children}
       </CardsContainer>
   )
