@@ -1,6 +1,6 @@
-import { PropTypes } from 'react';
+import PropTypes from "prop-types";
 
-export const DEVICE_PROPTYPES = PropTypes.shape({
+export const DEVICE_PROPTYPES = {
     builder: PropTypes.string.isRequired,
     device: PropTypes.string.isRequired,
     model: PropTypes.string.isRequired,
@@ -10,5 +10,5 @@ export const DEVICE_PROPTYPES = PropTypes.shape({
     pxeDate: PropTypes.string,
     image: PropTypes.string,
     internOperation: PropTypes.string,
-}).isRequired
+}
 

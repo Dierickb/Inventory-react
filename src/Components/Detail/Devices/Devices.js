@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import {useShowDevicesBootCenter} from "./hooks";
 import {useBootCenterDevices, useFilters} from "../../../contexts";
 import TBodyDevices from "./TBodyDevices";
-import {DEVICE_PROPTYPES} from "../../../common/propTypes";
+import {DEVICE_PROPTYPES} from "../../common/propTypes";
 
 const Devices = ({showDevice}) => {
 

@@ -4,7 +4,7 @@ import {memo, useCallback, useState} from "react";
 import DeviceInfo from "./DeviceInfo";
 import {initialDevice} from "./utils/initialDevice";
 import PropTypes from "prop-types";
-import {DEVICE_PROPTYPES} from "../../common/propTypes";
+import {DEVICE_PROPTYPES} from "../common/propTypes";
 
 const Detail =  () => {
   const [device, setDevice] = useState(initialDevice)

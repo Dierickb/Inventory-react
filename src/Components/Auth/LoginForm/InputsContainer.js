@@ -1,4 +1,6 @@
 import {InputLoginForm} from "../../layout/inputs/InputLoginForm";
+import {INPUT_LOGIN_FORM_PROPTYPES} from "../../common/propTypes";
+import PropTypes from "prop-types";
 
 const InputsContainer = ({props}) => {
   return (
@@ -20,3 +22,7 @@ const InputsContainer = ({props}) => {
 }
 
 export default InputsContainer
+
+InputsContainer.prototype = {
+    props: PropTypes.shape(INPUT_LOGIN_FORM_PROPTYPES)
+}

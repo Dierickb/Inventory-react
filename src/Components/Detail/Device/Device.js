@@ -3,7 +3,7 @@ import {memo} from "react";
 import PropTypes from "prop-types";
 import {Button} from "../../layout";
 import {setBackGroundByDate} from "./setBackGroundByDate";
-import {DEVICE_PROPTYPES} from "../../../common/propTypes";
+import {DEVICE_PROPTYPES} from "../../common/propTypes";
 
 const Device = ({device, index, handleShowDevice}) => {
     const handleDevice = () => {

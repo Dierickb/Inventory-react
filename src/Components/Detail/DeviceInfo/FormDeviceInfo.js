@@ -8,7 +8,7 @@ import {useState} from "react";
 import {initialStateDeviceInfoSubmit} from "../../../utils/utilities";
 import {handleSubmit} from "./handleSubmit";
 import {eventsNames} from "./utils";
-import {DEVICE_PROPTYPES} from "../../../common/propTypes";
+import {DEVICE_PROPTYPES} from "../../common/propTypes";
 
 const FormDeviceInfo = ({device}) => {
 

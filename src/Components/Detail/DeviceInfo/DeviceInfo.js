@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import trashIcon from "./icons/trash-can-regular.svg"
 import {initialDevice} from "../utils/initialDevice";
 import {eventsNames} from "./utils";
-import {DEVICE_PROPTYPES} from "../../../common/propTypes";
+import {DEVICE_PROPTYPES} from "../../common/propTypes";
 
 const DeviceInfo = ({device, cleanDeviceInfo}) => {
 
