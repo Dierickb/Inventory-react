@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import {useShowDevicesBootCenter} from "./hooks";
 import {useBootCenterDevices, useFilters} from "../../../contexts";
 import TBodyDevices from "./TBodyDevices";
+import {DEVICE_PROPTYPES} from "../../../common/propTypes";
 
 const Devices = ({showDevice}) => {
 
@@ -53,23 +54,9 @@ export default memo(Devices)
 
 Devices.prototype = {
     showDevice: PropTypes.func,
-    getDevices: PropTypes.func,
-    bootCenterState: PropTypes.func,
-    setFindDevice: PropTypes.func,
-    removeAllListeners: PropTypes.func,
     state: PropTypes.shape({
         loading: PropTypes.bool,
         error: PropTypes.bool,
-        devices: PropTypes.arrayOf({
-            builder: PropTypes.string.isRequired,
-            device: PropTypes.string.isRequired,
-            model: PropTypes.string.isRequired,
-            scotia: PropTypes.string.isRequired,
-            serial: PropTypes.string.isRequired,
-            entryDate: PropTypes.string,
-            pxeDate: PropTypes.string,
-            image: PropTypes.string,
-            internOperation: PropTypes.string,
-        })
+        devices: PropTypes.arrayOf(DEVICE_PROPTYPES)
     })
 }

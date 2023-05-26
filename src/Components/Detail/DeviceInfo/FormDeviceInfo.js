@@ -8,6 +8,7 @@ import {useState} from "react";
 import {initialStateDeviceInfoSubmit} from "../../../utils/utilities";
 import {handleSubmit} from "./handleSubmit";
 import {eventsNames} from "./utils";
+import {DEVICE_PROPTYPES} from "../../../common/propTypes";
 
 const FormDeviceInfo = ({device}) => {
 
@@ -42,15 +43,5 @@ const FormDeviceInfo = ({device}) => {
 export default FormDeviceInfo
 
 FormDeviceInfo.prototype = {
-    device: PropTypes.shape({
-        builder: PropTypes.string.isRequired,
-        device: PropTypes.string.isRequired,
-        model: PropTypes.string.isRequired,
-        business: PropTypes.string.isRequired,
-        serial: PropTypes.string.isRequired,
-        entryDate: PropTypes.string,
-        pxeDate: PropTypes.string,
-        image: PropTypes.string,
-        internOperation: PropTypes.string,
-    })
+    device: PropTypes.shape(DEVICE_PROPTYPES)
 }

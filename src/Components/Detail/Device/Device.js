@@ -3,6 +3,7 @@ import {memo} from "react";
 import PropTypes from "prop-types";
 import {Button} from "../../layout";
 import {setBackGroundByDate} from "./setBackGroundByDate";
+import {DEVICE_PROPTYPES} from "../../../common/propTypes";
 
 const Device = ({device, index, handleShowDevice}) => {
     const handleDevice = () => {
@@ -31,15 +32,7 @@ const Device = ({device, index, handleShowDevice}) => {
 export default memo(Device)
 
 Device.prototype = {
-    device: PropTypes.shape({
-        brand: PropTypes.string.isRequired,
-        product: PropTypes.string.isRequired,
-        model: PropTypes.string.isRequired,
-        business: PropTypes.string.isRequired,
-        serial: PropTypes.string.isRequired,
-        entryDate: PropTypes.string,
-        pxeDate: PropTypes.string,
-        image: PropTypes.string,
-        internOperation: PropTypes.string,
-    })
+    index: PropTypes.number,
+    device: PropTypes.shape(DEVICE_PROPTYPES),
+    handleShowDevice: PropTypes.func,
 }

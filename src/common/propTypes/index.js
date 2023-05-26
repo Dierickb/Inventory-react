@@ -1,0 +1,6 @@
+import {DEVICE_PROPTYPES} from "./DEVICE_PROPTYPES"
+
+
+export {
+    DEVICE_PROPTYPES
+}

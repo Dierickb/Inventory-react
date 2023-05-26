@@ -26,7 +26,7 @@ export default BodyDeviceInfo
 
 BodyDeviceInfo.propTypes = {
     builder: PropTypes.string,
-    device: PropTypes.string,
+    product: PropTypes.string,
     model: PropTypes.string,
     scotia: PropTypes.string,
 }

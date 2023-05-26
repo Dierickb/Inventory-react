@@ -1,6 +1,6 @@
-import Device from "../Device/Device";
-import {memo} from "react";
+import Device from "../Device";
 import PropTypes from "prop-types";
+import {DEVICE_PROPTYPES} from "../../../common/propTypes";
 
 const TBodyDevices = ({devices, handleShowDevice}) => {
 
@@ -9,8 +9,8 @@ const TBodyDevices = ({devices, handleShowDevice}) => {
       {devices?.length > 0 &&
           devices.map((device, index) => (
               <Device key={device.serial} device={device}
-                      index={index+1}
-                      handleShowDevice={handleShowDevice}
+                                index={index+1}
+                                handleShowDevice={handleShowDevice}
               />
           ))
       }
@@ -22,15 +22,5 @@ export default TBodyDevices
 
 TBodyDevices.prototype = {
     handleShowDevice: PropTypes.func,
-    devices: PropTypes.arrayOf({
-        brand: PropTypes.string.isRequired,
-        product: PropTypes.string.isRequired,
-        model: PropTypes.string.isRequired,
-        business: PropTypes.string.isRequired,
-        serial: PropTypes.string.isRequired,
-        entryDate: PropTypes.string,
-        pxeDate: PropTypes.string,
-        image: PropTypes.string,
-        internOperation: PropTypes.string,
-    }),
+    devices: PropTypes.arrayOf(DEVICE_PROPTYPES),
 }

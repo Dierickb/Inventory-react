@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import trashIcon from "./icons/trash-can-regular.svg"
 import {initialDevice} from "../utils/initialDevice";
 import {eventsNames} from "./utils";
+import {DEVICE_PROPTYPES} from "../../../common/propTypes";
 
 const DeviceInfo = ({device, cleanDeviceInfo}) => {
 
@@ -46,15 +47,5 @@ export default DeviceInfo
 
 DeviceInfo.prototype = {
     cleanDeviceInfo: PropTypes.func,
-    device: PropTypes.shape({
-        builder: PropTypes.string.isRequired,
-        device: PropTypes.string.isRequired,
-        model: PropTypes.string.isRequired,
-        business: PropTypes.string.isRequired,
-        serial: PropTypes.string.isRequired,
-        entryDate: PropTypes.string,
-        pxeDate: PropTypes.string,
-        image: PropTypes.string,
-        internOperation: PropTypes.string,
-    })
+    device: PropTypes.shape(DEVICE_PROPTYPES)
 }
