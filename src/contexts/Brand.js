@@ -2,6 +2,7 @@ import {createContext, useContext, useReducer} from "react";
 import {brandInitialState, brandReducer} from "../reducers/brand";
 import {BRAND_ACTIONS} from "../actions";
 import {ipcBrandAPI} from "../api";
+import PropTypes from "prop-types";
 
 export const BrandContext = createContext();
 const {Provider} = BrandContext;
@@ -63,4 +64,8 @@ export const useBrand = () => {
     const context = useContext(BrandContext)
     if(!context) throw new Error("useBrand must be wrapped with BrandProvider")
     return context
+}
+
+BrandProvider.prototype = {
+    children: PropTypes.element
 }

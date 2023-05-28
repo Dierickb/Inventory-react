@@ -2,6 +2,7 @@ import {createContext, useContext, useReducer} from "react";
 import {deviceInitialState, devicesReducer} from "../reducers/devices";
 import {DEVICE_ACTIONS, FILTERS} from "../actions";
 import {ipcDeviceAPI} from "../api";
+import PropTypes from "prop-types";
 
 export const BootCenterDevicesContext = createContext();
 const {Provider} = BootCenterDevicesContext;
@@ -107,3 +108,7 @@ export const useBootCenterDevices = () => {
     if (!context) throw new Error("Should rectify internet connection");
     return context;
 };
+
+BootCenterDevicesProvider.prototype = {
+    children: PropTypes.element
+}

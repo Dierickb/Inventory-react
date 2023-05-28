@@ -3,6 +3,7 @@ import {ipcOperations} from "../api";
 import {brandInitialState} from "../reducers/brand";
 import {operationReducer} from "../reducers/operations";
 import {OPERATIONS_ACTIONS} from "../actions";
+import PropTypes from "prop-types";
 
 export const OperationsContext = createContext()
 const {Provider} = OperationsContext;
@@ -39,4 +40,8 @@ export const useOperations = () => {
     const context = useContext(OperationsContext)
     if(!context) throw new Error("hooks must be wrapped with OperationsContext")
     return context
+}
+
+OperationsProvider.prototype = {
+    children: PropTypes.element
 }

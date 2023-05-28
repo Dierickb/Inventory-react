@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import {CARD_HEADER} from "../../common/propTypes";
+import {CARD_HEADER_PROPTYPES} from "../../common/propTypes";
 
 const CardHeader = ({isCardVisible, handleItemToSearch, title, handleToggleForm, info, hasTextInput}) => {
     const setItemToSearch = (e) => {
@@ -34,4 +34,4 @@ const CardHeader = ({isCardVisible, handleItemToSearch, title, handleToggleForm,
 
 export default CardHeader
 
-CardHeader.prototype = PropTypes.shape(CARD_HEADER)
+CardHeader.prototype = PropTypes.shape(CARD_HEADER_PROPTYPES)

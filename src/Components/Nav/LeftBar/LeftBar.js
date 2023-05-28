@@ -11,6 +11,7 @@ import chartPieIcon from "./icons/chart-pie-solid.svg"
 import gearIcon from "./icons/gear-solid.svg"
 import exitIcon from "./icons/sign-out-alt-solid.svg"
 import {memo} from "react";
+import {bool} from "yup";
 
 const   LeftBar = ({isActive}) => {
     const {logout, isLoggedIn} = useAuth()
@@ -42,3 +43,7 @@ const   LeftBar = ({isActive}) => {
 }
 
 export default memo(LeftBar)
+
+LeftBar.prototype = {
+    isActive: bool,
+}

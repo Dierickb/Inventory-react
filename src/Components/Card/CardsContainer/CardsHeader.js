@@ -1,6 +1,6 @@
 import {memo} from "react";
 import PropTypes from "prop-types";
-import {CARDS_HEADER} from "../../common/propTypes";
+import {CARDS_HEADER_PROPTYPES} from "../../common/propTypes";
 
 const CardsHeader = ({handleToggleForm, title, info}) => {
 
@@ -15,4 +15,4 @@ const CardsHeader = ({handleToggleForm, title, info}) => {
 }
 export default memo(CardsHeader)
 
-CardsHeader.prototype = PropTypes.shape(CARDS_HEADER)
+CardsHeader.prototype = PropTypes.shape(CARDS_HEADER_PROPTYPES)

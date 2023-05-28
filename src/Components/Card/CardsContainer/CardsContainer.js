@@ -6,7 +6,7 @@ import CardsHeader from "./CardsHeader";
 import {setPadding} from "../common";
 import {useLocation} from "react-router-dom";
 import PropTypes from "prop-types";
-import {CARDS_CONTAINER} from "../../common/propTypes";
+import {CARDS_CONTAINER_PROPTYPES} from "../../common/propTypes";
 
 const CardsContainer = ({children, title, hasChild, info}) => {
     const [isCardVisible, setIsCardVisible] = useState(false)
@@ -29,4 +29,4 @@ const CardsContainer = ({children, title, hasChild, info}) => {
 
 export default CardsContainer
 
-CardsContainer.prototype = PropTypes.shape(CARDS_CONTAINER)
+CardsContainer.prototype = PropTypes.shape(CARDS_CONTAINER_PROPTYPES)

@@ -1,7 +1,7 @@
 import {DropDown, InputsContainer} from "../../layout";
 import PropTypes from "prop-types";
-import {bool, number, string} from "yup";
 import {inputsFilterDefaultValues} from "../../../utils/utilities";
+import {DROP_DOWN_PROPTYPES} from "../../common/propTypes/DROP_DOWN_PROPTYPES";
 
 const DropDownContainer = ({title, values, defaultValue, name, ...rest}) => {
 
@@ -17,9 +17,9 @@ const DropDownContainer = ({title, values, defaultValue, name, ...rest}) => {
                       ? <option  key={name} value={name}> {title}</option>
                       : <option  key={name} value="">{title}</option>
               }
-              {values?.map(value => {
-                  return <option key={value} value={value}>{value}</option>
-              })}
+              {values?.map(value =>
+                  <option key={value} value={value}>{value}</option>
+              )}
           </DropDown>
       </InputsContainer>
   )
@@ -27,10 +27,4 @@ const DropDownContainer = ({title, values, defaultValue, name, ...rest}) => {
 
 export default DropDownContainer
 
-DropDownContainer.prototype = {
-    title: PropTypes.string,
-    values: PropTypes.object,
-    defaultValue: PropTypes.oneOf([bool, string, number]),
-    name: PropTypes.string,
-    rest: PropTypes.object,
-}
+DropDownContainer.prototype = PropTypes.shape(DROP_DOWN_PROPTYPES)

@@ -1,6 +1,3 @@
-// setea una autenticacion
-// LOGOUT
-
 import {AUTH_ACTIONS} from "../actions/auth";
 
 export const initialState = {

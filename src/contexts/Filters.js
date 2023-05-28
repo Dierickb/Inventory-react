@@ -1,5 +1,6 @@
 import {createContext, useContext, useReducer} from "react";
 import {filtersInitialState, filtersReducer} from "../reducers/filters";
+import PropTypes from "prop-types";
 
 export const FiltersContext = createContext()
 const {Provider} = FiltersContext;
@@ -23,4 +24,8 @@ export const useFilters = () => {
     const context = useContext(FiltersContext)
     if(!context) throw new Error("hooks must be wrapped with Filters")
     return context
+}
+
+Filters.prototype = {
+    children: PropTypes.element
 }

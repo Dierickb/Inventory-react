@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export const CARD_CONTAINER = {
+export const CARD_CONTAINER_PROPTYPES = {
     Children: PropTypes.element,
     title: PropTypes.string.isRequired,
     hasChild: PropTypes.element,
@@ -9,7 +9,7 @@ export const CARD_CONTAINER = {
     keyValue: PropTypes.string,
 }
 
-export const CARD_HEADER = {
+export const CARD_HEADER_PROPTYPES = {
     isCardVisible: PropTypes.bool.isRequired ,
     handleItemToSearch: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,

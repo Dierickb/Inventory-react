@@ -1,5 +1,5 @@
 import {Icon, Search} from "../../../layout";
-import InputContainer from "../../InputContainer/InputContainer";
+import InputContainer from "../../../Inputs/InputContainer/InputContainer";
 import {memo} from "react";
 
 import DropDownImage from "../../../Inputs/DropDownImage";

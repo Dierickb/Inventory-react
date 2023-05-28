@@ -2,7 +2,7 @@ import {memo, useState} from "react";
 import {setPadding} from "../common";
 import {Card} from "../../layout";
 import CardHeader from "./CardHeader";
-import {CARD_CONTAINER} from "../../common/propTypes";
+import {CARD_CONTAINER_PROPTYPES} from "../../common/propTypes";
 import PropTypes from "prop-types";
 import {useLocation} from "react-router-dom";
 
@@ -33,4 +33,4 @@ const CardContainer = ({Children, title, hasChild, info, hasTextInput, keyValue}
 
 export default memo(CardContainer)
 
-CardContainer.prototype = PropTypes.shape(CARD_CONTAINER)
+CardContainer.prototype = PropTypes.shape(CARD_CONTAINER_PROPTYPES)

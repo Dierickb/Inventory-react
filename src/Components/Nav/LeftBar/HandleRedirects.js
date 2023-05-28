@@ -1,4 +1,5 @@
 import {useCallback} from "react";
+import PropTypes from "prop-types";
 
 export const HandleRedirects = (history) => {
 
@@ -18,4 +19,8 @@ export const HandleRedirects = (history) => {
     },[history])
 
     return {handleRedirectToAdmin, handleRedirectToHome, handleRedirectToOperation, handleRedirectToGraph}
+}
+
+HandleRedirects.prototype = {
+    history: PropTypes.element,
 }

@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {FILTERS} from "../../../../../actions/filter";
+import {FILTERS} from "../../../../../actions";
 
 export const useDeviceFilter = (filterState, findDeviceBySerial,
                                 findDeviceByBusinessOrImage, findDeviceByScotiaId, setFilter) => {

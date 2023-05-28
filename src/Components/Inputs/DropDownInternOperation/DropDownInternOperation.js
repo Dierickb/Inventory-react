@@ -1,5 +1,7 @@
 import DropDownContainer from "../DropDownContainer";
 import {memo} from "react";
+import PropTypes from "prop-types";
+import {DROP_DOWN_PROPTYPES} from "../../common/propTypes/DROP_DOWN_PROPTYPES";
 
 const DropDownInternOperation = ({internOperation, display, mgLeft, padding, mgLSelect, hgSelect, ...rest}) => {
 
@@ -24,3 +26,5 @@ const DropDownInternOperation = ({internOperation, display, mgLeft, padding, mgL
 }
 
 export default memo(DropDownInternOperation)
+
+DropDownInternOperation.prototype = PropTypes.shape(DROP_DOWN_PROPTYPES)

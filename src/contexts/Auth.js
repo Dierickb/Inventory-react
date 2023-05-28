@@ -1,5 +1,6 @@
 import {createContext, useContext} from "react";
 import {authAPI} from '../api'
+import PropTypes from "prop-types";
 
 export const AuthContext = createContext();
 const {Provider} = AuthContext;
@@ -42,4 +43,8 @@ export const useAuth = () => {
     const context = useContext(AuthContext)
     if(!context) throw new Error("useAuth must be wrapped with AuthProvider")
     return context
+}
+
+AuthProvider.prototype = {
+    children: PropTypes.element
 }
