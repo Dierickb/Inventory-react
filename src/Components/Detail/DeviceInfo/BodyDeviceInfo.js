@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const BodyDeviceInfo = ({brand, product, model, business}) => {
+const  BodyDeviceInfo = ({brand, product, model, business}) => {
   return (
       <>
           <div className="cardSection deviceInfo">
