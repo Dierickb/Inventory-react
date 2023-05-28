@@ -2,7 +2,8 @@ import React from 'react';
 import {render, screen} from '@testing-library/react';
 import {initialDevice} from "../../utils/initialDevice";
 import Device from "../Device";
-import {device1, device2} from "../../mocks/Device";
+import {date, dateResult, device1, device2} from "../../mocks/Device";
+import {setBackGroundByDate} from "../setBackGroundByDate";
 
 describe('renders Device initial device', () => {
     it('renders Device initial device', () => {
@@ -89,7 +90,7 @@ describe('renders Device initial device', () => {
                 </tbody>
             </table>
         );
-        const index = screen.getByText(/2/i);
+        const index = screen.getByText("2");
         const product = screen.getByText(/Laptop/i);
         const brand = screen.getByText(/Lenovo/i);
         const model = screen.getByText(/T14/i);
@@ -138,5 +139,37 @@ describe('renders Device initial device', () => {
     })
 })
 
+describe("Function setBackGroundByDate", () => {
+    it("should return #a1a1a1 for null value", () => {
+        const pxeDate = date.dateNull
+        const result = setBackGroundByDate({pxeDate})
+        expect(result).toBe(dateResult.dateNull)
+    })
+    it("should return #088993FF for now", () => {
+        const pxeDate = date.dateNow
+        const result = setBackGroundByDate({pxeDate})
+        expect(result).toBe(dateResult.dateNow)
+    })
+    it("should return #088993FF for less than 5 days", () => {
+        const pxeDate = date.dateNowMinus3
+        const result = setBackGroundByDate({pxeDate})
+        expect(result).toBe(dateResult.dateNowMinus3)
+    })
+    it("should return #CCBC3A days between 5 and 13 days", () => {
+        const pxeDate = date.dateNowMinus6
+        const result = setBackGroundByDate({pxeDate})
+        expect(result).toBe(dateResult.dateNowMinus6)
+    })
+    it("should return #621717 for more than 13 days", () => {
+        const pxeDate = date.dateNowMinus14
+        const result = setBackGroundByDate({pxeDate})
+        expect(result).toBe(dateResult.dateNowMinus14)
+    })
+    it("should return #a1a1a1 for undefinedValue", () => {
+        const pxeDate = date.dateUndefined
+        const result = setBackGroundByDate({pxeDate})
+        expect(result).toBe(dateResult.dateUndefined)
+    })
+})
 
 

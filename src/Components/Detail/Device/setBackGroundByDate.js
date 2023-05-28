@@ -8,9 +8,7 @@ export const setBackGroundByDate = ({pxeDate}) => {
     const rest = dateNow.getTime() - dateObject.getTime()
     const days = Math.round(rest/ (1000*60*60*24))
 
-    return () => {
-        if (days > 13) return "#621717"
-        if (days <= 13 && days > 5) return "#CCBC3A"
-        return "#088993FF"
-    }
+    if (days > 13) return "#621717"
+    if (days <= 13 && days > 5) return "#CCBC3A"
+    return "#088993FF"
 }

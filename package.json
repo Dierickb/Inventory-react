@@ -10,7 +10,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "electron .",
-    "electron-dev": "concurrently \"cross-env BROWSER=none yarn start\" \"yarn dev\" -k"
+    "electron-dev": "concurrently \"cross-env BROWSER=none yarn start\" \"yarn dev\" -k",
+    "coverage": "yarn test --coverage"
   },
   "dependencies": {
     "@testing-library/user-event": "^13.2.1",
