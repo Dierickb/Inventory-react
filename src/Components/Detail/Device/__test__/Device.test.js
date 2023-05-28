@@ -2,7 +2,7 @@ import React from 'react';
 import {render, screen} from '@testing-library/react';
 import {initialDevice} from "../../utils/initialDevice";
 import Device from "../Device";
-import {device1, device2} from "../mocks/Device";
+import {device1, device2} from "../../mocks/Device";
 
 describe('renders Device initial device', () => {
     it('renders Device initial device', () => {
