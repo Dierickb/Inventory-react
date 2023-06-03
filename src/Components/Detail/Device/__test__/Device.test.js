@@ -139,6 +139,33 @@ describe('renders Device initial device', () => {
     })
 })
 
+describe('renders Device by role', () => {
+    it('renders Device by role button', () => {
+        render(
+            <table className='devices'>
+                <thead>
+                <tr className='titlesHead'>
+                    <th>Id</th>
+                    <th>Serial</th>
+                    <th>Fabricante</th>
+                    <th>Producto</th>
+                    <th>Modelo</th>
+                    <th>Ingresó</th>
+                    <th>Scotia</th>
+                    <th>PXE</th>
+                    <th>Imagen</th>
+                </tr>
+                </thead>
+                <tbody>
+                <Device device={initialDevice} index={1}  />
+                </tbody>
+            </table>
+        )
+        const setDeviceButton = screen.getByRole('button')
+        expect(setDeviceButton).toBeInTheDocument()
+    })
+})
+
 describe("Function setBackGroundByDate", () => {
     it("should return #a1a1a1 for null value", () => {
         const pxeDate = date.dateNull
