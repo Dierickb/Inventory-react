@@ -2,8 +2,9 @@ import React from 'react';
 import {render, screen} from '@testing-library/react';
 import BodyDeviceInfo from "../BodyDeviceInfo";
 import {device1, device2} from "../../mocks/Device";
+import {renderCorrectly} from "../mocks/BodyDeviceInfo";
 
-describe('renders BodyDeviceInfo device1', () => {
+describe('renders BodyDeviceInfo values', () => {
     it('renders BodyDeviceInfo emptyValues', () => {
         render(
             <BodyDeviceInfo />
@@ -45,4 +46,20 @@ describe('renders BodyDeviceInfo device1', () => {
         expect(model).toBeInTheDocument();
         expect(business).toBeInTheDocument();
     })
+})
+
+describe('render BodyDevice renders correctly', () => {
+
+    render( <BodyDeviceInfo /> )
+
+    const textBoxes = screen.getAllByRole('textbox');
+
+    const renderCorrectlyTest = textBoxes.map( textBox => textBox.innerHTML )
+
+    expect( JSON.stringify(renderCorrectlyTest.sort()) )
+        .toBe( JSON.stringify(renderCorrectly.sort()) )
+})
+
+describe('render FormDeviceInfo', () => {
+
 })
