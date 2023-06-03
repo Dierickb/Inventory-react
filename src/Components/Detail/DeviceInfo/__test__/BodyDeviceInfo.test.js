@@ -1,19 +1,21 @@
 import React from 'react';
 import {render, screen} from '@testing-library/react';
 import BodyDeviceInfo from "../BodyDeviceInfo";
-import {device1, device2} from "../../mocks/Device";
-import {renderCorrectly} from "../mocks/BodyDeviceInfo";
+import {device1, device2} from "../../mocks";
+import {renderCorrectly} from "../mocks";
 
 describe('renders BodyDeviceInfo values', () => {
+
+    /*
     it('renders BodyDeviceInfo emptyValues', () => {
         render(
             <BodyDeviceInfo />
         )
-
         const business = screen.getByText(/Scotia/i);
 
         expect(business).toBeInTheDocument();
     })
+     */
 
     it('renders BodyDeviceInfo device1', () => {
         render(

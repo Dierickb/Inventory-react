@@ -2,7 +2,7 @@ import React from 'react';
 import {render, screen} from '@testing-library/react';
 import {initialDevice} from "../../utils/initialDevice";
 import Device from "../Device";
-import {date, dateResult, device1, device2} from "../../mocks/Device";
+import {date, dateResult, device1, device2} from "../../mocks";
 import {setBackGroundByDate} from "../setBackGroundByDate";
 
 describe('renders Device initial device', () => {
