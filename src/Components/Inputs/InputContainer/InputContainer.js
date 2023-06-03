@@ -8,7 +8,7 @@ const InputContainer = ({placeHolder, title, name, defaultValue, onKeyPress}) =>
   return (
       <InputsContainer>
           <h4>{title}</h4>
-          <Input wd="calc(100% - 23.5px)" placeholder={placeHolder} name={name} defaultValue={defaultValue} onKeyPress={onKeyPress} required/>
+          <Input type="text" wd="calc(100% - 23.5px)" placeholder={placeHolder} name={name} defaultValue={defaultValue} onKeyPress={onKeyPress} required/>
       </InputsContainer>
   )
 }
