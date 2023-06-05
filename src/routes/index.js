@@ -12,8 +12,6 @@ const Home = lazy(() => import("../pages/Home"))
 const Auth = lazy(() => import("../pages/Auth"))
 const Admin = lazy(() => import("../pages/Admin"))
 
-
-
 const Routes = () => {
     const { isLoggedIn } = useAuth();
     const {isLogged, rol} = isLoggedIn();

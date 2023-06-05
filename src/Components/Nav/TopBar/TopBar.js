@@ -14,7 +14,7 @@ const TopBar = ({setActive, isActive}) => {
     }, [setActive])
 
     return (
-        <div className={`topBar ${isActive ? 'active' : ''}`}>
+        <div role="search" className={`topBar${isActive ? ' active' : ''}`}>
             <HeaderToBar active={isActive}>
                 <Icon role="button" imgWd='2em' brdRadImg='5px' bgImg='#03a9f4' onClick={() => showHide()}>
                     <img alt="" src={burgerIcon}/>
