@@ -1,57 +1,21 @@
 import React from 'react';
-import {render, screen} from '@testing-library/react';
+import {fireEvent, screen} from '@testing-library/react';
+import {render} from './test-utils'
 import {initialDevice} from "../../utils/initialDevice";
 import Device from "../Device";
 import {date, dateResult, device1, device2} from "../../mocks";
 import {setBackGroundByDate} from "../setBackGroundByDate";
 
-describe('renders Device initial device', () => {
+describe('renders Device Correctly', () => {
     it('renders Device initial device', () => {
-        render(
-            <table className='devices'>
-                <thead>
-                <tr className='titlesHead'>
-                    <th>Id</th>
-                    <th>Serial</th>
-                    <th>Fabricante</th>
-                    <th>Producto</th>
-                    <th>Modelo</th>
-                    <th>Ingresó</th>
-                    <th>Scotia</th>
-                    <th>PXE</th>
-                    <th>Imagen</th>
-                </tr>
-                </thead>
-                <tbody>
-                <Device device={initialDevice} index={1}  />
-                </tbody>
-            </table>
-        )
+        render(<Device device={initialDevice} index={1}  />)
         const linkElement = screen.getByText(/1/i);
         expect(linkElement).toBeInTheDocument();
     })
 
     it('renders Device device1', () => {
-        render(
-            <table className='devices'>
-                <thead>
-                <tr className='titlesHead'>
-                    <th>Id</th>
-                    <th>Serial</th>
-                    <th>Fabricante</th>
-                    <th>Producto</th>
-                    <th>Modelo</th>
-                    <th>Ingresó</th>
-                    <th>Scotia</th>
-                    <th>PXE</th>
-                    <th>Imagen</th>
-                </tr>
-                </thead>
-                <tbody>
-                <Device device={device1} index={1}  />
-                </tbody>
-            </table>
-        );
+        render(<Device device={device1} index={1}  />)
+
         const product = screen.getByText(/Laptop/i);
         const brand = screen.getByText(/Lenovo/i);
         const model = screen.getByText(/T14/i);
@@ -70,26 +34,8 @@ describe('renders Device initial device', () => {
     })
 
     it('renders Device device2', () => {
-        render(
-            <table className='devices'>
-                <thead>
-                <tr className='titlesHead'>
-                    <th>Id</th>
-                    <th>Serial</th>
-                    <th>Fabricante</th>
-                    <th>Producto</th>
-                    <th>Modelo</th>
-                    <th>Ingresó</th>
-                    <th>Scotia</th>
-                    <th>PXE</th>
-                    <th>Imagen</th>
-                </tr>
-                </thead>
-                <tbody>
-                <Device device={device2} index={2}  />
-                </tbody>
-            </table>
-        );
+        render(<Device device={device2} index={2}  />)
+
         const index = screen.getByText("2");
         const product = screen.getByText(/Laptop/i);
         const brand = screen.getByText(/Lenovo/i);
@@ -141,26 +87,7 @@ describe('renders Device initial device', () => {
 
 describe('renders Device by role', () => {
     it('renders Device by role button', () => {
-        render(
-            <table className='devices'>
-                <thead>
-                <tr className='titlesHead'>
-                    <th>Id</th>
-                    <th>Serial</th>
-                    <th>Fabricante</th>
-                    <th>Producto</th>
-                    <th>Modelo</th>
-                    <th>Ingresó</th>
-                    <th>Scotia</th>
-                    <th>PXE</th>
-                    <th>Imagen</th>
-                </tr>
-                </thead>
-                <tbody>
-                <Device device={initialDevice} index={1}  />
-                </tbody>
-            </table>
-        )
+        render(<Device device={initialDevice} index={1}  />)
         const setDeviceButton = screen.getByRole('button')
         expect(setDeviceButton).toBeInTheDocument()
     })
