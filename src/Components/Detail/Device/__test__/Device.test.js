@@ -58,29 +58,15 @@ describe('renders Device Correctly', () => {
     })
 
     it('render Device handleShow', () => {
-        const showHandle = () => {
-            console.log('showHandle: ', device2)
-        }
-        render(
-            <table className='devices'>
-                <thead>
-                <tr className='titlesHead'>
-                    <th>Id</th>
-                    <th>Serial</th>
-                    <th>Fabricante</th>
-                    <th>Producto</th>
-                    <th>Modelo</th>
-                    <th>Ingresó</th>
-                    <th>Scotia</th>
-                    <th>PXE</th>
-                    <th>Imagen</th>
-                </tr>
-                </thead>
-                <tbody>
-                <Device device={device2} index={1} handleShowDevice={showHandle} />
-                </tbody>
-            </table>
-        );
+        const showHandle = jest.fn()
+        const {getByRole} = render(
+            <Device device={device2} index={2} handleShowDevice={showHandle} />
+        )
+
+        const stateElement = getByRole("button")
+
+        fireEvent.click(stateElement)
+        expect(showHandle).toHaveBeenCalledTimes(1)
 
     })
 })
