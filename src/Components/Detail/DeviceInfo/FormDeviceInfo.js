@@ -31,10 +31,10 @@ const FormDeviceInfo = ({device}) => {
                                    defaultValue={device?.internOperation}/>
 
           <div className="cardSection">
-              <Input placeholder="ScotiaId" name="scotiaId" maxLength={8} />
+              <Input type="text" placeholder="ScotiaId" name="scotiaId" maxLength={8} />
           </div>
           <div className="cardSection">
-              <Input placeholder="Nombre" name="name"/>
+              <Input type="text" placeholder="Nombre" name="name"/>
           </div>
       </form>
   )
