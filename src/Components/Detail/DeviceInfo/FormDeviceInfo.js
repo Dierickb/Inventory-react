@@ -18,12 +18,12 @@ const FormDeviceInfo = ({device}) => {
     useHandleSubmit({onSubmitData, device})
 
   return (
-      <form id="deviceInfoForm" onSubmit={(e) => handleSubmit(e, device, handleOnSubmitData, eventsNames)}>
+      <form role="search" id="deviceInfoForm" onSubmit={(e) => handleSubmit(e, device, handleOnSubmitData, eventsNames)}>
 
           <DropDownImage key={"image"+device?.image}
                          display="flex" mgLeft="5px" padding="0.4em 1em"
                          mgLSelect="10px" hgSelect="2.3em" pdSelector="0 10px 0 10px"
-                         defaultValue={device?.image} />
+                         defaultImage={device?.image} />
 
           <DropDownInternOperation key={"internOperation"+device?.internOperation}
                                    display="flex" mgLeft="5px" padding="0.4em 1em"
