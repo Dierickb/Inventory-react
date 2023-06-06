@@ -19,10 +19,10 @@ const DeviceInfo = ({device, cleanDeviceInfo}) => {
             <CardHeader fontSize="20px">
                 <h2>Product Info
                     <div className="productInfo">
-                        <h2>Serial: <p>{device.serial}</p></h2>
+                        <h2>Serial: <p>{device?.serial}</p></h2>
                     </div>
                 </h2>
-                <Icon onClick={handleCleanDevice} bgImg='#03a9f4'>
+                <Icon role="cleanButton" onClick={handleCleanDevice} bgImg='#03a9f4'>
                    <img className="fas" src={trashIcon} alt=""/>
                 </Icon>
             </CardHeader>
@@ -32,8 +32,8 @@ const DeviceInfo = ({device, cleanDeviceInfo}) => {
             <FormDeviceInfo device={device} />
 
             <CardFooter>
-                <h5>Entered: <p>{device.entryDate}</p></h5>
-                <h5>PXEd: <p>{device.pxeDate}</p></h5>
+                <h5>Entered: <p>{device?.entryDate}</p></h5>
+                <h5>PXEd: <p>{device?.pxeDate}</p></h5>
                 <div className="form-group">
                     <p><input form="deviceInfoForm" name={eventsNames.EVENT_UPDATE} type="submit" value="Actualizar" id="event_update" /></p>
                     <p><input form="deviceInfoForm" name={eventsNames.EVENT_SEND} type="submit" value="Enviar" id="event_send" /></p>

@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {useBootCenterDevices, useFilters} from "../../../../contexts";
+import {useBootCenterDevices} from "../../../../contexts";
 import PropTypes from "prop-types";
 import {initialStateDeviceInfoSubmit} from "../../../../utils/utilities";
 import {eventsNames} from "../utils";
