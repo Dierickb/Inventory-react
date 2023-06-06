@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import {inputsFilterDefaultValues} from "../../../utils/utilities";
 import {DROP_DOWN_PROPTYPES} from "../../common/propTypes/DROP_DOWN_PROPTYPES";
 
-const DropDownImage = ({image: defaultImage, display, mgLeft, padding, mgLSelect, hgSelect, ...rest}) => {
+const DropDownImage = ({defaultImage, display, mgLeft, padding, mgLSelect, hgSelect, ...rest}) => {
 
     const {state, getCustomerOperation} = useOperations()
 
