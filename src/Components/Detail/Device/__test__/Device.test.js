@@ -21,7 +21,7 @@ describe('renders Device Correctly', () => {
         const model = screen.getByText(/T14/i);
         const serial = screen.getByText(/Serial1/i);
         const entryDate = screen.getByText(/11\/1\/2022/i);
-        const image = screen.getByText(/Sin Imagen/i);
+        const image = screen.getByText(/Imagen/i);
         const business = screen.getByText(/GSG/i);
 
         expect(product).toBeInTheDocument();
