@@ -16,7 +16,7 @@ const DropDownImage = ({defaultImage, display, mgLeft, padding, mgLSelect, hgSel
     }, [])
 
   return (
-      <DropDownContainer title="Imagen" key={!defaultImage ? "image" : defaultImage }
+      <DropDownContainer title="Imagen" key={!defaultImage ? "image" : `${defaultImage + state?.customerOperation?.length}` }
                          values={state?.customerOperation}
                          name={inputsFilterDefaultValues.image}
                          defaultValue={defaultImage}
