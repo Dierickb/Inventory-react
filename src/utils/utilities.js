@@ -26,6 +26,7 @@ export const inputsFilterDefaultValues = Object.freeze({
     scotiaId: "",
     business: "businessSelect",
     image: "imageSelect",
+    internOperation: "internOperationSelect"
 })
 
 export const inputsFilterTextName = Object.freeze({
