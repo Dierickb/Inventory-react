@@ -6,7 +6,7 @@ export const device1 = {
     serial: "Serial1",
     entryDate: "11/1/2022",
     pxeDate: "",
-    image: "Sin Imagen",
+    image: "",
     business: "GSG",
 }
 
