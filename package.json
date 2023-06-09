@@ -19,6 +19,7 @@
     "electron-builder": "^22.10.3",
     "electron-devtools-installer": "3.2.0",
     "electron-is-dev": "2.0.0",
+    "enzyme": "^3.11.0",
     "firebase": "9.17.1",
     "formik": "2.2.9",
     "jwt-decode": "3.1.2",
