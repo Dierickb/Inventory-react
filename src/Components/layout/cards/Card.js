@@ -9,10 +9,10 @@ export const Card = styled.div`
   margin-left: ${ (props) =>  props?.mgLt ? props.mgLt : 'none' };
   margin-right: ${ (props) =>  props?.mgRg ? props.Rg : 'none' };
   height: ${ (props) =>  props?.hg ? props.hg : 'auto' };
-  border-radius: 15px 15px 15px 15px;
+  border-radius: ${ (props) =>  props?.borderRadius ? props.borderRadius : '15px 15px 15px 15px' };
   background-color: #fff;
   overflow-y: auto;
-  box-shadow: 2px 4px 4px 4px rgb(0 0 0 / 25%);
+  box-shadow: ${ (props) =>  props?.boxShadow ? props.boxShadow : '2px 4px 4px 4px rgb(0 0 0 / 25%)' };
   height: -webkit-fill-available;
 `
 
