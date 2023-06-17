@@ -13,6 +13,6 @@ export const Card = styled.div`
   background-color: #fff;
   overflow-y: auto;
   box-shadow: ${ (props) =>  props?.boxShadow ? props.boxShadow : '2px 4px 4px 4px rgb(0 0 0 / 25%)' };
-  height: -webkit-fill-available;
+  height: ${(props) => props?.hg ? props.hg : "-webkit-fill-available"};
 `
 
