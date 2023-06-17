@@ -1,5 +1,4 @@
-import {Card, CardHeader} from "../../layout";
-import './devices.scss'
+import {Card, CardHeader, DefaultTable} from "../../layout";
 import rotateIcon from "./icons/rotate-solid.svg"
 
 import {memo, useCallback} from "react";
@@ -28,24 +27,24 @@ const Devices = ({showDevice}) => {
                     <img className="fas" src={rotateIcon} alt=""/>
                 </span>
             </CardHeader>
-            <table className='devices'>
+            <DefaultTable>
                 <thead>
-                <tr className='titlesHead'>
-                    <th>Id</th>
-                    <th>Serial</th>
-                    <th>Fabricante</th>
-                    <th>Producto</th>
-                    <th>Modelo</th>
-                    <th>Ingresó</th>
-                    <th>Scotia</th>
-                    <th>PXE</th>
-                    <th>Imagen</th>
-                </tr>
+                    <tr>
+                        <th>Id</th>
+                        <th>Serial</th>
+                        <th>Fabricante</th>
+                        <th>Producto</th>
+                        <th>Modelo</th>
+                        <th>Ingresó</th>
+                        <th>Scotia</th>
+                        <th>PXE</th>
+                        <th>Imagen</th>
+                    </tr>
                 </thead>
 
                 <TBodyDevices devices={bootCenterState.devices} handleShowDevice={handleShowDevice} />
 
-            </table>
+            </DefaultTable>
         </Card>
     )
 }
