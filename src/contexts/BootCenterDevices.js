@@ -45,7 +45,7 @@ export const BootCenterDevicesProvider = ({children}) => {
             business, serial, outAllowed, itemToSearch, image, ...rest})
     }
     const deleteDevice = async ({serial}) => {
-        await deleteDeviceAPI({serial})
+        return await deleteDeviceAPI({serial})
     }
 
     const findDeviceBySerial = async (serial) => {

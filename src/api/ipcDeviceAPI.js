@@ -63,7 +63,6 @@ export const ipcDeviceAPI = () => {
         }
 
         testData.splice(index, 1, newDevice)
-
         return newDevice
 
     }
@@ -84,6 +83,7 @@ export const ipcDeviceAPI = () => {
     const deleteDeviceAPI = async ({serial}) => {
         const index = testData.findIndex(device => device.serial === serial)
         testData.splice(index, 1)
+        return !!testData.findIndex(device => device.serial === serial)
     }
 
     const removeAllListenersIPC = async () => {
