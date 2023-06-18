@@ -83,7 +83,6 @@ export const ipcDeviceAPI = () => {
 
     const deleteDeviceAPI = async ({serial}) => {
         const index = testData.findIndex(device => device.serial === serial)
-        console.log(index)
         testData.splice(index, 1)
     }
 
