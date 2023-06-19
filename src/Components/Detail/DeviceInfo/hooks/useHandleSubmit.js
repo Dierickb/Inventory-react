@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import {initialStateDeviceInfoSubmit} from "../../../../utils/utilities";
 import {eventsNames} from "../utils";
 
+import {toast} from "react-toastify"
+
 export const useHandleSubmit = ({onSubmitData, device}) => {
 
     const { getDevices, updateDevice, deleteDevice } = useBootCenterDevices()
@@ -11,16 +13,25 @@ export const useHandleSubmit = ({onSubmitData, device}) => {
 
     useEffect(() => {
         if(onSubmitData?.submitterName === eventsNames.EVENT_SEND) {
-            (async () => await deleteDevice({...device}))()
+            deleteDevice({...device})
+            .then((result) => 
+                toast(`💻 Device ${result.serial} has been removed`)
+            )
         }
 
         if(onSubmitData?.submitterName === eventsNames.EVENT_UPDATE &&
             device !== onSubmitData.data
         ) {
-            (async () => await updateDevice({...device, ...onSubmitData.data, itemToSearch}))()
+            updateDevice({...device, ...onSubmitData.data, itemToSearch})
+            .then((result) => 
+                toast(`💻 Device ${result.serial} has been updated
+                    ${result.image!== device.image ? `with image ${result?.image}` : ""} 
+                `)
+            )
         }
 
         (async () => await getDevices())()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [onSubmitData?.submitterName, onSubmitData?.data])
 
 }
