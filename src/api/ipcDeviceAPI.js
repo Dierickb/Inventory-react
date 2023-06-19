@@ -48,7 +48,7 @@ export const ipcDeviceAPI = () => {
 
         const index = testData.findIndex(device => device.serial === itemToSearch)
         const validateSerial = await updateValidateSerial({newSerial, device})
-        console.log(validateSerial)
+        
         const date = setPxeDateByImage(image)
 
         const newDevice = {
@@ -69,7 +69,7 @@ export const ipcDeviceAPI = () => {
     }
 
     const updateValidateSerial = async ({newSerial, device}) => {
-        if(!newSerial || device.serial === newSerial) return
+        if(!newSerial || device.serial === newSerial) return device.serial
 
         const deviceBySerial = await findDeviceAPI(newSerial)
         if (deviceBySerial.length === 0) return newSerial
