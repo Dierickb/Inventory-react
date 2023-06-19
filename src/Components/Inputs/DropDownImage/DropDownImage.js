@@ -13,10 +13,11 @@ const DropDownImage = ({defaultImage, display, mgLeft, padding, mgLSelect, hgSel
         (async () => {
             await getCustomerOperation()
         })()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
   return (
-      <DropDownContainer title="Imagen" key={!defaultImage ? "image" : `${defaultImage + state?.customerOperation?.length}` }
+      <DropDownContainer title={(rest?.contentTitle === "empty") ? " " : "Imagen"} key={!defaultImage ? "image" : `${defaultImage + state?.customerOperation?.length}` }
                          values={state?.customerOperation}
                          name={inputsFilterDefaultValues.image}
                          defaultValue={defaultImage}
