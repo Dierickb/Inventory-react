@@ -1,10 +1,12 @@
-import { useState, memo } from "react"
+import { useState, memo, lazy } from "react"
 
 import { Input, DropDown, Button } from "../../../layout"
 
 import {useFormDevice} from "./hooks"
 
-const FormDevice = ({index, device, DropDownImage}) => {
+const DropDownImage = lazy(() => import("../../../Inputs/DropDownImage"))
+
+const FormDevice = ({index, device}) => {
 
   const [image, setImage] = useState(device?.image)
   const [action, setAction] = useState("")
