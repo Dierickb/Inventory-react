@@ -42,12 +42,13 @@ export const ipcDeviceAPI = () => {
             return testData.filter(device => (device.business === business && device.image === image ) && device)
     }
 
-    const updateDeviceAPI = async ({brand, product, model, business, image, serial, outAllowed, itemToSearch, ...rest}) => {
+    const updateDeviceAPI = async ({brand, product, model, business, image, newSerial, outAllowed, itemToSearch, ...rest}) => {
         const device = testData.find(device => device.serial === itemToSearch)
         if(!device) return
 
         const index = testData.findIndex(device => device.serial === itemToSearch)
-        const validateSerial = await updateValidateSerial({serial, device})
+        const validateSerial = await updateValidateSerial({newSerial, device})
+        console.log(validateSerial)
         const date = setPxeDateByImage(image)
 
         const newDevice = {
@@ -67,11 +68,13 @@ export const ipcDeviceAPI = () => {
 
     }
 
-    const updateValidateSerial = async ({serial, device}) => {
-        if (!!serial && device.serial !== serial) {
-            const deviceBySerial = await findDeviceAPI(serial)
-            if (!deviceBySerial) return serial
-        } else return device.serial
+    const updateValidateSerial = async ({newSerial, device}) => {
+        if(!newSerial || device.serial === newSerial) return
+
+        const deviceBySerial = await findDeviceAPI(newSerial)
+        if (deviceBySerial.length === 0) return newSerial
+
+        return device.serial
     }
 
     const setPxeDateByImage = (image) => {
