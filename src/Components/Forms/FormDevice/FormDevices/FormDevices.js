@@ -32,9 +32,7 @@ const FormDevices = () => {
                         <th>Accion</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <FormTBodyDevice devices={bootCenterState?.devices}/>
-                </tbody>
+                <FormTBodyDevice devices={bootCenterState?.devices}/>
             </DefaultTable>
         </Card>
     )
