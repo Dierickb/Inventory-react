@@ -13,6 +13,7 @@ const Devices = ({showDevice}) => {
     const { getDevices, state: bootCenterState, setFindDevice, removeAllListeners } = useBootCenterDevices()
     const {state: filterState} = useFilters()
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const handleShowDevice = useCallback((device) => showDevice(device), [])
 
     useShowDevicesBootCenter(getDevices, removeAllListeners)
