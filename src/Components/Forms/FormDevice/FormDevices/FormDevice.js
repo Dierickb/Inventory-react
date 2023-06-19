@@ -1,10 +1,9 @@
-import { useState, memo, lazy } from "react"
-
-import { Input, DropDown, Button } from "../../../layout"
+import { useState, memo } from "react"
 
 import {useFormDevice} from "./hooks"
 
-const DropDownImage = lazy(() => import("../../../Inputs/DropDownImage"))
+import { Input, DropDown, Button } from "../../../layout"
+import DropDownImage from "../../../Inputs/DropDownImage"
 
 const FormDevice = ({index, device}) => {
 
@@ -28,7 +27,7 @@ const FormDevice = ({index, device}) => {
         <td>{device.pxeDate}</td>
         <td>
           <DropDownImage onChange={(e) => setImage(e.target.value)}
-          defaultImage={device?.image} contentTitle="empty" />
+            defaultImage={device?.image} contentTitle="empty" />
         </td>
         <td>
           <DropDown onChange={async (e) => setAction(e.target.value)}>
