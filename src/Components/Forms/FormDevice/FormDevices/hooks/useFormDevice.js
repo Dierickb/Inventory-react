@@ -6,7 +6,7 @@ export const useFormDevice = () => {
 
     const { updateDevice, deleteDevice, getDevices} = useBootCenterDevices()
     const distpatchByAction = async ({action, device, image, serial}) => {
-        if(!action) return
+        if(!action) toast(`Select an Action in ${device.serial} to Distpatch`)
         if(action === "Update") updateDevice({...device, image, itemToSearch: device.serial, serial})
             .then((result) => 
                 toast(`💻 Device ${device.serial} has been updated
