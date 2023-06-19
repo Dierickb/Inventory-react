@@ -5,8 +5,6 @@ export const DefaultTable = styled.table`
     border-collapse: collapse;
     margin-top: ${(props) => props?.mgTop ? props.mgTop : '10px'};
 
-    backgroud: red;
-
     th{
         padding: 9px 5px;
         text-align: center;
@@ -34,5 +32,8 @@ export const DefaultTable = styled.table`
             background: none;
             color: black;
         }
+    }
+    tbody {
+        heigth: 70px;
     }
 `
