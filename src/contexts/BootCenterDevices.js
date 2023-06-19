@@ -3,6 +3,8 @@ import {deviceInitialState, devicesReducer} from "../reducers/devices";
 import {DEVICE_ACTIONS, FILTERS} from "../actions";
 import {ipcDeviceAPI} from "../api";
 import PropTypes from "prop-types";
+import {ipcMessages} from "../common/ipcMessages"
+import {ValidationError, ConnectionError, MessageValidation} from "../errors/errorsIpcDeviceAPI"
 
 export const BootCenterDevicesContext = createContext();
 const {Provider} = BootCenterDevicesContext;
@@ -33,10 +35,20 @@ export const BootCenterDevicesProvider = ({children}) => {
     }
 
     const setDevice = async ({brand, product, model, business, serial, outAllowed}) => {
-        await setDeviceAPI(
-            {brand, product, model, business, serial, outAllowed}
-        )
-        await getDevices()
+        try {
+            await setDeviceAPI(
+                {brand, product, model, business, serial, outAllowed}
+            )
+        } catch(e) {
+            if(e instanceof MessageValidation && 
+                e.message === ipcMessages.SET_DEVICE_DEVICE_UPLOADED) {
+                await getDevices()
+                return e
+            }
+            if(e instanceof MessageValidation) return e
+            //if(e instanceof ConnectionError) 
+        }
+        
     }
 
     const updateDevice = async ({brand, product, model, business, serial: newSerial,

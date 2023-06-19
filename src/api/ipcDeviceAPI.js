@@ -1,5 +1,7 @@
 import {testData} from "../utils/testData";
 import {inputsFilterTextName} from "../utils/utilities";
+import {ipcMessages} from "../common/ipcMessages"
+import {ValidationError, ConnectionError, MessageValidation} from "../errors/errorsIpcDeviceAPI"
 
 export const ipcDeviceAPI = () => {
 
@@ -10,12 +12,15 @@ export const ipcDeviceAPI = () => {
     const setDeviceAPI = async ({brand, product, model, business, serial, outAllowed}) => {
         const deviceFiltered = await findDeviceAPI(serial)
 
-        if(deviceFiltered?.length > 0) console.log("Device Already exist")
-        if(deviceFiltered?.length === 0) testData.unshift(
-            {serial: serial, model: model, brand: brand, product: product, business: business, image: "Sin Imagen",
+        if(deviceFiltered?.length > 0) 
+            throw new MessageValidation(ipcMessages.SET_DEVICE_API_DEVICE_ALREADY_EXIST)
+        if(deviceFiltered?.length === 0) {
+            testData.unshift({serial: serial, model: model, brand: brand, 
+                product: product, business: business, image: "Sin Imagen",
                 entryDate: new Date().toLocaleDateString('en-GB')
-            }
-        )
+            })
+            throw new MessageValidation(ipcMessages.SET_DEVICE_DEVICE_UPLOADED)
+        }
     }
 
     const findDeviceAPI = async (serial) => {
