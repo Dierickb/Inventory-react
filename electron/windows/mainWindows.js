@@ -27,7 +27,7 @@ const createWindow = async () => {
     mainWindow = new BrowserWindow({
         width: 1500,
         height: 1000,
-        title: "Musicfy",
+        title: "Assets",
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
