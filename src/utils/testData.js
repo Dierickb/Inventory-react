@@ -307,3 +307,12 @@ export const internOperation = [
         operation: "IT SUPPORT"
     }
 ]
+
+export const auths = {
+    "dierickbro@gmail.com": {
+        email: "dierickbro@gmail.com",
+        password: "12345678",
+        rol: "admin",
+        uid: "uid-1"
+    }
+}

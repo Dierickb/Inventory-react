@@ -4,3 +4,4 @@ export {brandAPI} from './brandAPI'
 export {ipcBrandAPI} from "./ipcBrandAPI"
 export {ipcOperations} from "./ipcOperations"
 export {ipcDeviceAPI} from "./ipcDeviceAPI"
+export {ipcAuthAPI} from "./ipcAuthAPI"
