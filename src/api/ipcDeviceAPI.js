@@ -49,7 +49,8 @@ export const ipcDeviceAPI = () => {
 
     const updateDeviceAPI = async ({brand, product, model, business, image, newSerial, outAllowed, itemToSearch, ...rest}) => {
         const device = testData.find(device => device.serial === itemToSearch)
-        if(!device) return
+        
+        if(!device || device === undefined) throw new MessageValidation(ipcMessages.UPDATE_DEVICE_DEVICE_DOES_NOT_EXIST)
 
         const index = testData.findIndex(device => device.serial === itemToSearch)
         const validateSerial = await updateValidateSerial({newSerial, device})

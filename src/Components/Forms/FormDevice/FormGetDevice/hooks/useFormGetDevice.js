@@ -5,6 +5,9 @@ import {handleSetFormDevice} from "../../handles";
 import {deviceSettingsKeysValues} from "../../../../../utils/utilities";
 import PropTypes from "prop-types";
 
+import {MessageValidation} from "../../../../../errors/errorsIpcDeviceAPI"
+import {toast} from "react-toastify"
+
 export const useFormGetDevice = (itemToSearch, keyValue) => {
     const [defaultValue, setDefaultValue] = useState(formDeviceSelectInitialState)
 
@@ -15,17 +18,27 @@ export const useFormGetDevice = (itemToSearch, keyValue) => {
         const {brand, product, model, business, serial, outAllowed} = handleSetFormDevice(e)
 
         if(keyValue === deviceSettingsKeysValues.EDIT_DEVICE)
-            !!serial && await updateDevice({brand, product, model, business, serial, outAllowed, itemToSearch})
+            !!serial && updateDevice({brand, product, model, business, serial, outAllowed, itemToSearch})
+            .then(result => {
+                if(result instanceof MessageValidation) toast(`💻 ${result.message}`)
+                if(!!result?.serial)
+                    toast(`💻 Device ${serial} has been updated`)
+            })
 
         if(keyValue === deviceSettingsKeysValues.DELETE_DEVICE)
-            !!serial && await deleteDevice({serial})
+            !!serial && deleteDevice({serial}) 
+            .then((result) => 
+                toast(`💻 Device ${serial} has been removed`)
+            )
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     useEffect(() => {
         (async () => {
             setDefaultValue(await getDevice(itemToSearch))
         })()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [itemToSearch])
 
     return {defaultValue, handleRegister}

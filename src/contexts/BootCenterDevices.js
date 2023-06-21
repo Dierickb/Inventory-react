@@ -53,8 +53,13 @@ export const BootCenterDevicesProvider = ({children}) => {
 
     const updateDevice = async ({brand, product, model, business, serial: newSerial,
                                     outAllowed, itemToSearch, image, ...rest}) => {
-        return await updateDeviceAPI({brand, product, model,
-            business, newSerial, outAllowed, itemToSearch, image, ...rest})
+        try {
+            return await updateDeviceAPI({brand, product, model,
+                business, newSerial, outAllowed, itemToSearch, image, ...rest})
+        } catch (e) {
+            if(e instanceof MessageValidation) return e
+        }
+        
     }
     const deleteDevice = async ({serial}) => {
         return await deleteDeviceAPI({serial})
