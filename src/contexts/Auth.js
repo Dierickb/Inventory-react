@@ -1,15 +1,15 @@
 import {createContext, useContext} from "react";
-import {authAPI} from '../api'
+import {ipcAuthAPI} from '../api'
 import PropTypes from "prop-types";
 
 export const AuthContext = createContext();
 const {Provider} = AuthContext;
-const {login: loginApiAuth, logout: logoutApiAuth} = authAPI();
+const {login: ipLogin} = ipcAuthAPI()
 
 export const AuthProvider = ({children}) => {
+    
     const logout = async () => {
         try {
-            await logoutApiAuth()
             localStorage.removeItem("auth")
             window.location.href = "/login";
         } catch (e) {
@@ -26,8 +26,8 @@ export const AuthProvider = ({children}) => {
 
     const login = async (username, password) => {
         try {
-            const [email, uid, rol] = await loginApiAuth(username, password)
-            localStorage.setItem("auth", JSON.stringify({email: email, uid: uid, rol: rol}))
+            const {userEmail, uid, rol} = await ipLogin(username, password)            
+            localStorage.setItem("auth", JSON.stringify({email: userEmail, uid: uid, rol: rol}))
             return true
         } catch (e) {
             throw e
