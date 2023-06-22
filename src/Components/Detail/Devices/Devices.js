@@ -10,20 +10,17 @@ import {DEVICE_PROPTYPES} from "../../common/propTypes";
 
 const Devices = ({showDevice}) => {
 
-    const { getDevices, state: bootCenterState, setFindDevice, removeAllListeners } = useBootCenterDevices()
+    const {state, setFindDevice} = useShowDevicesBootCenter()
     const {state: filterState} = useFilters()
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const handleShowDevice = useCallback((device) => showDevice(device), [])
 
-    useShowDevicesBootCenter(getDevices, removeAllListeners)
-
-    if (bootCenterState.loading) return <h3>Loading...</h3>
+    if (state.loading) return <h3>Loading...</h3>
 
     return (
         <Card>
             <CardHeader>
-                <h2>{bootCenterState?.devices?.length} Equipos en stock</h2>
+                <h2>{state?.devices?.length} Equipos en stock</h2>
                 <span onClick={async () => await setFindDevice(filterState)}>
                     <img className="fas" src={rotateIcon} alt=""/>
                 </span>
@@ -43,7 +40,7 @@ const Devices = ({showDevice}) => {
                     </tr>
                 </thead>
 
-                <TBodyDevices devices={bootCenterState.devices} handleShowDevice={handleShowDevice} />
+                <TBodyDevices devices={state.devices} handleShowDevice={handleShowDevice} />
 
             </DefaultTable>
         </Card>
