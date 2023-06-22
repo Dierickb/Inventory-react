@@ -4,7 +4,7 @@ import rotateIcon from "./icons/rotate-solid.svg"
 import {memo, useCallback} from "react";
 import PropTypes from "prop-types";
 import {useShowDevicesBootCenter} from "./hooks";
-import {useBootCenterDevices, useFilters} from "../../../contexts";
+import {useFilters} from "../../../contexts";
 import TBodyDevices from "./TBodyDevices";
 import {DEVICE_PROPTYPES} from "../../common/propTypes";
 
