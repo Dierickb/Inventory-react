@@ -7,7 +7,7 @@ const testDevices = [
         serial: "Serial",
         entryDate: "11/1/2022",
         pxeDate: "",
-        operationAssigned: "Sin Imagen",
+        operationAssigned: "",
         scotia: "GSG",
     },
     {
@@ -29,7 +29,7 @@ const testDevices = [
         serial: "Serial2",
         entryDate: "12/1/2022",
         pxeDate: "",
-        operationAssigned: "Sin Imagen",
+        operationAssigned: "",
         scotia: "GSG",
     },
     {
@@ -51,7 +51,7 @@ const testDevices = [
         serial: "Serial4",
         entryDate: "12/1/2022",
         pxeDate: "",
-        operationAssigned: "Sin Imagen",
+        operationAssigned: "",
         scotia: "GSG",
     },
     {

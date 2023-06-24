@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import {initialStateDeviceInfoSubmit} from "../../../../utils/utilities";
 import {eventsNames} from "../utils";
 
+import {inputsFilterDefaultValues} from "../../../../utils/utilities"
+
 import {toast} from "react-toastify"
 
 export const useHandleSubmit = ({onSubmitData, device}) => {
@@ -12,11 +14,21 @@ export const useHandleSubmit = ({onSubmitData, device}) => {
     const itemToSearch = device?.serial
 
     useEffect(() => {
+        if(!device?.serial) {
+            toast(`You must select a device`)
+            return
+        }
+        
         if(onSubmitData?.submitterName === eventsNames.EVENT_SEND) {
             deleteDevice({...device})
             .then((result) => 
                 toast(`💻 Device ${result.serial} has been removed`)
             )
+        }
+
+        if(device?.image === inputsFilterDefaultValues.image) {
+            toast(`Device selected must be different to empty or default value`)
+            return
         }
 
         if(onSubmitData?.submitterName === eventsNames.EVENT_UPDATE &&
