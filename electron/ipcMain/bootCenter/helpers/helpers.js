@@ -1,4 +1,5 @@
 const {testData} = require("../../../common/testData")
+const {defaultValues} = require("../../../common/defaultValues")
 
 const updateValidateSerialBootCenter = async ({newSerial, device}) => {
     if(!newSerial || device.serial === newSerial) return device.serial
@@ -14,13 +15,19 @@ const findDeviceAPIBootCenter = async (serial) => {
 }
 
 const setPxeDateByImageBootCenter = (image) => {
-    if(!!image) {
-        return new Date().toLocaleDateString('en-GB');
-    } else return ""
+    if(!image || image===defaultValues.image) return ""
+    
+    return new Date().toLocaleDateString('en-GB');
 }
 
 const findDeviceAPI = async (serial) => {
     return await testData.filter(device => device.serial === serial)
+}
+
+const defaultImage = ({image, device}) => {
+    if(!!image && image !== defaultValues.image) return image
+    if(!image && !!device?.image) return device?.image
+    return ""   
 }
 
 module.exports = {
@@ -28,4 +35,5 @@ module.exports = {
     findDeviceAPIBootCenter,
     setPxeDateByImageBootCenter,
     findDeviceAPI,
+    defaultImage,
 }
