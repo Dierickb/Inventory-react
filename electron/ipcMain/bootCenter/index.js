@@ -1,2 +1,1 @@
-require('./getDevicesBootCenter')
-require('./setDeviceBootCenter')
+require('./devicesBootCenter')

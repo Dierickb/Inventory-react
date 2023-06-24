@@ -1,27 +1,10 @@
 const electron = require("electron");
 const isDev = require("electron-is-dev");
 const path = require("path");
-const {app, session} = require("electron");
+const {app} = require("electron");
 const BrowserWindow = electron.BrowserWindow;
 
 let mainWindow;
-const installExtensions = async () => {
-    const options = {
-        loadExtensionOptions: { allowFileAccess: true },
-    };
-    const { default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } = require("electron-devtools-installer")
-    const extensions = [REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS];
-
-    for (const extension of extensions) {
-        try {
-            const installedExt = await installExtension(extension, options)
-            console.log(`Added extension: ${installedExt}`)
-        } catch (e) {
-            console.log("An error ocurred", e)
-        }
-    }
-}
-
 
 const createWindow = async () => {
     mainWindow = new BrowserWindow({
