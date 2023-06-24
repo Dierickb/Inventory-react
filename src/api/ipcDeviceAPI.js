@@ -1,102 +1,113 @@
-import {testData} from "../utils/testData";
 import {inputsFilterTextName} from "../utils/utilities";
+import {ipcDeviceAPIExpectedError} from "../errors/expectedErrors"
 import {ipcMessages} from "../common/ipcMessages"
-import {ValidationError, ConnectionError, MessageValidation} from "../errors/errorsIpcDeviceAPI"
+import {ErrorMessageToUI} from "../errors/errorsIpcDeviceAPI"
+import {BOOT_CENTER_CHANNELS} from "../channels"
+
+const {ipcRenderer} = window.require("electron")
 
 export const ipcDeviceAPI = () => {
 
-    const getDevicesAPI = () => {
-        return testData
+    const getDevicesAPI = async () => {
+        return await  ipcRenderer.invoke(BOOT_CENTER_CHANNELS.GET_DEVICES)
     }
 
     const setDeviceAPI = async ({brand, product, model, business, serial, outAllowed}) => {
-        const deviceFiltered = await findDeviceAPI(serial)
+        try {
+            return await ipcRenderer.invoke(BOOT_CENTER_CHANNELS.SET_DEVICE, 
+                {brand, product, model, business, serial, outAllowed})
+        } catch(e) {
+            if(e.message === ipcDeviceAPIExpectedError.setDeviceAPI_DEVICE_ALREADY_EXIST) {
+                throw new ErrorMessageToUI(ipcMessages.SET_DEVICE_API_DEVICE_ALREADY_EXIST)}
+        }    
+    }
 
-        if(deviceFiltered?.length > 0) 
-            throw new MessageValidation(ipcMessages.SET_DEVICE_API_DEVICE_ALREADY_EXIST)
-        if(deviceFiltered?.length === 0) {
-            testData.unshift({serial: serial, model: model, brand: brand, 
-                product: product, business: business, image: "Sin Imagen",
-                entryDate: new Date().toLocaleDateString('en-GB')
-            })
-            throw new MessageValidation(ipcMessages.SET_DEVICE_DEVICE_UPLOADED)
+    const updateDeviceAPI = async ({brand, product, model, business, image, newSerial, outAllowed, itemToSearch, ...rest}) => {
+        try {
+            return await  ipcRenderer.invoke(BOOT_CENTER_CHANNELS.UPDATE_DEVICE, 
+                {brand, product, model, business, image, newSerial, outAllowed, itemToSearch, ...rest})
+        } catch (e) {
+            if(e.message === ipcDeviceAPIExpectedError.updateAPI_DEVICE_DOES_NOT_EXIST) {
+                console.log(e.message)
+                throw new ErrorMessageToUI(ipcMessages.UPDATE_DEVICE_DEVICE_DOES_NOT_EXIST)
+            }
+        }
+    }
+
+    const deleteDeviceAPI = async ({serial}) => {
+        try {
+            return await  ipcRenderer.invoke(BOOT_CENTER_CHANNELS.DELETE_DEVICE, {serial})
+        } catch (e) {
+            if(e.message === ipcDeviceAPIExpectedError.deleteDevice_DEVICE_NOT_FOUND) {
+                console.log(e.message)
+                throw new ErrorMessageToUI(ipcMessages.DELETE_DEVICE)
+            }
+        }  
+    }
+
+    const findDeviceByScotiaIdAPI = async (scotiaId) => {
+        try {
+            return await ipcRenderer.invoke(BOOT_CENTER_CHANNELS.FIND_DEVICE_BY_SCOTIAID, {scotiaId})
+        } catch (e) {
+            if(e.message === ipcDeviceAPIExpectedError.finDeviceByScotiaId_DEVICE_NOT_FOUND) 
+                throw new ErrorMessageToUI(ipcMessages.DEVICE_NOT_FOUND)
+        }
+    }
+
+    const findDeviceByBusinessOrImageAPI = async (business, image) => {
+
+        if((image === inputsFilterTextName.IMAGE || !image ) && 
+            (business === inputsFilterTextName.BUSINESS || !business) )
+            return await getDevicesAPI()
+
+        if(image !== inputsFilterTextName.IMAGE && (business === inputsFilterTextName.BUSINESS || !business))
+            return await finByImage({image})
+
+        if( (image === inputsFilterTextName.IMAGE || !image) && business !== inputsFilterTextName.BUSINESS)
+            return await findByBusiness({business})
+
+        if(image !== inputsFilterTextName.IMAGE && business !== inputsFilterTextName.BUSINESS)
+            return await finByImageAndBusiness({image, business})
+    }
+
+    const finByImage = async ({image}) => {
+        try {
+            return await ipcRenderer.invoke(BOOT_CENTER_CHANNELS.FIND_DEVICE_BY_IMAGE, {image})
+        } catch (e) {
+            if(e.message === ipcDeviceAPIExpectedError.findByImage_DEVICE_NOT_FOUND) 
+                throw new ErrorMessageToUI(ipcMessages.DEVICE_NOT_FOUND)
+        } 
+    }
+
+    const findByBusiness = async ({business}) => {
+        try {
+            return await ipcRenderer.invoke(BOOT_CENTER_CHANNELS.FIND_DEVICE_BY_BUSINESS, {business})
+        } catch (e) {
+            if(e.message === ipcDeviceAPIExpectedError.findByBusiness_DEVICE_NOT_FOUND) 
+                throw new ErrorMessageToUI(ipcMessages.DELETE_DEVICE)
+        }
+    }
+
+    const finByImageAndBusiness = async ({image, business}) => {
+        try {
+            return await ipcRenderer.invoke(BOOT_CENTER_CHANNELS.FIND_DEVICE_BY_IMAGE_AND_BUSINESS, {business, image})
+        } catch (e) {
+            if(e.message === ipcDeviceAPIExpectedError.findByBusinessAndImage_DEVICE_NOT_FOUND)
+                throw new ErrorMessageToUI(ipcMessages.DEVICE_NOT_FOUND)
         }
     }
 
     const findDeviceAPI = async (serial) => {
-        return await testData.filter(device => device.serial === serial)
-    }
-
-    const findDeviceByScotiaIdAPI = (scotiaId) => {
-        if(scotiaId === inputsFilterTextName.SCOTIAID) return getDevicesAPI()
-        return testData.filter(device => device.scotiaId === scotiaId)
-    }
-
-    const findDeviceByBusinessOrImageAPI = (business, image) => {
-
-        if((image === inputsFilterTextName.IMAGE || !image ) && (business === inputsFilterTextName.BUSINESS || !business) )
-            return getDevicesAPI()
-
-        if(image !== inputsFilterTextName.IMAGE && (business === inputsFilterTextName.BUSINESS || !business))
-            return testData.filter(device => device.image === image && device)
-
-        if( (image === inputsFilterTextName.IMAGE || !image) && business !== inputsFilterTextName.BUSINESS)
-            return testData.filter(device => device.business === business && device)
-
-        if(image !== inputsFilterTextName.IMAGE && business !== inputsFilterTextName.BUSINESS)
-            return testData.filter(device => (device.business === business && device.image === image ) && device)
-    }
-
-    const updateDeviceAPI = async ({brand, product, model, business, image, newSerial, outAllowed, itemToSearch, ...rest}) => {
-        const device = testData.find(device => device.serial === itemToSearch)
-        
-        if(!device || device === undefined) throw new MessageValidation(ipcMessages.UPDATE_DEVICE_DEVICE_DOES_NOT_EXIST)
-
-        const index = testData.findIndex(device => device.serial === itemToSearch)
-        const validateSerial = await updateValidateSerial({newSerial, device})
-        
-        const date = setPxeDateByImage(image)
-
-        const newDevice = {
-            ...device,
-            ...rest,
-            image: (!!image) ? image : device.image,
-            model: (!!model && device.model !== model) ? model : device.model,
-            brand: (!!image && device.brand !== brand) ? brand : device.brand,
-            product: (!!image && device.product !== product) ? product : device.product,
-            business: (!!image && device.business !== business) ? business : device.business,
-            pxeDate: date,
-            serial: validateSerial
+        try {
+            return await ipcRenderer.invoke(BOOT_CENTER_CHANNELS.FIND_DEVICE, {serial})
+        } catch (e) {
+            if(e.message === ipcDeviceAPIExpectedError.setDeviceAPI_DEVICE_ALREADY_EXIST) {
+                throw new ErrorMessageToUI(ipcMessages.DEVICE_NOT_FOUND)}
         }
-
-        testData.splice(index, 1, newDevice)
-        return newDevice
-
-    }
-
-    const updateValidateSerial = async ({newSerial, device}) => {
-        if(!newSerial || device.serial === newSerial) return device.serial
-
-        const deviceBySerial = await findDeviceAPI(newSerial)
-        if (deviceBySerial.length === 0) return newSerial
-
-        return device.serial
-    }
-
-    const setPxeDateByImage = (image) => {
-        if(!!image) {
-            return new Date().toLocaleDateString('en-GB');
-        } else return ""
-    }
-
-    const deleteDeviceAPI = async ({serial}) => {
-        const index = testData.findIndex(device => device.serial === serial)
-        testData.splice(index, 1)
-        return !!testData.findIndex(device => device.serial === serial)
     }
 
     const removeAllListenersIPC = async () => {
-        console.log("Remove all listeners")
+        ipcRenderer.removeAllListeners()
     }
 
     return {
