@@ -13,12 +13,7 @@ export const useHandleSubmit = ({onSubmitData, device}) => {
     const { getDevices, updateDevice, deleteDevice } = useBootCenterDevices()
     const itemToSearch = device?.serial
 
-    useEffect(() => {
-        if(!device?.serial) {
-            toast(`You must select a device`)
-            return
-        }
-        
+    useEffect(() => {        
         if(onSubmitData?.submitterName === eventsNames.EVENT_SEND) {
             deleteDevice({...device})
             .then((result) => 

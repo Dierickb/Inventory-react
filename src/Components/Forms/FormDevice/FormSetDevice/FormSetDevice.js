@@ -4,7 +4,7 @@ import {useBootCenterDevices} from "../../../../contexts";
 import InputsFormSetDevice from "./InputsFormSetDevice";
 import {useCallback} from "react";
 
-import {MessageValidation} from "../../../../errors/errorsIpcDeviceAPI"
+import {ErrorMessageToUI} from "../../../../errors/errorsIpcDeviceAPI"
 
 import {toast} from "react-toastify"
 
@@ -14,7 +14,10 @@ const FormSetDevice = () => {
         const {brand, product, model, business, outAllowed, serial} = handleSetFormDevice(e)
         setDevice({brand, product, model, business, serial, outAllowed})
         .then((result) => {
-            if(result instanceof MessageValidation) toast(result.message)
+            if(result instanceof ErrorMessageToUI) {
+                toast(result.message)
+                return
+            }
             toast(`Device ${result?.serial} added`)
         })
     // eslint-disable-next-line react-hooks/exhaustive-deps

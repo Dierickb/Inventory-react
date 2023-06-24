@@ -19,5 +19,6 @@ const createInternErrorFactory = function (name) {
 
 export const ValidationError = createErrorFactory("ValidationError")
 export const MessageValidation = createErrorFactory("MessageValidation")
+export const ErrorMessageToUI =createErrorFactory("ErrorMessageToUI")
 
 export const ConnectionError = createInternErrorFactory("ConnectionError")

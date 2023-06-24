@@ -1,4 +1,5 @@
 import {inputsFilterDefaultValues} from "../../../utils/utilities"
+import {toast} from "react-toastify"
 
 export const handleSubmit = (e, device, handleOnSubmitData, eventsNames) => {
     e.preventDefault()
@@ -41,7 +42,12 @@ export const handleSubmit = (e, device, handleOnSubmitData, eventsNames) => {
         data.scotiaId = scotiaId
         data.clientName = name
     }
-    console.log(image)
+    
+    if(!device?.serial) {
+        toast(`You must select a device`)
+        return
+    }
+
     handleOnSubmitData({
         submitterName: e.nativeEvent.submitter.name,
         data: data,
