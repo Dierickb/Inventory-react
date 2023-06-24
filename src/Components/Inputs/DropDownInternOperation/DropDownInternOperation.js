@@ -14,7 +14,7 @@ const DropDownInternOperation = ({internOperation, display, mgLeft, padding, mgL
     }
 
   return (
-      <DropDownContainer title="Operacion Interna" key={!internOperation ? "internOperation" : `${internOperation + state?.internOperation?.length}` }
+      <DropDownContainer title="Operacion Interna" key={!internOperation ? "internOperation" : `${internOperation + rest?.serial + state?.internOperation?.length}` }
                          values={state?.internOperation}
                          name={inputsFilterDefaultValues.internOperation}
                          defaultValue={internOperation}

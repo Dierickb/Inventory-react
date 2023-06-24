@@ -20,12 +20,12 @@ const FormDeviceInfo = ({device}) => {
   return (
       <form role="search" id="deviceInfoForm" onSubmit={(e) => handleSubmit(e, device, handleOnSubmitData, eventsNames)}>
 
-          <DropDownImage
+          <DropDownImage serial={device?.serial}
                          display="flex" mgLeft="5px" padding="0.4em 1em"
                          mgLSelect="10px" hgSelect="2.3em" pdSelector="0 10px 0 10px"
                          defaultImage={device?.image} />
 
-          <DropDownInternOperation
+          <DropDownInternOperation serial={device?.serial}
                                    display="flex" mgLeft="5px" padding="0.4em 1em"
                                    mgLSelect="10px" hgSelect="2.3em" pdSelector="0 10px 0 10px" textAlign=" "
                                    defaultValue={device?.internOperation}/>
