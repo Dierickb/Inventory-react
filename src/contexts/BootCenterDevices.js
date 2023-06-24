@@ -53,7 +53,7 @@ export const BootCenterDevicesProvider = ({children}) => {
             return await updateDeviceAPI({brand, product, model,
                 business, newSerial, outAllowed, itemToSearch, image, ...rest})
         } catch (e) {
-            if(e instanceof MessageValidation) return e
+            if(e instanceof ErrorMessageToUI) return e
         }
         
     }

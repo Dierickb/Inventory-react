@@ -16,7 +16,8 @@ ipcMain.handle(BOOT_CENTER_CHANNELS.GET_DEVICES, (event, arg) => {
 ipcMain.handle(BOOT_CENTER_CHANNELS.UPDATE_DEVICE, async (event, {brand, product, model, business, image, newSerial, outAllowed, itemToSearch, ...rest}) => {
     const device = testData.find(device => device.serial === itemToSearch)
     
-    if(!device || device === undefined) throw new MessageValidation("Device was not found")
+    if(!device || device === undefined) 
+        throw new MessageValidation(ipcMessages.UPDATE_DEVICE_DEVICE_DOES_NOT_EXIST)
 
     const index = testData.findIndex(device => device.serial === itemToSearch)
     const validateSerial = await updateValidateSerialBootCenter({newSerial, device})
