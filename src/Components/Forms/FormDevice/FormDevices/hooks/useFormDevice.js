@@ -2,11 +2,22 @@ import { toast } from 'react-toastify';
 
 import {useBootCenterDevices} from "../../../../../contexts/BootCenterDevices"
 
+import {inputsFilterDefaultValues} from "../../../../../utils/utilities"
+
 export const useFormDevice = () => {
 
     const { updateDevice, deleteDevice, getDevices} = useBootCenterDevices()
     const distpatchByAction = async ({action, device, image, serial}) => {
-        if(!action) toast(`Select an Action in ${device.serial} to Distpatch`)
+
+        if(!action) {
+            toast(`Select an Action in ${device.serial} to Distpatch`)
+            return
+        }
+        if(!device) {
+            toast(`You must select a device`)
+            return
+        }
+        
         if(action === "Update") updateDevice({...device, image, itemToSearch: device.serial, serial})
             .then((result) => 
                 toast(`💻 Device ${device.serial} has been updated
