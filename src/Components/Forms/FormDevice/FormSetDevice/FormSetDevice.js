@@ -15,6 +15,7 @@ const FormSetDevice = () => {
         setDevice({brand, product, model, business, serial, outAllowed})
         .then((result) => {
             if(result instanceof MessageValidation) toast(result.message)
+            toast(`Device ${result?.serial} added`)
         })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
