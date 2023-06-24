@@ -20,7 +20,7 @@ const DropDownImage = ({defaultImage, display, mgLeft, padding, mgLSelect, hgSel
       <DropDownContainer title={(rest?.contentTitle === "empty") ? " " : "Imagen"} key={!defaultImage ? "image" : `${defaultImage + state?.customerOperation?.length}` }
                          values={state?.customerOperation}
                          name={inputsFilterDefaultValues.image}
-                         defaultValue={defaultImage}
+                         defaultValue={(!!defaultImage)? defaultImage : inputsFilterDefaultValues.image}
                          display={display}
                          mgLeft={mgLeft}
                          mgLSelect={mgLSelect}
