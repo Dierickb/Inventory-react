@@ -13,17 +13,17 @@ export const useShowDevicesBootCenter = () => {
         removeAllListeners: removeAllListenersBootCenter
     } =  useBootCenterDevices()
 
-    if(location.pathname === "/dashboard" || location.pathname === "/dashboard/") {
+    if(location.pathname === "/dashboard" || location.pathname === "/dashboard/" || location.pathname ==="/dashboard/internOperation") {
         removeListener = removeAllListenersBootCenter
     }
 
     useEffect(() => {
-        if(location.pathname === "/dashboard" || location.pathname === "/dashboard/") getDevicesBootCenter()
+        if(location.pathname === "/dashboard" || location.pathname === "/dashboard/" || location.pathname ==="/dashboard/internOperation") getDevicesBootCenter()
         return () => removeListener()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    if(location.pathname === "/dashboard" || location.pathname === "/dashboard/") {
+    if(location.pathname === "/dashboard" || location.pathname === "/dashboard/" || location.pathname ==="/dashboard/internOperation") {
         state = stateBootCenter
         setFindDevice = setFindDeviceBootCenter
     }

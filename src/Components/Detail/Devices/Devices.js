@@ -15,7 +15,7 @@ const Devices = ({showDevice}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const handleShowDevice = useCallback((device) => showDevice(device), [])
 
-    if (state.loading) return <h3>Loading...</h3>
+    if (state?.loading) return <h3>Loading...</h3>
 
     return (
         <Card>
@@ -40,7 +40,7 @@ const Devices = ({showDevice}) => {
                     </tr>
                 </thead>
 
-                <TBodyDevices devices={state.devices} handleShowDevice={handleShowDevice} />
+                <TBodyDevices devices={state?.devices} handleShowDevice={handleShowDevice} />
 
             </DefaultTable>
         </Card>

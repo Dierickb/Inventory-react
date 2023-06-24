@@ -3,8 +3,7 @@ import {deviceInitialState, devicesReducer} from "../reducers/devices";
 import {DEVICE_ACTIONS, FILTERS} from "../actions";
 import {ipcDeviceAPI} from "../api";
 import PropTypes from "prop-types";
-import {ipcMessages} from "../common/ipcMessages"
-import {ValidationError, ConnectionError, MessageValidation, ErrorMessageToUI} from "../errors/errorsIpcDeviceAPI"
+import {ErrorMessageToUI} from "../errors/errorsIpcDeviceAPI"
 
 export const BootCenterDevicesContext = createContext();
 const {Provider} = BootCenterDevicesContext;
@@ -28,8 +27,8 @@ export const BootCenterDevicesProvider = ({children}) => {
         })
     }
 
-
     const getDevice = async (serial) => {
+        if(!serial || serial?.length===0) return
         const value = await findDeviceAPI(serial)
         return value[0]
     }
@@ -54,11 +53,15 @@ export const BootCenterDevicesProvider = ({children}) => {
                 business, newSerial, outAllowed, itemToSearch, image, ...rest})
         } catch (e) {
             if(e instanceof ErrorMessageToUI) return e
-        }
-        
+        }  
     }
+
     const deleteDevice = async ({serial}) => {
-        return await deleteDeviceAPI({serial})
+        try {
+            return await deleteDeviceAPI({serial})
+        } catch (e) {
+            if(e instanceof ErrorMessageToUI) return e
+        }  
     }
 
     const findDeviceBySerial = async (serial) => {
@@ -90,6 +93,7 @@ export const BootCenterDevicesProvider = ({children}) => {
 
     const setFindDevice = async (filterState) => {
         if(FILTERS.CLEAR === filterState.filterKey) await getDevices()
+        
         if(FILTERS.SET_SERIAL === filterState.filterKey)
             await findDeviceBySerial(filterState.serial)
 
