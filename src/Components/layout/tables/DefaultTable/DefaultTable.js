@@ -16,7 +16,7 @@ export const DefaultTable = styled.table`
         text-align: right;
     }
     td {
-        padding: 9px 5px;
+        padding: ${(props) => props?.tdPd ? props.tdPd : "9px 5px"};
         text-align: center;
     }
 

@@ -9,7 +9,7 @@ const DropDownContainer = ({title, values, defaultValue, name, ...rest}) => {
       <InputsContainer display={rest.display} pd={rest.padding} textAlign={rest.textAlign}>
           <h4>{title}</h4>
           <DropDown defaultValue={defaultValue} name={name} mgL={rest.mgLSelect} hg={rest.hgSelect}
-                    pd={rest.pdSelector}
+                    pd={rest.pdSelector} wd={rest.wd}
             onChange={rest.onChange}
           >
               {

@@ -17,7 +17,7 @@ const FormDevices = () => {
 
     return (
         <Card borderRadius="0" boxShadow="0" hg="calc(75vh - 15px)">
-            <DefaultTable>
+            <DefaultTable tdPd="auto">
                 <thead>
                     <tr>
                         <th>Id</th>

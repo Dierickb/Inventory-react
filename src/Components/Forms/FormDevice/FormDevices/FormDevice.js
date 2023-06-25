@@ -27,10 +27,14 @@ const FormDevice = ({index, device}) => {
         <td>{device.pxeDate}</td>
         <td>
           <DropDownImage onChange={(e) => setImage(e.target.value)}
-            defaultImage={device?.image} contentTitle="empty" />
+            defaultImage={device?.image} contentTitle="empty" 
+            wd="-webkit-fill-available"
+            />
         </td>
         <td>
-          <DropDown onChange={async (e) => setAction(e.target.value)}>
+          <DropDown onChange={async (e) => setAction(e.target.value)}
+            wd="-webkit-fill-available"
+          >
             <option value="">Action</option>
             <option value="Update">Update</option>
             <option value="Delete">Delete</option>
