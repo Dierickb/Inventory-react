@@ -102,7 +102,8 @@ export const ipcDeviceAPI = () => {
             return await ipcRenderer.invoke(BOOT_CENTER_CHANNELS.FIND_DEVICE, {serial})
         } catch (e) {
             if(e.message === ipcDeviceAPIExpectedError.finDeviceAPI_DEVICE_NOT_FOUND) {
-                throw new ErrorMessageToUI(ipcMessages.DEVICE_NOT_FOUND)}
+                throw new ErrorMessageToUI(ipcMessages.DEVICE_NOT_FOUND)
+            }
         }
     }
 

@@ -10,18 +10,19 @@ import trashIcon from "../icons/trash-can-regular.svg";
 
 const SearchByPath = () => {
 
-    const {handleSearchOnChange, handleSearchOnKeyPress, handleClearFilters, state} = useHandleSearch()
-    const { findDeviceBySerial, findDeviceByBusinessOrImage, findDeviceByScotiaId } = useBootCenterDevices()
     const {setFilter} = useFilters()
-
-    useDeviceFilter(state, findDeviceBySerial, findDeviceByBusinessOrImage, findDeviceByScotiaId, setFilter)
+    const {handleSearchOnKeyPress, handleClearFilters, 
+        handleSearchOnChange, state} = useHandleSearch(setFilter)
+    const { findDeviceBySerial, findDeviceByBusinessOrImage, findDeviceByScotiaId, removeAllListeners } = useBootCenterDevices()
+    
+    useDeviceFilter(state, findDeviceByBusinessOrImage, findDeviceByScotiaId, setFilter, removeAllListeners)
 
     return (
         <>
             <Search>
 
                 <InputContainer key={!state?.serial ? "serial" : state.serial }
-                                onKeyPress={handleSearchOnKeyPress}
+                                onKeyPress={(e) => handleSearchOnKeyPress(e, findDeviceBySerial)}
                                 placeHolder='Serial' title='Serial' name='serial'
                                 defaultValue={state.serial} />
 

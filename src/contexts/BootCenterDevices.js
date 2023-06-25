@@ -70,13 +70,27 @@ export const BootCenterDevicesProvider = ({children}) => {
     }
 
     const findDeviceBySerial = async (serial) => {
-        dispatch({
-            type: DEVICE_ACTIONS.GET_DEVICES,
-            payload: {devices:
-                (!serial) ? await getDevicesAPI()
-                    : await findDeviceAPI(serial)
+        try {
+            if(!serial) {
+                dispatch({
+                    type: DEVICE_ACTIONS.GET_DEVICES,
+                    payload: { devices: await getDevicesAPI() }
+                })
             }
-        })
+            
+            const value = await findDeviceAPI(serial)
+            
+            if(!!value || value?.length > 0) {
+                dispatch({
+                    type: DEVICE_ACTIONS.GET_DEVICES,
+                    payload: { devices: value }
+                })
+            }
+            
+        } catch (e) {
+            if(e instanceof ErrorMessageToUI) return e
+        } 
+        
     }
 
     const findDeviceByScotiaId = async (scotiaId) => {
@@ -90,10 +104,15 @@ export const BootCenterDevicesProvider = ({children}) => {
     }
 
     const findDeviceByBusinessOrImage = async (business, image) => {
-        dispatch({
-            type: DEVICE_ACTIONS.GET_DEVICES,
-            payload: {devices: await findDeviceByBusinessOrImageAPI(business, image)}
-        })
+        try {
+            const devices = await findDeviceByBusinessOrImageAPI(business, image)
+            dispatch({
+                type: DEVICE_ACTIONS.GET_DEVICES,
+                payload: {devices: devices}
+            })
+        } catch (e) {
+            if(e instanceof ErrorMessageToUI) return e
+        }  
     }
 
     const setFindDevice = async (filterState) => {
