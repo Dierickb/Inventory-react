@@ -5,7 +5,7 @@ import {handleSetFormDevice} from "../../handles";
 import {deviceSettingsKeysValues} from "../../../../../utils/utilities";
 import PropTypes from "prop-types";
 
-import {MessageValidation} from "../../../../../errors/errorsIpcDeviceAPI"
+import {ErrorMessageToUI} from "../../../../../errors/errorsIpcDeviceAPI"
 import {toast} from "react-toastify"
 
 export const useFormGetDevice = (itemToSearch, keyValue) => {
@@ -20,7 +20,7 @@ export const useFormGetDevice = (itemToSearch, keyValue) => {
         if(keyValue === deviceSettingsKeysValues.EDIT_DEVICE)
             !!serial && updateDevice({brand, product, model, business, serial, outAllowed, itemToSearch})
             .then(result => {
-                if(result instanceof MessageValidation) toast(`💻 ${result.message}`)
+                if(result instanceof ErrorMessageToUI) toast(`💻 ${result.message}`)
                 if(!!result?.serial)
                     toast(`💻 Device ${serial} has been updated`)
             })
@@ -36,7 +36,12 @@ export const useFormGetDevice = (itemToSearch, keyValue) => {
 
     useEffect(() => {
         (async () => {
-            setDefaultValue(await getDevice(itemToSearch))
+            const device = await getDevice(itemToSearch)
+            if(device instanceof ErrorMessageToUI) {
+                toast(device?.message)
+                return
+            }
+            setDefaultValue(device)
         })()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [itemToSearch])

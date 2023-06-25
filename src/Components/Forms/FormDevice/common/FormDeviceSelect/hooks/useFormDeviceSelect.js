@@ -12,9 +12,11 @@ export const useFormDeviceSelect = ({dispatch, state, fetchGetModelsByBrands, de
                 model: defaultValue?.model,
             }
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [defaultValue?.brand, defaultValue?.product, defaultValue?.model])
 
     useEffect(() => {
         fetchGetModelsByBrands(state?.brand, state?.product)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.brand, state.product])
 }

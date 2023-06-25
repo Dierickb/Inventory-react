@@ -29,8 +29,13 @@ export const BootCenterDevicesProvider = ({children}) => {
 
     const getDevice = async (serial) => {
         if(!serial || serial?.length===0) return
-        const value = await findDeviceAPI(serial)
-        return value[0]
+        try {
+            const value = await findDeviceAPI(serial)
+            return value[0]
+        } catch (e) {
+            if(e instanceof ErrorMessageToUI) return e
+        }
+        
     }
 
     const setDevice = async ({brand, product, model, business, serial, outAllowed}) => {
