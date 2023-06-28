@@ -6,6 +6,13 @@ const ipcMessages = {
     DEVICE_DOES_NOT_EXIST: "DEVICE DOES NOT EXIST",
 }
 
+const ipcBrandMessages = {
+    GET_BRANDS: "DEVICES NOT FOUND",
+    BRAND_NOT_FOUND: "BRAND_NOT_FOUND",
+    BRAND_ALREADY_EXIST: "BRAND_ALREADY_EXIST",
+}
+
 module.exports = {
-    ipcMessages
+    ipcMessages,
+    ipcBrandMessages,
 }

@@ -1,5 +1,5 @@
 const {ipcMain} = require('electron')
-const {BOOT_CENTER_CHANNELS} = require("../../channels/bootCenter");
+const {BOOT_CENTER_CHANNELS} = require("../../channels");
 const {testData} = require("../../common/testData")
 const {MessageValidation} = require("../../errors/errorsIpcDeviceAPI")
 const {ipcMessages} = require("../../common/ipcMessages")

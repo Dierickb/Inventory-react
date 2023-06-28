@@ -1,9 +1,12 @@
-import {getModelsByBrand, testBrand, testProduct} from "../utils/testData";
+import {getModelsByBrand, testProduct} from "../utils/testData";
+import {BRANDS_CHANNELS} from "../channels"
+
+const {ipcRenderer} = window.require("electron")
 
 export const ipcBrandAPI = () => {
     const getBrandAPI = async () => {
         try {
-            return await testBrand
+            return await ipcRenderer.invoke(BRANDS_CHANNELS.GET_BRAND)
         } catch (e) {
             throw e;
         }

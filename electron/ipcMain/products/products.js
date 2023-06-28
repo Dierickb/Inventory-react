@@ -1,0 +1,1 @@
+const {testProduct} = require("../../common/testData")
