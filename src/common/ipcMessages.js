@@ -6,3 +6,7 @@ export const ipcMessages = {
     DELETE_DEVICE: "DEVICE DOES NOT EXIST",
     DEVICE_NOT_FOUND: "DEVICE NOT FOUND",
 }
+
+export const ipcBrandMessage = {
+    BRAND_ALREADY_EXIST: "BRAND ALREADY EXIST"
+}

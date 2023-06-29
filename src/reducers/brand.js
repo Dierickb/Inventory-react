@@ -13,7 +13,7 @@ export const brandReducer = (state = brandInitialState, action) => {
         case BRAND_ACTIONS.GET_BRANDS:
             return {
                 ...brandInitialState,
-                brands: action.payload.map(brand => brand.brand),
+                brands: action.payload,
                 loading: false,
             }
 

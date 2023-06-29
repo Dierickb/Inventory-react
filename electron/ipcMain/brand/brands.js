@@ -23,6 +23,8 @@ ipcMain.handle(BRANDS_CHANNELS.SET_BRAND, async (event, {brand}) => {
 
         testBrand.unshift({id: testBrand.length+1, brand:brand})
 
+        console.log(testBrand)
+
     } catch (e) {
         throw new MessageValidation(ipcBrandMessages.BRAND_ALREADY_EXIST)
     }
@@ -60,6 +62,6 @@ ipcMain.handle(BRANDS_CHANNELS.DELETE_BRAND, (event, {brandToFind}) => {
         return testBrand
 
     } catch (e) {
-
+        throw new MessageValidation(ipcBrandMessages.BRAND_NOT_FOUND)
     }
 } )

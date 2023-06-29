@@ -2,11 +2,12 @@ import {createContext, useContext, useReducer} from "react";
 import {brandInitialState, brandReducer} from "../reducers/brand";
 import {BRAND_ACTIONS} from "../actions";
 import {ipcBrandAPI} from "../api";
+import { ErrorMessageToUI } from "../errors/errorsIpcDeviceAPI";
 import PropTypes from "prop-types";
 
 export const BrandContext = createContext();
 const {Provider} = BrandContext;
-const {getBrandAPI, getProductAPI, getModelsByBrandAPI} = ipcBrandAPI();
+const {getBrandAPI, getProductAPI, getModelsByBrandAPI, setBrandAPI, updateBrandAPI} = ipcBrandAPI();
 
 export const BrandProvider = ({children}) => {
     const [state, dispatch] = useReducer(brandReducer, brandInitialState)
@@ -18,7 +19,23 @@ export const BrandProvider = ({children}) => {
                 payload: await getBrandAPI()
             })
         } catch (e) {
-            throw e
+            if (e instanceof ErrorMessageToUI) return e
+        }
+    }
+
+    const setBrand = async ({brand}) => {
+        try {
+            await setBrandAPI({brand})
+        } catch (e) {
+            if (e instanceof ErrorMessageToUI) return e
+        }
+    }
+
+    const updateBrandAPI = async ({brandToFind, newBrand}) => {
+        try {
+            await setBrandAPI({brandToFind, newBrand})
+        } catch (e) {
+            if (e instanceof ErrorMessageToUI) return e
         }
     }
 
@@ -56,6 +73,7 @@ export const BrandProvider = ({children}) => {
 
     return <Provider value={{
         getBrands, getModelsByBrand, getProducts, getBrandsAndProducts,
+        setBrand, updateBrandAPI,
         state
     }}>{children}</Provider>
 }

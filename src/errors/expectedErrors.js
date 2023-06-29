@@ -8,3 +8,8 @@ export const ipcDeviceAPIExpectedError = {
     findByBusiness_DEVICE_NOT_FOUND: "Error invoking remote method 'FIND_DEVICE_BY_BUSINESS': MessageValidation: DEVICE NOT FOUND",
     findByBusinessAndImage_DEVICE_NOT_FOUND: "Error invoking remote method 'FIND_DEVICE_BY_IMAGE_AND_BUSINESS': MessageValidation: DEVICE NOT FOUND",
 }
+
+export const ipcBrandAPIExpectedError = {
+    setBranAPI_BRAND_ALREADY_EXIST: "Error invoking remote method 'SET_BRANDS': MessageValidation: BRAND_ALREADY_EXIST",
+    updateBranAPI_BRAND_ALREADY_EXIST: "Error invoking remote method 'UPDATE_BRAND': MessageValidation: BRAND_ALREADY_EXIST",
+}

@@ -1,0 +1,29 @@
+import {InputsContainer, FormRegisters, Button, Input} from "../../../layout";
+import {DropDown} from "../../../layout/inputs";
+import {useHandleBrand} from "./hooks"
+
+import FormBrandDropDown from "../common/FormBrandDropDown";
+
+const FormSetBrand = () => {
+
+    const {brands, handleBrand} = useHandleBrand()    
+
+    return (
+        <FormRegisters onSubmit={handleBrand}>
+            <InputsContainer pd='0px 5px'>
+                <Input title="Fabricante" type="text" placeholder="Fabricante" name="newBrand"/>
+            </InputsContainer>
+
+            <InputsContainer pd='0px 5px'>
+                <FormBrandDropDown key={brands?.length} showNewFirst={true} />
+            </InputsContainer>            
+
+            <InputsContainer className="begin">
+                <Button>Submit</Button>
+            </InputsContainer>
+
+        </FormRegisters>
+    )
+}
+
+export default FormSetBrand

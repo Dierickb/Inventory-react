@@ -2,22 +2,23 @@ import {DropDown} from "../../../layout";
 import {useBrand} from "../../../../contexts";
 import {useEffect} from "react";
 
-const FormBrandDropDown = ({defaultValue}) => {
+const FormBrandDropDown = ({defaultValue, showNewFirst, ...rest}) => {
 
-    const {state, getBrands} = useBrand()
+    const {state: {brands}, getBrands} = useBrand()
 
     useEffect(() => {
         getBrands()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
-
+    
     return (
-        <DropDown defaultValue={!!defaultValue?.brand ? defaultValue.brand : ""} name="brand" wd="187.2px"
+        <DropDown defaultValue={!!defaultValue?.brand ? defaultValue.brand : ""} name="brands" wd={rest.wd}
                 required>
-          <option value="">Fabricante</option>
-          {state.brands?.map(brand=>
-              <option key={brand} value={brand}>{brand}</option>
-          )}
-        </DropDown>
+          { (!showNewFirst || showNewFirst===undefined) && <option value="">Seleccione un fabricante</option> }
+          {
+            brands?.map(brand=><option key={brand} value={brand}>{brand}</option>)
+          }
+        </DropDown>      
     )
 }
 

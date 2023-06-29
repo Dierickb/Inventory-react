@@ -1,18 +1,17 @@
 import {InputsContainer, FormRegisters, Button, Input} from "../../layout";
-import {TextArea} from "../../layout/inputs";
-import {useEffect} from "react";
+import {DropDown} from "../../layout/inputs";
 import PropTypes from "prop-types";
 
+import {useGetBrands} from "./hooks"
+
 const FormBrand = ({itemToSearch}) => {
+
+    const {state: {brands}} = useGetBrands({itemToSearch})
 
     const handleDevice = (e) => {
         e.preventDefault()
         console.log("User UserSettings")
     }
-
-    useEffect(() => {
-        console.log(itemToSearch)
-    }, [itemToSearch])
 
     return (
         <FormRegisters onSubmit={handleDevice}>
@@ -21,10 +20,14 @@ const FormBrand = ({itemToSearch}) => {
             </InputsContainer>
 
             <InputsContainer pd='0px 5px'>
-                <TextArea title="Modelo" placeholder="Modelo" name="brandModel"/>
-            </InputsContainer>
+                <DropDown>
+                    {
+                        brands.map(brand => <option key={brand}>{brand}</option>)
+                    }
+                </DropDown>
+            </InputsContainer>            
 
-            <InputsContainer>
+            <InputsContainer className="begin">
                 <Button>Submit</Button>
             </InputsContainer>
 

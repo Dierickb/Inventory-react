@@ -195,7 +195,7 @@ const testBrand = [
         },
     },
     {
-        id: 2,
+        id: 3,
         brand: "HP",
         products: {
             Laptop: [],
