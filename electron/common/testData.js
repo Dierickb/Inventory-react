@@ -181,14 +181,26 @@ const testBrand = [
     {
         id: 1,
         brand: "Lenovo",
+        products: {
+            Laptop: ["T470s", "T480s", "T490s", "T495", "T14 gen 1","T14 gen 2", "T14 gen 3"],
+            Desktop: ["M720q", "M920"],
+        },
     },
     {
         id: 2,
         brand: "Dell",
+        products: {
+            Laptop: [],
+            Desktop: [],
+        },
     },
     {
         id: 2,
         brand: "HP",
+        products: {
+            Laptop: [],
+            Desktop: [],
+        },
     }
 ]
 

@@ -1,5 +1,5 @@
-const helpers = require("./helpers")
+const {updateValidateBrand, findBrand} = require("./helpers")
 
 module.exports = {
-    helpers,
+    updateValidateBrand, findBrand
 }

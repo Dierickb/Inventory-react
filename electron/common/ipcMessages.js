@@ -7,7 +7,7 @@ const ipcMessages = {
 }
 
 const ipcBrandMessages = {
-    GET_BRANDS: "DEVICES NOT FOUND",
+    GET_BRANDS: "BRANDS NOT FOUND",
     BRAND_NOT_FOUND: "BRAND_NOT_FOUND",
     BRAND_ALREADY_EXIST: "BRAND_ALREADY_EXIST",
 }

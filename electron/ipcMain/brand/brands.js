@@ -8,18 +8,20 @@ const {findBrand, updateValidateBrand} = require("./helpers")
 
 ipcMain.handle(BRANDS_CHANNELS.GET_BRAND, (event) => {
     try {
-        return testBrand
+        return testBrand.map(brand => brand.brand)
     } catch (e) {
         throw new MessageValidation(ipcBrandMessages.GET_BRANDS)
     }
 })
 
-ipcMain.handle(BRANDS_CHANNELS.SET_BRAND, (event, {brand}) => {
+ipcMain.handle(BRANDS_CHANNELS.SET_BRAND, async (event, {brand}) => {
     try {
-        const validationBrand = findBrand(brand.brand)
-        if(!!validationBrand) throw new MessageValidation(ipcBrandMessages.BRAND_ALREADY_EXIST)
+        const validationBrand = await findBrand({brand})
+        if(validationBrand?.length > 0) throw new MessageValidation(ipcBrandMessages.BRAND_ALREADY_EXIST)
 
-        testBrand.push(brand)
+        console.log(validationBrand)
+
+        testBrand.unshift({id: testBrand.length+1, brand:brand})
 
     } catch (e) {
         throw new MessageValidation(ipcBrandMessages.BRAND_ALREADY_EXIST)

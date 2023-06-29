@@ -13,7 +13,7 @@ const findBrand = async ({brand}) => {
     return await testBrand.filter(brandSelected => brandSelected.brand === brand)
 }
 
-module.export = {
+module.exports = {
     updateValidateBrand,
     findBrand,
 }
