@@ -14,8 +14,8 @@ export const InputsContainer = styled.div`
   }
 
   &.begin {
-    grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column-start: ${ (props) => props.gridColStart ? props.gridColStart : '1'};
+    grid-column-end: ${ (props) => props.gridColEnd ? props.gridColEnd : '4'};
   }
   &.second {
     grid-column-start: 2;
