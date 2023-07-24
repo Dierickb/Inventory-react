@@ -22,7 +22,7 @@ ipcMain.handle(BOOT_CENTER_CHANNELS.UPDATE_DEVICE, async (event, {brand, product
     const index = testData.findIndex(device => device.serial === itemToSearch)
     const validateSerial = await updateValidateSerialBootCenter({newSerial, device})
     
-    const date = setPxeDateByImageBootCenter(image)
+    const date = setPxeDateByImageBootCenter({image, ...device})
     const realImage = defaultImage({image, device})
 
     const newDevice = {
@@ -30,9 +30,9 @@ ipcMain.handle(BOOT_CENTER_CHANNELS.UPDATE_DEVICE, async (event, {brand, product
         ...rest,
         image: realImage,
         model: (!!model && device.model !== model) ? model : device.model,
-        brand: (!!image && device.brand !== brand) ? brand : device.brand,
-        product: (!!image && device.product !== product) ? product : device.product,
-        business: (!!image && device.business !== business) ? business : device.business,
+        brand: (!!brand && device.brand !== brand) ? brand : device.brand,
+        product: (!!product && device.product !== product) ? product : device.product,
+        business: (!!business && device.business !== business) ? business : device.business,
         pxeDate: date,
         serial: validateSerial
     }
