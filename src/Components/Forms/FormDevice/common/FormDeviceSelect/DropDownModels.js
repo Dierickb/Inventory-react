@@ -12,11 +12,13 @@ const DropDownModels = ({serial: defaultSerial, model: defaultModel, dropDownDis
               }
 
               {
-                  modelsByBrand?.map(model => {
-                      if(model !== defaultModel  && !!defaultSerial)
-                          return <option key={model} value={model}>{model}</option>
-                      if(!defaultModel) return <option key={model} value={model}>{model}</option>
-                  })
+                modelsByBrand?.map(model => {
+                    if(model !== defaultModel  && !!defaultSerial)
+                        return <option key={model} value={model}>{model}</option>
+                    if(!defaultModel) 
+                        return <option key={model} value={model}>{model}</option>
+                    return ""
+                })
               }
           </DropDown>
       </InputsContainer>
