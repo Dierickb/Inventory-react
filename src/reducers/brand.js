@@ -37,7 +37,7 @@ export const brandReducer = (state = brandInitialState, action) => {
             return {
                 ...brandInitialState,
                 products: action.payload.products.map(product => product.product),
-                brands: action.payload.brands.map(brand => brand.brand),
+                brands: action.payload.brands,
                 loading: false,
             }
 
