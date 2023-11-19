@@ -35,8 +35,8 @@ const DeviceInfo = ({device, cleanDeviceInfo}) => {
                 <h5>Entered: <p>{device?.entryDate}</p></h5>
                 <h5>PXEd: <p>{device?.pxeDate}</p></h5>
                 <div className="form-group">
-                    <p><input form="deviceInfoForm" name={eventsNames.EVENT_UPDATE} type="submit" value="Actualizar" id="event_update" /></p>
-                    <p><input form="deviceInfoForm" name={eventsNames.EVENT_SEND} type="submit" value="Enviar" id="event_send" /></p>
+                    <input form="deviceInfoForm" name={eventsNames.EVENT_UPDATE} type="submit" value="Actualizar" id="event_update" />
+                    <input form="deviceInfoForm" name={eventsNames.EVENT_SEND} type="submit" value="Enviar" id="event_send" />
                 </div>
             </CardFooter>
         </Card>

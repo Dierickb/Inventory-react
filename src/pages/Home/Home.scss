@@ -2,3 +2,11 @@
   display: flex;
   align-items: center;
 }
+
+.formContainer{
+  height: calc(100vh - 110px);
+
+  &.inputAcitve{
+    height: auto;
+  }
+}

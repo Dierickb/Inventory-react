@@ -6,13 +6,17 @@ import {CARD_CONTAINER_PROPTYPES} from "../../common/propTypes";
 import PropTypes from "prop-types";
 import {useLocation} from "react-router-dom";
 
-const CardContainer = ({Children, title, hasChild, info, hasTextInput, keyValue}) => {
+const CardContainer = ({Children, title, hasChild, info, hasTextInput, keyValue, ...rest}) => {
 
     const [isCardVisible, setIsCardVisible] = useState(false)
     const [itemToSearch, setItemToSearch] = useState("")
+    const {setInputActive} = rest
 
     const handleItemToSearch = (item) => setItemToSearch(item)
-    const handleToggleForm = () => setIsCardVisible(!isCardVisible)
+    const handleToggleForm = () => {
+        setIsCardVisible(!isCardVisible)
+        !!setInputActive && setInputActive(!isCardVisible)
+    }
 
     const {url} = setPadding(isCardVisible, hasChild, useLocation().pathname.split("/").slice(1))
 
