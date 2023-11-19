@@ -14,9 +14,9 @@ const findDeviceAPIBootCenter = async (serial) => {
     return await testData.filter(device => device.serial === serial)
 }
 
-const setPxeDateByImageBootCenter = ({image, pxeDate}) => {
-    if((!image || image===defaultValues.image) && !pxeDate) return ""
-    if((!image || image===defaultValues.image) && !!pxeDate) return pxeDate
+const setPxeDateByImageBootCenter = ({realImage, pxeDate}) => {
+    if((!realImage || realImage===defaultValues.image) && !pxeDate) return ""
+    if((!realImage || realImage===defaultValues.image) && !!pxeDate) return pxeDate
     
     return new Date().toLocaleDateString('en-GB');
 }

@@ -18,13 +18,13 @@ ipcMain.handle(BOOT_CENTER_CHANNELS.UPDATE_DEVICE, async (event, {brand, product
     const device = testData.find(device => device.serial === itemToSearch)
     
     if(!device || device === undefined) throw new MessageValidation(ipcMessages.DEVICE_DOES_NOT_EXIST)
-
+    
     const index = testData.findIndex(device => device.serial === itemToSearch)
     const validateSerial = await updateValidateSerialBootCenter({newSerial, device})
     
-    const date = setPxeDateByImageBootCenter({image, ...device})
     const realImage = defaultImage({image, device})
-
+    const date = setPxeDateByImageBootCenter({realImage, ...device})
+    
     const newDevice = {
         ...device,
         ...rest,
