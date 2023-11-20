@@ -9,6 +9,8 @@ export const TextArea = styled.textarea`
   vertical-align: middle;
   height: ${ (props) =>  props?.hg ? props.hg : '16px' };
   min-height: ${ (props) =>  props?.minHg ? props.minHg : '16px' };
-  resize: vertical;
+  max-height: ${(props) =>  props?.maxHg ? props.maxHg : '64px' };
+  resize: none;
+  transition: border-color 150ms ease;
 `
 
