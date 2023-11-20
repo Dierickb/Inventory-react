@@ -4,7 +4,7 @@ import {useHandleBrand} from "./hooks"
 
 const FormSetBrand = () => {
 
-    const {brands, handleBrand} = useHandleBrand()    
+    const {handleBrand} = useHandleBrand()    
 
     return (
         <FormRegisters onSubmit={handleBrand} grTempCol="repeat(2, 1fr)">
