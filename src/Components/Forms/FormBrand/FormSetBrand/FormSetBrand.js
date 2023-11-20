@@ -1,5 +1,4 @@
 import {InputsContainer, FormRegisters, Button, Input} from "../../../layout";
-import {DropDown} from "../../../layout/inputs";
 import {useHandleBrand} from "./hooks"
 
 const FormSetBrand = () => {
