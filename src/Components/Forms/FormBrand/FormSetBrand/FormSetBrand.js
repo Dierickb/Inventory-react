@@ -12,12 +12,8 @@ const FormSetBrand = () => {
                 <Input title="Fabricante" type="text" placeholder="Fabricante" name="newBrand"/>
             </InputsContainer>
 
-            <InputsContainer pd='2px 5px'>
-                <Input title="Producto" type="text" placeholder="Producto/s" name="newProduct"/>
-            </InputsContainer>       
-
-            <InputsContainer className="begin" gridColEnd="3">
-                <Button>Submit</Button>
+            <InputsContainer gridColEnd="2">
+                <Button hg="30px" >Submit</Button>
             </InputsContainer>
 
         </FormRegisters>
