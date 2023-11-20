@@ -1,26 +1,30 @@
 {
-  "name": "my-app",
+  "name": "assets",
   "version": "0.1.0",
   "private": true,
   "main": "electron/electron.js",
   "author": "Dierick Brochero",
+  "homepage": "./",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "electron": "electron-forge start",
     "dev": "wait-on tcp:127.0.0.1:3000 && electron .",
+    "react-dev": "cross-env BROWSER=none yarn start",    
     "electron-start": "concurrently -k \"cross-env BROWSER=none yarn start\" \"yarn dev\"",
-    "react-dev": "cross-env BROWSER=none yarn start",
-    "electron-dev": "electron .",
-    "coverage": "yarn test --coverage --watchAll --collectCoverageFrom='src/Components/**/*.{js,jsx}' --collectCoverageFrom='!src/Components/**/*.{types,stories,constants,test,spec}.{js,jsx}'"
+    "coverage": "yarn test --coverage --watchAll --collectCoverageFrom='src/Components/**/*.{js,jsx}' --collectCoverageFrom='!src/Components/**/*.{types,stories,constants,test,spec}.{js,jsx}'",
+    "electron-pack": "electron-builder  --publish never",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "dependencies": {
     "@testing-library/user-event": "^13.2.1",
     "cross-env": "7.0.3",
-    "electron-builder": "^22.10.3",
     "electron-devtools-installer": "3.2.0",
     "electron-is-dev": "2.0.0",
+    "electron-squirrel-startup": "^1.0.0",
     "enzyme": "^3.11.0",
     "firebase": "9.17.1",
     "formik": "2.2.9",
@@ -56,6 +60,12 @@
     ]
   },
   "devDependencies": {
+    "@electron-forge/cli": "^7.1.0",
+    "@electron-forge/maker-deb": "^7.1.0",
+    "@electron-forge/maker-rpm": "^7.1.0",
+    "@electron-forge/maker-squirrel": "^7.1.0",
+    "@electron-forge/maker-zip": "^7.1.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.1.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "concurrently": "^7.6.0",
@@ -81,5 +91,17 @@
   },
   "browser": {
     "fs": false
+  },
+  "build": {
+    "appId": "com.assetsDierick",
+    "files": [
+      "dist/**/*",
+      "build/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
   }
 }
