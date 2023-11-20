@@ -7,17 +7,17 @@ import { useBrand } from "../../../../../contexts"
 export const useHandleBrand = () => {
     const {state: {brands}, getBrands, setBrand} = useBrand()
 
-    const handleBrand = (e) => {
+    const handleBrand = async (e) => {
         e.preventDefault()
 
         let [brand] = e.target
         brand = brand.value 
 
-        setBrand({brand})
-            .then(result => {
-                if(result instanceof ErrorMessageToUI) toast(result.message)
-            })
-            .then(async () => await getBrands())
+        const result = await setBrand({brand})
+        if(result instanceof ErrorMessageToUI) toast(result.message)
+        
+        toast(`Brand ${brand} added successfully`)
+        await getBrands()
             
     }
 
