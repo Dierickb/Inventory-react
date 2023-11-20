@@ -14,7 +14,7 @@ export const useHandleBrand = () => {
         brand = brand.value 
 
         const result = await setBrand({brand})
-        if(result instanceof ErrorMessageToUI) toast(result.message)
+        if(result instanceof ErrorMessageToUI) {toast(result.message) ; return}
         
         toast(`Brand ${brand} added successfully`)
         await getBrands()
