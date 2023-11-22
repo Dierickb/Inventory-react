@@ -24,7 +24,13 @@ export const brandReducer = (state = brandInitialState, action) => {
                 products: action.payload.map(product => product.product),
                 loading: false,
             }
-
+        case BRAND_ACTIONS.SET_PRODUCTS_BY_BRAND:
+            return {
+                ...brandInitialState,
+                ...state,
+                products: console.log(action.payload.brand, action.payload.products),
+                loading: false,
+            }
         case BRAND_ACTIONS.GET_MODELS_BY_BRAND:
             return {
                 ...brandInitialState,

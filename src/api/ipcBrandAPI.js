@@ -1,5 +1,5 @@
 import {getModelsByBrand, testProduct} from "../utils/testData";
-import {BRANDS_CHANNELS} from "../channels"
+import {BRANDS_CHANNELS, PRODUCTS_BRAND} from "../channels"
 import {ipcBrandMessage} from "../common/ipcMessages"
 import {ErrorMessageToUI} from "../errors/errorsIpcDeviceAPI"
 import {ipcBrandAPIExpectedError} from "../errors/expectedErrors"
@@ -32,6 +32,14 @@ export const ipcBrandAPI = () => {
         }
     }
 
+    const setProductsAPI = async ({brand, products}) => {
+        try {
+            return await ipcRenderer.invoke(PRODUCTS_BRAND.SET_PROPDUCT, {brand, products})
+        } catch (e) {
+            throw new ErrorMessageToUI(e.message)
+        }
+    }
+
     const getProductAPI = async () => {
         try {
             return await testProduct
@@ -48,5 +56,5 @@ export const ipcBrandAPI = () => {
         }
     }
 
-    return {getBrandAPI, getModelsByBrandAPI, getProductAPI, setBrandAPI, updateBrandAPI}
+    return {getBrandAPI, getModelsByBrandAPI, getProductAPI, setBrandAPI, updateBrandAPI, setProductsAPI}
 }

@@ -19,11 +19,7 @@ ipcMain.handle(BRANDS_CHANNELS.SET_BRAND, async (event, {brand}) => {
         const validationBrand = await findBrand({brand})
         if(validationBrand?.length > 0) throw new MessageValidation(ipcBrandMessages.BRAND_ALREADY_EXIST)
 
-        console.log(validationBrand)
-
         testBrand.unshift({id: testBrand.length+1, brand:brand})
-
-        console.log(testBrand)
 
     } catch (e) {
         throw new MessageValidation(ipcBrandMessages.BRAND_ALREADY_EXIST)

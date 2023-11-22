@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 export const BrandContext = createContext();
 const {Provider} = BrandContext;
-const {getBrandAPI, getProductAPI, getModelsByBrandAPI, setBrandAPI, updateBrandAPI} = ipcBrandAPI();
+const {getBrandAPI, getProductAPI, getModelsByBrandAPI, setBrandAPI, updateBrandAPI, setProductsAPI} = ipcBrandAPI();
 
 export const BrandProvider = ({children}) => {
     const [state, dispatch] = useReducer(brandReducer, brandInitialState)
@@ -46,7 +46,17 @@ export const BrandProvider = ({children}) => {
                 payload: await getProductAPI()
             })
         } catch (e) {
-            throw e
+            if (e instanceof ErrorMessageToUI) return e
+        }
+    }
+
+    const setProducts = async ({brand, products}) => {
+        try {
+            await setProductsAPI({brand, products})
+            await getProducts()
+            console.log(state)
+        } catch (e) {
+            if (e instanceof ErrorMessageToUI) return e
         }
     }
 
@@ -73,7 +83,7 @@ export const BrandProvider = ({children}) => {
 
     return <Provider value={{
         getBrands, getModelsByBrand, getProducts, getBrandsAndProducts,
-        setBrand, updateBrandAPI,
+        setBrand, updateBrandAPI, setProducts, 
         state
     }}>{children}</Provider>
 }
