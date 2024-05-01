@@ -7,8 +7,8 @@ import {DROP_DOWN_PROPTYPES} from "../../common/propTypes/DROP_DOWN_PROPTYPES";
 const DropDownBusinesses = ({business, display, mgLeft, padding, mgLSelect, hgSelect, ...rest}) => {
 
     const businesses = [
-        "GSG",
-        "GBS",
+        "B1",
+        "B2",
     ]
 
   return (
