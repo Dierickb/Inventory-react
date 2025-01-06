@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 const {Provider} = AuthContext;
 const {login: ipLogin} = ipcAuthAPI()
 
-export const AuthProvider = ({children}) => {
+export const AuthProvider = ({children, dev}) => {
     
     const logout = async () => {
         try {
@@ -18,6 +18,7 @@ export const AuthProvider = ({children}) => {
     }
 
     const isLoggedIn = () => {
+        if(dev) return {isLogged: true, rol: "admin"}
         return {
             isLogged: !!localStorage.getItem("auth"),
             rol: JSON.parse(localStorage.getItem("auth")) && JSON.parse(localStorage.getItem("auth")).rol,

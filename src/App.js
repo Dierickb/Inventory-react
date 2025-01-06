@@ -1,13 +1,15 @@
 import {AuthProvider} from "./contexts/Auth";
 import Routes from "./routes";
 
-const App = () => {
+const App = ({dev}) => {
+
 
   return (
-      <AuthProvider>
-          <Routes />
-      </AuthProvider>
+    <AuthProvider dev={dev}>
+      <Routes/>
+    </AuthProvider>
   )
+
 }
 
 export default App;
