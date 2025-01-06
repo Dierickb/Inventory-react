@@ -4,13 +4,11 @@ import Detail from "../../Components/Detail/Detail";
 
 const InternOperation = () => {
     const {isActive} = useActiveLeftBar()
+
     return (
         <div className={`formContainer ${isActive ? 'active' : ''}`} id='mainContainer'>
-            <h1>
-                Buenaaas
-            </h1>
-            <Detail />
-        </div> 
+            <Detail pd="0"/>
+        </div>
     )
 }
 

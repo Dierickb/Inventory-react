@@ -12,7 +12,7 @@ const Home = () => {
     return (
         <div className={`formContainer ${isActive ? 'active' : ''} ${inputAcitve ? 'inputAcitve' : ''}`} id='mainContainer'>
             <CardContainer title="Registrar equipo" Children={FormSetDevice} setInputActive={setInputActive} />
-            <Detail />
+            <Detail hg="calc(100vh - 188px)" /> 
         </div>
     )
 }
