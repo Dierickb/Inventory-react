@@ -1,4 +1,4 @@
-import Device from "../Device";
+import Device from "../Device/Device";
 import PropTypes from "prop-types";
 import {DEVICE_PROPTYPES} from "../../common/propTypes";
 

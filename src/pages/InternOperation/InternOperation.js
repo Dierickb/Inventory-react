@@ -1,6 +1,6 @@
 import {useActiveLeftBar} from "../../contexts";
 
-import Detail from "../../Components/Detail";
+import Detail from "../../Components/Detail/Detail";
 
 const InternOperation = () => {
     const {isActive} = useActiveLeftBar()
