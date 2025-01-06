@@ -4,6 +4,7 @@ export const InputsContainer = styled.div`
   padding: ${ (props) => props.pd ? props.pd : '10px 5px'};
   display: ${ (props) => props.display ? props.display : ''};
   disabled: ${ (props) => props.disabled ? props.disabled : false};
+  width: ${ (props) => props.wd ? props.wd : ""};
   h4 {
     margin-top: 0;
     text-align: ${ (props) => props.textAlign ? props.textAlign : 'center'};

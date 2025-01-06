@@ -4,10 +4,11 @@ import PropTypes from "prop-types";
 import {DROP_DOWN_PROPTYPES} from "../../common/propTypes/DROP_DOWN_PROPTYPES";
 import {inputsFilterDefaultValues} from "../../../utils/utilities";
 
-const DropDownInternOperation = ({internOperation, display, mgLeft, padding, mgLSelect, hgSelect, ...rest}) => {
+const DropDownInternOperation = ({internOperation, display, mgLeft, padding, mgLSelect, hgSelect, titleOnOff, ...rest}) => {
 
     const state = {
         internOperation: [
+            "Stock",
             "IT Delivery",
             "IT Support",
         ]
@@ -15,9 +16,10 @@ const DropDownInternOperation = ({internOperation, display, mgLeft, padding, mgL
 
   return (
       <DropDownContainer title="Operacion Interna" key={!internOperation ? "internOperation" : `${internOperation + rest?.serial + state?.internOperation?.length}` }
-                         values={state?.internOperation}
+                        titleOnOff={titleOnOff} 
+                        values={state?.internOperation}
                          name={inputsFilterDefaultValues.internOperation}
-                         defaultValue={internOperation}
+                         defaultValue={state?.internOperation[0]}
                          display={display}
                          mgLeft={mgLeft}
                          mgLSelect={mgLSelect}

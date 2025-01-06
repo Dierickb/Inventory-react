@@ -7,6 +7,7 @@ import {useShowDevicesBootCenter} from "./hooks";
 import {useFilters} from "../../../contexts";
 import TBodyDevices from "./TBodyDevices";
 import {DEVICE_PROPTYPES} from "../../common/propTypes";
+import DropDownInternOperation from "../../Inputs/DropDownInternOperation/DropDownInternOperation";
 
 const Devices = ({showDevice}) => {
 
@@ -21,6 +22,9 @@ const Devices = ({showDevice}) => {
         <Card>
             <CardHeader>
                 <h2>{state?.devices?.length} Equipos en stock</h2>
+
+                <DropDownInternOperation bg="none" border="solid 1px" wd="20rem" titleOnOff="off" />
+
                 <span onClick={async () => await setFindDevice(filterState)}>
                     <img className="fas" src={rotateIcon} alt=""/>
                 </span>
