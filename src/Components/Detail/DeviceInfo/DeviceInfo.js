@@ -22,7 +22,7 @@ const DeviceInfo = ({device, cleanDeviceInfo}) => {
                         <h2>Serial: <p>{device?.serial}</p></h2>
                     </div>
                 </h2>
-                <Icon role="cleanButton" onClick={handleCleanDevice} bgImg='#03a9f4'>
+                <Icon role="cleanButton" onClick={handleCleanDevice} bgImg='#03a9f4' title="Clean Card">
                    <img className="fas" src={trashIcon} alt=""/>
                 </Icon>
             </CardHeader>
