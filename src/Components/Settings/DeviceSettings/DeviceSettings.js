@@ -1,8 +1,8 @@
 import {memo} from "react";
 
-import CardsContainer from "../../Card/CardsContainer/CardsContainer";
+import CardsContainer from "../../Containers/CardsContainer/CardsContainer";
 import FormSetDevice from "../../Forms/FormDevice/FormSetDevice";
-import CardContainer from "../../Card/CardContainer/CardContainer";
+import CardContainer from "../../Containers/CardContainer/CardContainer";
 import FormDevices from "../../Forms/FormDevice/FormDevices/FormDevices";
 import FormGetDevice from "../../Forms/FormDevice/FormGetDevice/FormGetDevice";
 

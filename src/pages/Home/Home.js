@@ -3,7 +3,7 @@ import "./Home.scss"
 import Detail from "../../Components/Detail/Detail";
 import {useActiveLeftBar} from "../../contexts";
 import FormSetDevice from "../../Components/Forms/FormDevice/FormSetDevice/FormSetDevice";
-import CardContainer from "../../Components/Card/CardContainer/CardContainer";
+import CardContainer from "../../Components/Containers/CardContainer/CardContainer";
 import { useState } from "react";
 
 const Home = () => {
