@@ -30,7 +30,6 @@ const   LeftBar = ({isActive}) => {
         <nav className={`navigation ${isActive ? 'active' :'' }`}>
             <ul>
                 <OperationList title='Home' image={houseIcon} onClick={handleRedirectToHome} />
-                <OperationList title='Operation' image={userIcon} onClick={handleRedirectToOperation} />
                 { (rol === rols.admin) &&
                     <>
                         <OperationList title='Graphs' image={chartPieIcon} onClick={handleRedirectToGraph} />

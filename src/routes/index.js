@@ -11,7 +11,6 @@ import {roles} from "../utils/utilities";
 const Home = lazy(() => import("../pages/Home/Home"))
 const Auth = lazy(() => import("../pages/Auth/Auth"))
 const Admin = lazy(() => import("../pages/Admin/Admin"))
-const InternOperation = lazy(() => import("../pages/InternOperation/InternOperation"))
 
 const Routes = () => {
     const { isLoggedIn } = useAuth();
@@ -25,7 +24,6 @@ const Routes = () => {
                     <PrivateLoginRoute path="/login" component={Auth} />
                     <PrivateRoute exact path="/dashboard" component={Home} />
                     <PrivateRoute path="/dashboard/admin" component={Admin}/>
-                    <PrivateRoute path="/dashboard/internOperation" component={InternOperation}/>
                     <Redirect to={redirect} />
                 </Switch>
             </Suspense>
