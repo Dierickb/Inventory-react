@@ -36,14 +36,16 @@ const DeviceSettings = ({children}) => {
 
             <CardContainer title="IT Suport's Devices"
                                     Children={FormDevices} hasChild={true} />
-
-            <CardContainer title="IT Delivery's Devices"
+            {
+                /*
+                    <CardContainer title="IT Delivery's Devices"
                                     Children={FormDevices} hasChild={true} />
 
-            <CardContainer title="Customer's Devices "
-                                    Children={FormDevices} hasChild={true} />
-
-
+                    <CardContainer title="Customer's Devices "
+                                            Children={FormDevices} hasChild={true} />
+                */
+            }
+            
           {!!children && children}
       </CardsContainer>
   )
