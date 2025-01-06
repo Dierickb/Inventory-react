@@ -30,7 +30,7 @@ export const CardFooter = styled.footer`
   input {
     height: 45px;
     width: 100%;
-    margin-left: 0;
+    margin: 5px;
     border-radius: 30px;
     position: relative;
     padding: 5px 10px;

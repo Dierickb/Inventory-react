@@ -37,6 +37,7 @@ const DeviceInfo = ({device, cleanDeviceInfo}) => {
                 <div className="form-group">
                     <input form="deviceInfoForm" name={eventsNames.EVENT_UPDATE} type="submit" value="Actualizar" id="event_update" />
                     <input form="deviceInfoForm" name={eventsNames.EVENT_SEND} type="submit" value="Enviar" id="event_send" />
+                    
                 </div>
             </CardFooter>
         </Card>
