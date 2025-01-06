@@ -1,8 +1,8 @@
 import {Input} from "../../layout";
 import PropTypes from "prop-types";
-import DropDownImage from "../../Inputs/DropDownImage";
+import DropDownImage from "../../Inputs/DropDownImage/DropDownImage";
 import "./deviceInfo.scss"
-import DropDownInternOperation from "../../Inputs/DropDownInternOperation";
+import DropDownInternOperation from "../../Inputs/DropDownInternOperation/DropDownInternOperation";
 import {useHandleSubmit} from "./hooks";
 import {useState} from "react";
 import {initialStateDeviceInfoSubmit} from "../../../utils/utilities";

@@ -1,4 +1,4 @@
-import DropDownContainer from "../DropDownContainer";
+import DropDownContainer from "../DropDownContainer/DropDownContainer";
 import {memo} from "react";
 import {inputsFilterDefaultValues} from "../../../utils/utilities";
 import PropTypes from "prop-types";

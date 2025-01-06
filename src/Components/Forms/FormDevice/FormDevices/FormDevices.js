@@ -3,7 +3,7 @@ import { useEffect, memo } from "react";
 import FormTBodyDevice from "./FormTBodyDevice"
 
 import {useBootCenterDevices} from "../../../../contexts";
-import {Card, DefaultTable} from "../../../layout/"
+import {Card, DefaultTable} from "../../../layout"
 
 const FormDevices = () => {
 

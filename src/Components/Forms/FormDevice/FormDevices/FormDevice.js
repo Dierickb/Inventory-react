@@ -3,7 +3,7 @@ import { useState, memo } from "react"
 import {useFormDevice} from "./hooks"
 
 import { Input, DropDown, Button } from "../../../layout"
-import DropDownImage from "../../../Inputs/DropDownImage"
+import DropDownImage from "../../../Inputs/DropDownImage/DropDownImage"
 
 const FormDevice = ({index, device}) => {
 

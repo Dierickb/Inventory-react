@@ -2,8 +2,8 @@ import {Icon, Search} from "../../../layout";
 import InputContainer from "../../../Inputs/InputContainer/InputContainer";
 import {memo} from "react";
 
-import DropDownImage from "../../../Inputs/DropDownImage";
-import DropDownBusinesses from "../../../Inputs/DropDownBusinesses";
+import DropDownImage from "../../../Inputs/DropDownImage/DropDownImage";
+import DropDownBusinesses from "../../../Inputs/DropDownBusinesses/DropDownBusiness";
 import {useDeviceFilter, useHandleSearch} from "./hooks";
 import {useBootCenterDevices, useFilters} from "../../../../contexts";
 import trashIcon from "../icons/trash-can-regular.svg";

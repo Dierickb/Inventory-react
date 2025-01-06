@@ -1,5 +1,5 @@
 import {InputsContainer, FormRegisters, Button, Input} from "../../../layout";
-import TextAreaAutoSize from "../../../Inputs/TextAreaAutoSize"
+import TextAreaAutoSize from "../../../Inputs/TextAreaAutoSize/TextAreaAutoSize"
 import {useHandleSetProducts} from "./hooks"
 
 const FormSetProducts = ({itemToSearch}) => {
