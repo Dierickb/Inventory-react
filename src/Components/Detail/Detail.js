@@ -1,5 +1,5 @@
 import Devices from "./Devices/Devices";
-import {Details} from "../layout";
+import {Details} from "./DetailStyled";
 import {memo, useCallback, useState} from "react";
 import DeviceInfo from "./DeviceInfo/DeviceInfo";
 import {initialDevice} from "./utils/initialDevice";

@@ -1,11 +1,12 @@
 import "./TopBar.scss"
-import { HeaderToBar, Icon} from "../../layout";
+import {Icon} from "../../layout";
 import {memo, useCallback} from "react";
 import burgerIcon from "./icons/burger-solid.svg"
 import SearchByPath from "./SearchByPath";
 import PropTypes from "prop-types";
 import {useLocation} from "react-router-dom";
 import {pathsDefault} from "../../../utils/utilities";
+import {HeaderToBarStyled} from "./HeaderToBarStyled";
 
 const TopBar = ({setActive, isActive}) => {
     const location = useLocation()
@@ -15,7 +16,7 @@ const TopBar = ({setActive, isActive}) => {
 
     return (
         <div role="search" className={`topBar${isActive ? ' active' : ''}`}>
-            <HeaderToBar active={isActive}>
+            <HeaderToBarStyled active={isActive}>
                 <Icon role="button" imgWd='2em' brdRadImg='5px' bgImg='#03a9f4' onClick={() => showHide()}>
                     <img alt="" src={burgerIcon}/>
                 </Icon>
@@ -24,7 +25,7 @@ const TopBar = ({setActive, isActive}) => {
                     (location.pathname === pathsDefault.HOME) && <SearchByPath />
                 }
 
-            </HeaderToBar>
+            </HeaderToBarStyled>
         </div>
     )
 }

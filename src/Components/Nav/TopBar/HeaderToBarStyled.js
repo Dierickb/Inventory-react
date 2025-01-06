@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const HeaderToBar = styled.header`
+export const HeaderToBarStyled = styled.header`
   display: flex;
   transition: 0.9s;
   width: ${ (props) =>  props?.active ? 'calc(100% - 240px)' : 'calc(100% - 60px)' };

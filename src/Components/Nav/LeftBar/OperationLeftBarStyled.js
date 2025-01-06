@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const OperationLeftBar = styled.li`
+export const OperationLeftBarStyled = styled.li`
   position: relative;
   width: 100%;
   display: flex;

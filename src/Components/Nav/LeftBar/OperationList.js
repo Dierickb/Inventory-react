@@ -1,16 +1,17 @@
-import {Icon, OperationLeftBar} from "../../layout";
+import {Icon} from "../../layout";
+import {OperationLeftBarStyled} from "./OperationLeftBarStyled";
 import {memo} from "react";
 import PropTypes from "prop-types";
 
 const OperationList = ({title, image, onClick}) => {
   return (
-      <OperationLeftBar title={title} onClick={onClick}>
+      <OperationLeftBarStyled title={title} onClick={onClick}>
           <Icon>
               <img alt="" className="fas" src={image}/>
           </Icon>
           <span className="title">{title}</span>
 
-      </OperationLeftBar>
+      </OperationLeftBarStyled>
   )
 }
 
