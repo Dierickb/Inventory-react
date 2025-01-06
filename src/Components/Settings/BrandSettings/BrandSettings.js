@@ -1,8 +1,8 @@
-import CardsContainer from "../../Card/CardsContainer";
+import CardsContainer from "../../Card/CardsContainer/CardsContainer";
 import FormBrand from "../../Forms/FormBrand";
 import FormSetBrand from "../../Forms/FormBrand/FormSetBrand"
 import {memo} from "react";
-import CardContainer from "../../Card/CardContainer";
+import CardContainer from "../../Card/CardContainer/CardContainer";
 import FormBrandDropDown from "../../Forms/FormBrand/common/FormBrandDropDown";
 import FormSetProducts from "../../Forms/FormBrand/FormSetProducts/FormSetProducts";
 

@@ -1,7 +1,7 @@
-import CardsContainer from "../../Card/CardsContainer";
+import CardsContainer from "../../Card/CardsContainer/CardsContainer";
 import FormUser from "../../Forms/FormUser";
 import {memo} from "react";
-import CardContainer from "../../Card/CardContainer";
+import CardContainer from "../../Card/CardContainer/CardContainer";
 import {Input} from "../../layout";
 
 const UserSettings = () => {
