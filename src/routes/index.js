@@ -8,10 +8,10 @@ import PrivateRoute from "./PrivateRoute";
 import PrivateLoginRoute from "./PrivateLoginRoute";
 import {roles} from "../utils/utilities";
 
-const Home = lazy(() => import("../pages/Home"))
-const Auth = lazy(() => import("../pages/Auth"))
-const Admin = lazy(() => import("../pages/Admin"))
-const InternOperation = lazy(() => import("../pages/InternOperation"))
+const Home = lazy(() => import("../pages/Home/Home"))
+const Auth = lazy(() => import("../pages/Auth/Auth"))
+const Admin = lazy(() => import("../pages/Admin/Admin"))
+const InternOperation = lazy(() => import("../pages/InternOperation/InternOperation"))
 
 const Routes = () => {
     const { isLoggedIn } = useAuth();
