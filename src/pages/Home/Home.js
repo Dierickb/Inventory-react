@@ -1,5 +1,3 @@
-import "./Home.scss"
-
 import Detail from "../../Components/Detail/Detail";
 import {useActiveLeftBar} from "../../contexts";
 import FormSetDevice from "../../Components/Forms/FormDevice/FormSetDevice/FormSetDevice";

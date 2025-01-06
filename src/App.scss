@@ -22,6 +22,18 @@
   display: block;
 }
 
+.productInfo {
+  display: flex;
+  align-items: center;
+}
+.formContainer{
+    height: calc(100vh - 110px);
+  
+    &.inputAcitve{
+      height: auto;
+    }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
