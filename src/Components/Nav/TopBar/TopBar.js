@@ -17,7 +17,7 @@ const TopBar = ({setActive, isActive}) => {
     return (
         <div role="search" className={`topBar${isActive ? ' active' : ''}`}>
             <HeaderToBarStyled active={isActive}>
-                <Icon role="button" imgWd='2em' brdRadImg='5px' bgImg='#03a9f4' onClick={() => showHide()}>
+                <Icon title="Clean Menu Filter" role="button" imgWd='2em' brdRadImg='5px' bgImg='#03a9f4' onClick={() => showHide()}>
                     <img alt="" src={burgerIcon}/>
                 </Icon>
 
