@@ -1,5 +1,5 @@
-import LeftBar from "./LeftBar";
-import TopBar from "./TopBar";
+import LeftBar from "./LeftBar/LeftBar";
+import TopBar from "./TopBar/TopBar";
 import "./Nav.scss"
 import {useActiveLeftBar} from "../../contexts"
 
