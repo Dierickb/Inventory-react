@@ -12,6 +12,7 @@ import gearIcon from "./icons/gear-solid.svg"
 import exitIcon from "./icons/sign-out-alt-solid.svg"
 import {memo} from "react";
 import {bool} from "yup";
+import {rols} from "../../../utils/utilities";
 
 const   LeftBar = ({isActive}) => {
     const {logout, isLoggedIn} = useAuth()
@@ -30,7 +31,7 @@ const   LeftBar = ({isActive}) => {
             <ul>
                 <OperationList title='Home' image={houseIcon} onClick={handleRedirectToHome} />
                 <OperationList title='Operation' image={userIcon} onClick={handleRedirectToOperation} />
-                { (rol === "admin") &&
+                { (rol === rols.admin) &&
                     <>
                         <OperationList title='Graphs' image={chartPieIcon} onClick={handleRedirectToGraph} />
                         <OperationList title='Settings' image={gearIcon} onClick={handleRedirectToAdmin} />

@@ -1,6 +1,7 @@
 import {createContext, useContext} from "react";
 import {ipcAuthAPI} from '../api'
 import PropTypes from "prop-types";
+import {rols} from "../utils/utilities";
 
 export const AuthContext = createContext();
 const {Provider} = AuthContext;
@@ -18,7 +19,7 @@ export const AuthProvider = ({children, dev}) => {
     }
 
     const isLoggedIn = () => {
-        if(dev) return {isLogged: true, rol: "admin"}
+        if(dev) return {isLogged: true, rol: rols.admin}
         return {
             isLogged: !!localStorage.getItem("auth"),
             rol: JSON.parse(localStorage.getItem("auth")) && JSON.parse(localStorage.getItem("auth")).rol,

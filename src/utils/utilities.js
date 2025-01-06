@@ -5,6 +5,13 @@ export const roles = {
     null: "/login",
 }
 
+export const rols = Object.freeze({
+    admin: "admin",
+    auth: "auth",
+    undefined: "undefined",
+    null: "null",
+})
+
 export const eventButtonDeviceInfo = {
     event_update: true,
     event_send: true,
