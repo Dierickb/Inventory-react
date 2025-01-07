@@ -1,7 +1,7 @@
 import {businesses} from "../utils/testData";
 
 export const ipcBusiness = () => {
-    const getIpcBusiness = () => {
+    const getIpcBusiness = async() => {
         return businesses
     }
 

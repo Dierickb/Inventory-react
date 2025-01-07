@@ -1,4 +1,5 @@
 export const BUSINESS_ACTIONS = {
+    GET_BUSINESSES: "GET_BUSINESSES",
     GSG: "GET_GSG",
     GBS: "GET_GBS",
 }

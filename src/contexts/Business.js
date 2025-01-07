@@ -1,13 +1,13 @@
-import { creatteContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import {ipcBusiness} from "../api";
-import {businessInitialState} from "../reducers/business";
+import {businessInitialState} from "../reducers/business.js";
 import {BUSINESS_ACTIONS} from "../actions";
-import {businessReducer} from "../reducers/business";
+import {businessReducer} from "../reducers/business.js";
 
 
 const {getIpcBusiness} = ipcBusiness()
 
-export const BusinessContext = creatteContext()
+export const BusinessContext = createContext()
 const {Provider} = BusinessContext;
 
 export const BusinessProvider = ({children}) => {
@@ -15,7 +15,7 @@ export const BusinessProvider = ({children}) => {
 
     const getBusiness = async () => {
         dispatch({
-            type: BUSINESS_ACTIONS.BUSINESS,
+            type: BUSINESS_ACTIONS.GET_BUSINESSES,
             payload: await getIpcBusiness(),
         })
     }
