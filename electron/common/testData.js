@@ -8,7 +8,7 @@ const testData = [
         entryDate: "11/1/2022",
         pxeDate: "",
         image: "",
-        business: "B1",
+        business: "GSG",
     },
     {
         brand: "Lenovo",
@@ -19,7 +19,7 @@ const testData = [
         entryDate: "11/1/2022",
         pxeDate: "",
         image: "Sin Imagen",
-        business: "B2",
+        business: "GBS",
     },
 ]
 
@@ -76,6 +76,11 @@ const customersOperations = [
         id: 3,
         customerOperation: "Operacion3",
         mnemonic: "op3",
+    },
+    {
+        id: 4,
+        customerOperation: "Operacion4",
+        mnemonic: "op4",
     }
 ]
 
