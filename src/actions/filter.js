@@ -6,6 +6,7 @@ export const FILTER_ACTIONS = {
     SERIAL_IT_SUPPORT: Symbol(),
     SERIAL_CLIENT: Symbol(),
     CLEAR_FILTER: Symbol(),
+    STORAGE_BOOT_CENTER: Symbol(),
 }
 
 export const FILTERS = {
@@ -14,4 +15,5 @@ export const FILTERS = {
     SET_IMAGE: Symbol(),
     SET_BUSINESS: Symbol(),
     CLEAR: Symbol(),
+    SET_STORAGE: Symbol(),
 }
