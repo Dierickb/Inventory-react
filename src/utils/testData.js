@@ -150,3 +150,14 @@ export const auths = {
         uid: "uid-1"
     }
 }
+
+export const businesses = [
+    {
+        id: 1,
+        business: "GSG",
+    },
+    {
+        id: 2,
+        business: "GBS",
+    },
+]
