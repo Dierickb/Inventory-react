@@ -4,6 +4,7 @@ import {DEVICE_ACTIONS} from "./device";
 import {FILTER_ACTIONS, FILTERS} from "./filter"
 import {FORM_DEVICE_SELECT_ACTIONS} from "./formDeviceSelect"
 import {OPERATIONS_ACTIONS} from "./operations"
+import {BUSINESS_ACTIONS} from "./business"
 
 export {
     AUTH_ACTIONS,
@@ -13,4 +14,5 @@ export {
     FILTERS,
     FORM_DEVICE_SELECT_ACTIONS,
     OPERATIONS_ACTIONS,
+    BUSINESS_ACTIONS,
 }
