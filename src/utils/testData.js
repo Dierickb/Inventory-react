@@ -134,10 +134,14 @@ export const getModelsByBrand = [
 export const internOperation = [
     {
         id: 1,
-        internOperation: "IT Delivery",
+        internOperation: "Stock",
     },
     {
         id: 2,
+        internOperation: "IT Delivery",
+    },
+    {
+        id: 3,
         internOperation: "IT Support",
     }
 ]

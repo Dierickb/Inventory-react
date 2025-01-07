@@ -24,7 +24,7 @@ const Devices = ({showDevice}) => {
             <CardHeader>
                 <h2>{state?.devices?.length} Equipos en stock</h2>
 
-                <DropDownInternOperation defaultValue={inputsFilterDefaultValues.stock} name={inputsFilterDefaultValues.internOperation} title="Stock" bg="none" border="solid 1px" wd="20rem" titleOnOff="off" />
+                <DropDownInternOperation name={inputsFilterDefaultValues.storage} title="Storage" bg="none" border="solid 1px" wd="20rem" titleOnOff="off" />
 
                 <span onClick={async () => await setFindDevice(filterState)}>
                     <img className="fas" src={rotateIcon} alt=""/>
