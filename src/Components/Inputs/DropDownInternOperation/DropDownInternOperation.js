@@ -2,23 +2,25 @@ import DropDownContainer from "../DropDownContainer/DropDownContainer";
 import {memo} from "react";
 import PropTypes from "prop-types";
 import {DROP_DOWN_PROPTYPES} from "../../common/propTypes/DROP_DOWN_PROPTYPES";
-import {inputsFilterDefaultValues} from "../../../utils/utilities";
+import { useEffect } from "react";
+import { useInternOperation } from "../../../contexts/InternOperation";
 
-const DropDownInternOperation = ({internOperation, display, mgLeft, padding, mgLSelect, hgSelect, titleOnOff, ...rest}) => {
+const DropDownInternOperation = ({title, internOperation, display, mgLeft, padding, mgLSelect, hgSelect, titleOnOff, ...rest}) => {
 
-    const state = {
-        internOperation: [
-            "Stock",
-            "IT Delivery",
-            "IT Support",
-        ]
-    }
+    const {state, getInternOperation} = useInternOperation()
+
+    useEffect(() => {
+        (async () => {
+            await getInternOperation()
+        })()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
   return (
-      <DropDownContainer title="Operacion Interna" key={!internOperation ? "internOperation" : `${internOperation + rest?.serial + state?.internOperation?.length}` }
+      <DropDownContainer title={title ? title : "Operacion Interna"} key={!internOperation ? "internOperation" : `${internOperation + rest?.serial + state?.internOperation?.length}` }
                         titleOnOff={titleOnOff} 
                         values={state?.internOperation}
-                         name={inputsFilterDefaultValues.internOperation}
+                         name={rest.name}
                          defaultValue={state?.internOperation[0]}
                          display={display}
                          mgLeft={mgLeft}

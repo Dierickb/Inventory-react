@@ -7,6 +7,7 @@ import {BrandProvider} from "../contexts/Brand";
 import {Filters} from "../contexts/Filters"
 import {OperationsProvider} from "../contexts/Operations";
 import { BusinessProvider } from "../contexts/Business";
+import { InternOperationProvider } from "../contexts/InternOperation";
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -18,14 +19,16 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         <OperationsProvider>
             <BrandProvider>
                 <BusinessProvider>
-                    <BootCenterDevicesProvider>
-                        <ActiveLeftBarProvider>
-                            <Filters>
-                                <Nav />
-                                <Route {...rest} component={(props) => <Component {...props} />} />
-                            </Filters>
-                        </ActiveLeftBarProvider>
-                    </BootCenterDevicesProvider>
+                    <InternOperationProvider>
+                        <BootCenterDevicesProvider>
+                            <ActiveLeftBarProvider>
+                                <Filters>
+                                    <Nav />
+                                    <Route {...rest} component={(props) => <Component {...props} />} />
+                                </Filters>
+                            </ActiveLeftBarProvider>
+                        </BootCenterDevicesProvider>
+                    </InternOperationProvider>
                 </BusinessProvider>
             </BrandProvider>
         </OperationsProvider>

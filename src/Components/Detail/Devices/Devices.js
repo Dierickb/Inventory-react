@@ -8,6 +8,7 @@ import {useFilters} from "../../../contexts";
 import TBodyDevices from "./TBodyDevices";
 import {DEVICE_PROPTYPES} from "../../common/propTypes";
 import DropDownInternOperation from "../../Inputs/DropDownInternOperation/DropDownInternOperation";
+import {inputsFilterDefaultValues} from "../../../utils/utilities";
 
 const Devices = ({showDevice}) => {
 
@@ -23,7 +24,7 @@ const Devices = ({showDevice}) => {
             <CardHeader>
                 <h2>{state?.devices?.length} Equipos en stock</h2>
 
-                <DropDownInternOperation bg="none" border="solid 1px" wd="20rem" titleOnOff="off" />
+                <DropDownInternOperation defaultValue={inputsFilterDefaultValues.stock} name={inputsFilterDefaultValues.internOperation} title="Stock" bg="none" border="solid 1px" wd="20rem" titleOnOff="off" />
 
                 <span onClick={async () => await setFindDevice(filterState)}>
                     <img className="fas" src={rotateIcon} alt=""/>

@@ -5,7 +5,7 @@ export const ipcOperations = () => {
         return customersOperations
     }
 
-    const getIpcInternOperations = () => {
+    const getIpcInternOperations = async () => {
         return internOperation
     }
 

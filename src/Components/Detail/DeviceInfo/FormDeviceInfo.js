@@ -9,6 +9,7 @@ import {initialStateDeviceInfoSubmit} from "../../../utils/utilities";
 import {handleSubmit} from "./handleSubmit";
 import {eventsNames} from "./utils";
 import {DEVICE_PROPTYPES} from "../../common/propTypes";
+import {inputsFilterDefaultValues} from "../../../utils/utilities";
 
 const FormDeviceInfo = ({device}) => {
 
@@ -25,10 +26,11 @@ const FormDeviceInfo = ({device}) => {
                          mgLSelect="10px" hgSelect="2.3em" pdSelector="0 10px 0 10px"
                          defaultImage={device?.image} />
 
-          <DropDownInternOperation serial={device?.serial}
+          <DropDownInternOperation name={inputsFilterDefaultValues.internOperation}
+                                    serial={device?.serial}
                                    display="flex" mgLeft="5px" padding="0.4em 1em"
                                    mgLSelect="10px" hgSelect="2.3em" pdSelector="0 10px 0 10px" textAlign=" "
-                                   defaultValue={device?.internOperation}/>
+                                   defaultValue={inputsFilterDefaultValues.internOperation} />
 
           <div className="cardSection">
               <Input type="text" placeholder="ScotiaId" name="scotiaId" maxLength={8} />
