@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import {DROP_DOWN_PROPTYPES} from "../../common/propTypes/DROP_DOWN_PROPTYPES";
 import { useEffect } from "react";
 import { useInternOperation } from "../../../contexts/InternOperation";
+import {inputsFilterDefaultValues} from "../../../utils/utilities";
 
 const DropDownInternOperation = ({title, internOperation, display, mgLeft, padding, mgLSelect, hgSelect, titleOnOff, ...rest}) => {
 
@@ -20,8 +21,8 @@ const DropDownInternOperation = ({title, internOperation, display, mgLeft, paddi
       <DropDownContainer title={title ? title : "Operacion Interna"} key={!internOperation ? "internOperation" : `${internOperation + rest?.serial + state?.internOperation?.length}` }
                         titleOnOff={titleOnOff} 
                         values={state?.internOperation}
-                         name={rest.name}
-                         defaultValue={state?.storage ? state?.storage : state.internOperation[0]}
+                         name={inputsFilterDefaultValues.STORAGE}
+                         defaultValue={rest.storage ? rest.storage : inputsFilterDefaultValues.STORAGE}
                          display={display}
                          mgLeft={mgLeft}
                          mgLSelect={mgLSelect}
