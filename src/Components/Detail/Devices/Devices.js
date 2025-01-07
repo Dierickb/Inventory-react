@@ -1,7 +1,7 @@
 import {Card, CardHeader, DefaultTable} from "../../layout";
 import rotateIcon from "./icons/rotate-solid.svg"
 
-import {memo, useCallback} from "react";
+import {memo, useCallback, useReducer} from "react";
 import PropTypes from "prop-types";
 import {useShowDevicesBootCenter} from "./hooks";
 import {useFilters} from "../../../contexts";
@@ -9,22 +9,31 @@ import TBodyDevices from "./TBodyDevices";
 import {DEVICE_PROPTYPES} from "../../common/propTypes";
 import DropDownInternOperation from "../../Inputs/DropDownInternOperation/DropDownInternOperation";
 import {inputsFilterDefaultValues} from "../../../utils/utilities";
+import { useHandleStorage } from "./hooks/useHandleStorage";
 
 const Devices = ({showDevice}) => {
-
+    
+    const {handleStorageOnChange} = useHandleStorage()
     const {state, setFindDevice} = useShowDevicesBootCenter()
     const {state: filterState} = useFilters()
+
+    /* const [stateFilters, dispatch] = useReducer(filtersReducer, filterInitialState) */
+
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const handleShowDevice = useCallback((device) => showDevice(device), [])
 
     if (state?.loading) return <h3>Loading...</h3>
-
     return (
         <Card>
             <CardHeader>
                 <h2>{state?.devices?.length} Equipos en stock</h2>
 
-                <DropDownInternOperation defaultValue={inputsFilterDefaultValues.STORAGE} name={inputsFilterDefaultValues.STORAGE} title="Storage" bg="none" border="solid 1px" wd="20rem" titleOnOff="off" />
+                <DropDownInternOperation 
+                    onChange={handleStorageOnChange}
+                    defaultValue={inputsFilterDefaultValues.STORAGE} 
+                    name={inputsFilterDefaultValues.STORAGE} 
+                    title="Storage" bg="none" border="solid 1px" wd="20rem" titleOnOff="off" />
 
                 <span onClick={async () => await setFindDevice(filterState)}>
                     <img className="fas" src={rotateIcon} alt=""/>

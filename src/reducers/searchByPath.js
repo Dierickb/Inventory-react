@@ -10,7 +10,6 @@ export const filterInitialState = {
 }
 
 export const filtersReducer = (state, action) => {
-
     switch (action.type) {
         case FILTER_ACTIONS.SERIAL_BOOT_CENTER:
             return {
@@ -22,15 +21,26 @@ export const filtersReducer = (state, action) => {
                 ...filterInitialState,
                 business: action.payload.business,
                 image: state.image || inputsFilterDefaultValues.IMAGE,
+                storage: state.storage || inputsFilterDefaultValues.STORAGE,
             }
         case FILTER_ACTIONS.IMAGE_BOOT_CENTER:
             return {
                 ...filterInitialState,
                 image: action.payload.image,
                 business: state.business || inputsFilterDefaultValues.BUSINESS,
+                storage: state.storage || inputsFilterDefaultValues.STORAGE,
             }
         case FILTER_ACTIONS.CLEAR_FILTER:
             return action.payload
+
+        case FILTER_ACTIONS.STORAGE_BOOT_CENTER:
+            return {
+                ...filterInitialState,
+                storage: action.payload.storage,
+                business: state.business || inputsFilterDefaultValues.BUSINESS,
+                image: state.image || inputsFilterDefaultValues.IMAGE,
+            }
+
         default:
             return state
     }

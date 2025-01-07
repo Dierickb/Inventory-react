@@ -75,9 +75,15 @@ export const ipcDeviceAPI = () => {
 
         if(image !== inputsFilterDefaultValues.IMAGE && 
             business !== inputsFilterDefaultValues.BUSINESS &&
-            storage !== inputsFilterDefaultValues.STORAGE
+            storage === inputsFilterDefaultValues.STORAGE
         )
             return await finByImageAndBusiness({image, business})
+
+        if(image !== inputsFilterDefaultValues.IMAGE && 
+            business !== inputsFilterDefaultValues.BUSINESS &&
+            storage !== inputsFilterDefaultValues.STORAGE
+        )
+            console.log("Business and Image")
     }
 
     const finByImage = async ({image}) => {
