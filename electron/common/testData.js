@@ -9,6 +9,7 @@ const testData = [
         pxeDate: "",
         image: "",
         business: "GSG",
+        stockState: "Stock",
     },
     {
         brand: "Lenovo",
@@ -20,6 +21,7 @@ const testData = [
         pxeDate: "",
         image: "Sin Imagen",
         business: "GBS",
+        stockState: "Stock",
     },
 ]
 
@@ -166,6 +168,21 @@ const auths = {
         uid: "uid-1"
     }
 }
+
+const stockState = [
+    {
+        id: 1,
+        stockState: "Stock",
+    },
+    {
+        id: 2,
+        stockState: "IT Delivery",
+    },
+    {
+        id: 3,
+        stockState: "IT Support",
+    }
+]
 
 module.exports = {
     testData,
