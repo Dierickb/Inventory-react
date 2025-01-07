@@ -22,7 +22,7 @@ const TopBar = ({setActive, isActive}) => {
                 </Icon>
 
                 {
-                    (location.pathname === pathsDefault.HOME || location.pathname === pathsDefault.OPERATION) && <SearchByPath />
+                    (location.pathname === pathsDefault.HOME) && <SearchByPath />
                 }
 
             </HeaderToBarStyled>

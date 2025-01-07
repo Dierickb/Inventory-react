@@ -18,10 +18,10 @@ const DropDownBusinesses = ({business, display, mgLeft, padding, mgLSelect, hgSe
     }, [])
 
   return (
-      <DropDownContainer title="Empresa" key={!business ? "business" : business }
+      <DropDownContainer title="Empresa" key={!business ? business : inputsFilterDefaultValues.BUSINESS }
                          values={state.business}
-                         name={inputsFilterDefaultValues.business}
-                         defaultValue={business}
+                         name={inputsFilterDefaultValues.BUSINESS}
+                         defaultValue={business ? business : inputsFilterDefaultValues.BUSINESS}
                          display={display}
                          mgLeft={mgLeft}
                          mgLSelect={mgLSelect}

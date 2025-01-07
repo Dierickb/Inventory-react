@@ -1,11 +1,13 @@
 import {FILTERS} from "../actions/filter";
+import {inputsFilterDefaultValues} from "../utils/utilities"
 
 export const filtersInitialState = {
-    serial: "",
-    scotiaId: "",
-    image: "",
-    business: "",
-    filterKey: "",
+    serial: inputsFilterDefaultValues.SERIAL,
+    scotiaId: inputsFilterDefaultValues.SCOTIAID,
+    image: inputsFilterDefaultValues.IMAGE,
+    business: inputsFilterDefaultValues.BUSINESS,
+    filterKey: inputsFilterDefaultValues.FILTER_KEY,
+    storage: inputsFilterDefaultValues.STORAGE,
 }
 
 export const filtersReducer = (state, action) => {

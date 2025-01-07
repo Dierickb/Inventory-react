@@ -13,7 +13,7 @@ const DropDownContainer = ({titleOnOff, title, values, defaultValue, name, ...re
             onChange={rest.onChange}
           >
               {
-                  (name === inputsFilterDefaultValues.image || name === inputsFilterDefaultValues.business)
+                  (name === inputsFilterDefaultValues.IMAGE || name === inputsFilterDefaultValues.BUSINESS)
                       ? <option  key={name} value={name}> {title}</option>
                       : <option  key={name} value="">{title}</option>
               }

@@ -2,8 +2,6 @@ import { toast } from 'react-toastify';
 
 import {useBootCenterDevices} from "../../../../../contexts/BootCenterDevices"
 
-import {inputsFilterDefaultValues} from "../../../../../utils/utilities"
-
 export const useFormDevice = () => {
 
     const { updateDevice, deleteDevice, getDevices} = useBootCenterDevices()

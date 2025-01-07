@@ -25,7 +25,7 @@ export const useDeviceFilter = (filterState, findDeviceByBusinessOrImage,
         if(!!filterState.business) setFilter(FILTERS.SET_BUSINESS, filterState?.business)
         if(!!filterState.image) setFilter(FILTERS.SET_IMAGE, filterState?.image)
         
-        findDeviceByBusinessOrImage(filterState?.business, filterState?.image)
+        findDeviceByBusinessOrImage(filterState?.business, filterState?.image, filterState?.storage)
             .then(result => {
                 if(result instanceof ErrorMessageToUI) 
                     toast(result.message)

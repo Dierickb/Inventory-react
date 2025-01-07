@@ -1,10 +1,12 @@
 import {FILTER_ACTIONS} from "../actions";
+import { inputsFilterDefaultValues } from "../utils/utilities";
 
 export const filterInitialState = {
-    serial: "",
-    business: "",
-    image: "",
-    scotiaId: "",
+    serial: inputsFilterDefaultValues.SERIAL,
+    business: inputsFilterDefaultValues.BUSINESS,
+    image: inputsFilterDefaultValues.IMAGE,
+    scotiaId: inputsFilterDefaultValues.SCOTIAID,
+    storage: inputsFilterDefaultValues.STORAGE,
 }
 
 export const filtersReducer = (state, action) => {
@@ -19,13 +21,13 @@ export const filtersReducer = (state, action) => {
             return {
                 ...filterInitialState,
                 business: action.payload.business,
-                image: state.image || "",
+                image: state.image || inputsFilterDefaultValues.IMAGE,
             }
         case FILTER_ACTIONS.IMAGE_BOOT_CENTER:
             return {
                 ...filterInitialState,
                 image: action.payload.image,
-                business: state.business || "",
+                business: state.business || inputsFilterDefaultValues.BUSINESS,
             }
         case FILTER_ACTIONS.CLEAR_FILTER:
             return action.payload

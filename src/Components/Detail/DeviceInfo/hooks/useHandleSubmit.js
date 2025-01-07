@@ -21,7 +21,7 @@ export const useHandleSubmit = ({onSubmitData, device}) => {
             )
         }
 
-        if(device?.image === inputsFilterDefaultValues.image) {
+        if(device?.image === inputsFilterDefaultValues.IMAGE) {
             toast(`Device selected must be different to empty or default value`)
             return
         }

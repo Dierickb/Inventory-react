@@ -22,7 +22,7 @@ export const handleSubmit = (e, device, handleOnSubmitData, eventsNames) => {
     ) return
     
     if( e.nativeEvent.submitter.name === eventsNames.EVENT_UPDATE &&
-        !device?.image && image === inputsFilterDefaultValues.image
+        !device?.image && image === inputsFilterDefaultValues.IMAGE
     ) return
     
     if( (image === device?.image) &&

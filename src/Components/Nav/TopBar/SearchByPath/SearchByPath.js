@@ -7,6 +7,7 @@ import DropDownBusinesses from "../../../Inputs/DropDownBusinesses/DropDownBusin
 import {useDeviceFilter, useHandleSearch} from "./hooks";
 import {useBootCenterDevices, useFilters} from "../../../../contexts";
 import trashIcon from "../icons/trash-can-regular.svg";
+import { inputsFilterDefaultValues } from "../../../../utils/utilities";
 
 const SearchByPath = () => {
 
@@ -23,8 +24,8 @@ const SearchByPath = () => {
 
                 <InputContainer key={!state?.serial ? "serial" : state.serial }
                                 onKeyPress={(e) => handleSearchOnKeyPress(e, findDeviceBySerial)}
-                                placeHolder='Serial' title='Serial' name='serial'
-                                defaultValue={state.serial} />
+                                placeHolder='Serial' title='Serial' name='serial' value={state.serial}
+                                defaultValue={state.serial ? state.serial : inputsFilterDefaultValues.SERIAL} />
 
                 <DropDownImage onChange={handleSearchOnChange} image={state?.image} />
 

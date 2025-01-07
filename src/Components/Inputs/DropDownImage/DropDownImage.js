@@ -17,10 +17,10 @@ const DropDownImage = ({defaultImage, display, mgLeft, padding, mgLSelect, hgSel
     }, [])
 
   return (
-      <DropDownContainer title={(rest?.contentTitle === "empty") ? " " : "Imagen"} key={!defaultImage ? "image" : `${defaultImage+ rest?.serial + state?.customerOperation?.length}` }
+      <DropDownContainer title={(rest?.contentTitle === "empty") ? " " : "Imagen"} key={!rest.image ? rest.image : inputsFilterDefaultValues.IMAGE  }
                          values={state?.customerOperation}
-                         name={inputsFilterDefaultValues.image}
-                         defaultValue={(!!defaultImage)? defaultImage : inputsFilterDefaultValues.image}
+                         name={inputsFilterDefaultValues.IMAGE}
+                         defaultValue={rest.image ? rest.image : inputsFilterDefaultValues.IMAGE}
                          display={display}
                          mgLeft={mgLeft}
                          mgLSelect={mgLSelect}

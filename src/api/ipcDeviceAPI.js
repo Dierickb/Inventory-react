@@ -1,4 +1,4 @@
-import {inputsFilterTextName} from "../utils/utilities";
+import {inputsFilterDefaultValues} from "../utils/utilities";
 import {ipcDeviceAPIExpectedError} from "../errors/expectedErrors"
 import {ipcMessages} from "../common/ipcMessages"
 import {ErrorMessageToUI} from "../errors/errorsIpcDeviceAPI"
@@ -47,26 +47,36 @@ export const ipcDeviceAPI = () => {
 
     const findDeviceByScotiaIdAPI = async (scotiaId) => {
         try {
-            return await ipcRenderer.invoke(BOOT_CENTER_CHANNELS.FIND_DEVICE_BY_SCOTIAID, {scotiaId})
+                return await ipcRenderer.invoke(BOOT_CENTER_CHANNELS.FIND_DEVICE_BY_SCOTIAID, {scotiaId})
         } catch (e) {
             if(e.message === ipcDeviceAPIExpectedError.finDeviceByScotiaId_DEVICE_NOT_FOUND) 
                 throw new ErrorMessageToUI(ipcMessages.DEVICE_NOT_FOUND)
         }
     }
 
-    const findDeviceByBusinessOrImageAPI = async (business, image) => {
-
-        if((image === inputsFilterTextName.IMAGE || !image ) && 
-            (business === inputsFilterTextName.BUSINESS || !business) )
+    const findDeviceByBusinessOrImageAPI = async (business, image, storage) => {
+        if(image === inputsFilterDefaultValues.IMAGE && 
+            business === inputsFilterDefaultValues.BUSINESS &&
+            storage === inputsFilterDefaultValues.STORAGE
+        )
             return await getDevicesAPI()
 
-        if(image !== inputsFilterTextName.IMAGE && (business === inputsFilterTextName.BUSINESS || !business))
+        if(image !== inputsFilterDefaultValues.IMAGE && 
+            business === inputsFilterDefaultValues.BUSINESS && 
+            storage === inputsFilterDefaultValues.STORAGE
+        ) 
             return await finByImage({image})
 
-        if( (image === inputsFilterTextName.IMAGE || !image) && business !== inputsFilterTextName.BUSINESS)
+        if( image === inputsFilterDefaultValues.IMAGE && 
+            business !== inputsFilterDefaultValues.BUSINESS &&
+            storage === inputsFilterDefaultValues.STORAGE
+        )
             return await findByBusiness({business})
 
-        if(image !== inputsFilterTextName.IMAGE && business !== inputsFilterTextName.BUSINESS)
+        if(image !== inputsFilterDefaultValues.IMAGE && 
+            business !== inputsFilterDefaultValues.BUSINESS &&
+            storage !== inputsFilterDefaultValues.STORAGE
+        )
             return await finByImageAndBusiness({image, business})
     }
 

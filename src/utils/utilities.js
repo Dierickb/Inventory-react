@@ -29,19 +29,13 @@ export const keyInput = Object.freeze({
 })
 
 export const inputsFilterDefaultValues = Object.freeze({
-    serial: "",
-    scotiaId: "",
-    business: "businessSelect",
-    image: "imageSelect",
-    internOperation: "internOperationSelect",
-    storage: "storage",
-})
-
-export const inputsFilterTextName = Object.freeze({
-    SERIAL: "serial",
-    SCOTIAID: "scotiaId",
-    BUSINESS: "businessSelect",
-    IMAGE: "imageSelect"
+    SERIAL: "SERIAL_SELECTION",
+    SCOTIAID: "SCOTIAID_SELECTION",
+    BUSINESS: "BUSINESS_SELECTION",
+    IMAGE: "IMAGE_SELECTION",
+    STORAGE: "STORAGE_SELECTION",
+    FILTER_KEY: "FILTERKEY_SELECTION",
+    INTERN_OPERATION: "INTERN_OPERATION_SELECTION",
 })
 
 export const deviceSettingsKeysValues = Object.freeze({

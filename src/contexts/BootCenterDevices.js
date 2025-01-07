@@ -4,6 +4,7 @@ import {DEVICE_ACTIONS, FILTERS} from "../actions";
 import {ipcDeviceAPI} from "../api";
 import PropTypes from "prop-types";
 import {ErrorMessageToUI} from "../errors/errorsIpcDeviceAPI"
+import { inputsFilterDefaultValues } from "../utils/utilities";
 
 export const BootCenterDevicesContext = createContext();
 const {Provider} = BootCenterDevicesContext;
@@ -97,15 +98,15 @@ export const BootCenterDevicesProvider = ({children}) => {
         dispatch({
             type: DEVICE_ACTIONS.GET_DEVICES,
             payload: {devices:
-                (!scotiaId) ? await getDevicesAPI()
+                (scotiaId === inputsFilterDefaultValues.SCOTIAID) ? await getDevicesAPI()
                     : await findDeviceByScotiaIdAPI(scotiaId)
             }
         })
     }
 
-    const findDeviceByBusinessOrImage = async (business, image) => {
+    const findDeviceByBusinessOrImage = async (business, image, storage) => {
         try {
-            const devices = await findDeviceByBusinessOrImageAPI(business, image)
+            const devices = await findDeviceByBusinessOrImageAPI(business, image, storage)
             dispatch({
                 type: DEVICE_ACTIONS.GET_DEVICES,
                 payload: {devices: devices}
@@ -125,7 +126,7 @@ export const BootCenterDevicesProvider = ({children}) => {
             await findDeviceByScotiaId(filterState.scotiaId)
 
         if(FILTERS.SET_IMAGE || FILTERS.SET_BUSINESS)
-            await findDeviceByBusinessOrImage(filterState.business, filterState.image)
+            await findDeviceByBusinessOrImage(filterState.business, filterState.image, filterState.storage)
     }
 
     const removeAllListeners = async () => {
